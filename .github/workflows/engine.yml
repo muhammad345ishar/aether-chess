@@ -1,0 +1,21 @@
+name: Engine checks
+on: [push, pull_request]
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        sanitizers: ['OFF', 'ON']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo -DAETHER_SANITIZERS=${{ matrix.sanitizers }}
+      - run: cmake --build build --parallel 2
+      - run: ctest --test-dir build --output-on-failure
+      - run: python -m pip install -r scripts/requirements.txt
+      - run: python tests/tooling_regressions.py
+      - run: python tests/differential_perft.py build/aether
+      - run: python scripts/run_suite.py --engine build/aether --nodes 50000

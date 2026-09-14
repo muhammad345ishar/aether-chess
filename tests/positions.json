@@ -1,0 +1,51 @@
+[
+  {
+    "name": "mate on the hundredth halfmove",
+    "fen": "7k/5Q2/5K2/8/8/8/8/8 w - - 99 1",
+    "bestmoves": [
+      "f7g7"
+    ],
+    "mate": 1
+  },
+  {
+    "name": "quiet promotion",
+    "fen": "8/P7/8/8/8/6b1/5k2/7K w - - 0 1",
+    "bestmoves": [
+      "a7a8q"
+    ]
+  },
+  {
+    "name": "capture the hanging queen",
+    "fen": "6k1/8/8/8/3q4/8/3R4/6K1 w - - 0 1",
+    "bestmoves": [
+      "d2d4"
+    ]
+  },
+  {
+    "name": "knight fork",
+    "fen": "6k1/7q/8/3N4/8/8/7P/6K1 w - - 0 1",
+    "bestmoves": [
+      "d5f6"
+    ]
+  },
+  {
+    "name": "stalemate",
+    "fen": "7k/5Q2/6K1/8/8/8/8/8 b - - 0 1",
+    "draw": true
+  },
+  {
+    "name": "bare kings",
+    "fen": "7k/8/5K2/8/8/8/8/8 w - - 0 1",
+    "draw": true
+  },
+  {
+    "name": "mate before move-count draw",
+    "fen": "7k/6Q1/5K2/8/8/8/8/8 b - - 100 1",
+    "mate": 0
+  },
+  {
+    "name": "rule fifty draw",
+    "fen": "7k/8/5K2/8/8/8/8/Q7 w - - 100 1",
+    "draw": true
+  }
+]

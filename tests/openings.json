@@ -1,0 +1,120 @@
+[
+  {
+    "name": "Open game",
+    "moves": [
+      "e2e4",
+      "e7e5",
+      "g1f3",
+      "b8c6"
+    ]
+  },
+  {
+    "name": "Sicilian",
+    "moves": [
+      "e2e4",
+      "c7c5",
+      "g1f3",
+      "d7d6",
+      "d2d4",
+      "c5d4",
+      "f3d4"
+    ]
+  },
+  {
+    "name": "French",
+    "moves": [
+      "e2e4",
+      "e7e6",
+      "d2d4",
+      "d7d5",
+      "b1c3"
+    ]
+  },
+  {
+    "name": "Caro-Kann",
+    "moves": [
+      "e2e4",
+      "c7c6",
+      "d2d4",
+      "d7d5"
+    ]
+  },
+  {
+    "name": "Queen's Gambit",
+    "moves": [
+      "d2d4",
+      "d7d5",
+      "c2c4",
+      "e7e6",
+      "b1c3"
+    ]
+  },
+  {
+    "name": "Slav",
+    "moves": [
+      "d2d4",
+      "d7d5",
+      "c2c4",
+      "c7c6"
+    ]
+  },
+  {
+    "name": "King's Indian",
+    "moves": [
+      "d2d4",
+      "g8f6",
+      "c2c4",
+      "g7g6",
+      "b1c3",
+      "f8g7"
+    ]
+  },
+  {
+    "name": "Nimzo-Indian",
+    "moves": [
+      "d2d4",
+      "g8f6",
+      "c2c4",
+      "e7e6",
+      "b1c3",
+      "f8b4"
+    ]
+  },
+  {
+    "name": "English",
+    "moves": [
+      "c2c4",
+      "e7e5",
+      "b1c3",
+      "g8f6"
+    ]
+  },
+  {
+    "name": "Reti",
+    "moves": [
+      "g1f3",
+      "d7d5",
+      "c2c4"
+    ]
+  },
+  {
+    "name": "Scandinavian",
+    "moves": [
+      "e2e4",
+      "d7d5",
+      "e4d5",
+      "d8d5",
+      "b1c3"
+    ]
+  },
+  {
+    "name": "Alekhine",
+    "moves": [
+      "e2e4",
+      "g8f6",
+      "e4e5",
+      "f6d5",
+      "d2d4"
+    ]
+  }
+]
