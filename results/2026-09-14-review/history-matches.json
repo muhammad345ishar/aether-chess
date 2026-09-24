@@ -1,0 +1,2035 @@
+{
+  "started_at": "2026-09-14T16:17:03+00:00",
+  "status": "completed",
+  "failures": [],
+  "environment": {
+    "platform": "macOS-15.7.9-x86_64-i386-64bit-Mach-O",
+    "machine": "x86_64",
+    "python": "3.14.2",
+    "command": [
+      "scripts/run_matches.py",
+      "--candidate",
+      "build-history/aether",
+      "--baseline",
+      "build/aether",
+      "--pairs",
+      "32",
+      "--nodes",
+      "3000",
+      "--seed",
+      "14",
+      "--output",
+      "results/2026-09-14-review/history-matches.json"
+    ]
+  },
+  "source": {
+    "revision": "0052adfca6feddb5ca0dfe0345c668feaeff9e85",
+    "dirty": true,
+    "diff_sha256": "aae38c650fa11fdfd61dd349a288dbc04491867c5b0403236435281751f1fa18",
+    "note": "Checkout at run start; does not assert that every binary was built from this revision."
+  },
+  "fixtures": [
+    {
+      "path": "tests/openings.json",
+      "sha256": "ef30811951b1a1a5fb6dd9cabc2b2849d6d53c33274bda2686371f6b47e1363e"
+    }
+  ],
+  "engines": [
+    {
+      "role": "candidate",
+      "path": "build-history/aether",
+      "sha256": "87cb90492445e0a58f038d1f886a0701e6968f7d8b9cc59b67d9515b9e30dc32",
+      "build": {
+        "cache": {
+          "path": "build-history/CMakeCache.txt",
+          "sha256": "f7192471fdd4112626eb741ef44a1f4de0efe8b31a19314e85487ccf8165816d"
+        },
+        "settings": {
+          "AETHER_ASPIRATION": "OFF",
+          "AETHER_HISTORY_AGING": "ON",
+          "AETHER_SANITIZERS": "OFF",
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+          "CMAKE_CXX_FLAGS": "",
+          "CMAKE_CXX_FLAGS_DEBUG": "-g",
+          "CMAKE_CXX_FLAGS_MINSIZEREL": "-Os -DNDEBUG",
+          "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+          "CMAKE_CXX_FLAGS_RELWITHDEBINFO": "-O2 -g -DNDEBUG",
+          "CMAKE_CXX_FLAGS-ADVANCED": "1",
+          "CMAKE_CXX_FLAGS_DEBUG-ADVANCED": "1",
+          "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED": "1",
+          "CMAKE_CXX_FLAGS_RELEASE-ADVANCED": "1",
+          "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED": "1",
+          "CMAKE_GENERATOR": "Unix Makefiles"
+        },
+        "note": "Adjacent build configuration; binary identity is its SHA-256."
+      }
+    },
+    {
+      "role": "baseline",
+      "path": "build/aether",
+      "sha256": "2027aafe393347fd30ffb61749c28694832e83d2945d48efb7f8b214a5047c23",
+      "build": {
+        "cache": {
+          "path": "build/CMakeCache.txt",
+          "sha256": "80372e61c6443a75f556e64dec0042fda4bba5b21417194937fc19ec11a34c5a"
+        },
+        "settings": {
+          "AETHER_ASPIRATION": "OFF",
+          "AETHER_HISTORY_AGING": "OFF",
+          "AETHER_SANITIZERS": "OFF",
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+          "CMAKE_CXX_FLAGS": "",
+          "CMAKE_CXX_FLAGS_DEBUG": "-g",
+          "CMAKE_CXX_FLAGS_MINSIZEREL": "-Os -DNDEBUG",
+          "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+          "CMAKE_CXX_FLAGS_RELWITHDEBINFO": "-O2 -g -DNDEBUG",
+          "CMAKE_CXX_FLAGS-ADVANCED": "1",
+          "CMAKE_CXX_FLAGS_DEBUG-ADVANCED": "1",
+          "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED": "1",
+          "CMAKE_CXX_FLAGS_RELEASE-ADVANCED": "1",
+          "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED": "1",
+          "CMAKE_GENERATOR": "Unix Makefiles"
+        },
+        "note": "Adjacent build configuration; binary identity is its SHA-256."
+      }
+    }
+  ],
+  "options": {
+    "Hash": 32,
+    "Threads": 1
+  },
+  "limit": {
+    "nodes": 3000
+  },
+  "seed": 14,
+  "max_plies": 300,
+  "requested_pairs": 32,
+  "games": [
+    {
+      "pair": 1,
+      "opening": "Sicilian Alapin",
+      "candidate_color": "white",
+      "result": "1/2-1/2",
+      "candidate_score": 0.5,
+      "termination": "threefold_repetition",
+      "plies": 112,
+      "timing": {
+        "candidate": {
+          "moves": 52,
+          "total_ms": 355.74759701194125,
+          "max_ms": 21.272645997669315
+        },
+        "baseline": {
+          "moves": 52,
+          "total_ms": 347.7469259960344,
+          "max_ms": 16.128155999467708
+        }
+      }
+    },
+    {
+      "pair": 1,
+      "opening": "Sicilian Alapin",
+      "candidate_color": "black",
+      "result": "1-0",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 131,
+      "timing": {
+        "candidate": {
+          "moves": 61,
+          "total_ms": 330.2637960005086,
+          "max_ms": 16.932736998569453
+        },
+        "baseline": {
+          "moves": 62,
+          "total_ms": 340.92549400156713,
+          "max_ms": 22.113855000498006
+        }
+      }
+    },
+    {
+      "pair": 2,
+      "opening": "Queens Gambit exchange",
+      "candidate_color": "white",
+      "result": "0-1",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 136,
+      "timing": {
+        "candidate": {
+          "moves": 63,
+          "total_ms": 372.2447019899846,
+          "max_ms": 17.248309999558842
+        },
+        "baseline": {
+          "moves": 63,
+          "total_ms": 359.01288000968634,
+          "max_ms": 11.322275000566151
+        }
+      }
+    },
+    {
+      "pair": 2,
+      "opening": "Queens Gambit exchange",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 72,
+      "timing": {
+        "candidate": {
+          "moves": 31,
+          "total_ms": 214.09113800837076,
+          "max_ms": 12.477014999603853
+        },
+        "baseline": {
+          "moves": 31,
+          "total_ms": 216.19092698892928,
+          "max_ms": 18.408293999527814
+        }
+      }
+    },
+    {
+      "pair": 3,
+      "opening": "Caro-Kann classical",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 67,
+      "timing": {
+        "candidate": {
+          "moves": 29,
+          "total_ms": 162.82250399308396,
+          "max_ms": 18.202729002950946
+        },
+        "baseline": {
+          "moves": 28,
+          "total_ms": 154.27428200200666,
+          "max_ms": 12.48405599835678
+        }
+      }
+    },
+    {
+      "pair": 3,
+      "opening": "Caro-Kann classical",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 108,
+      "timing": {
+        "candidate": {
+          "moves": 49,
+          "total_ms": 248.35701101255836,
+          "max_ms": 13.100410000333795
+        },
+        "baseline": {
+          "moves": 49,
+          "total_ms": 245.00082301528892,
+          "max_ms": 17.42696600194904
+        }
+      }
+    },
+    {
+      "pair": 4,
+      "opening": "Ruy Lopez exchange",
+      "candidate_color": "white",
+      "result": "0-1",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 154,
+      "timing": {
+        "candidate": {
+          "moves": 72,
+          "total_ms": 426.58574998858967,
+          "max_ms": 17.62878700174042
+        },
+        "baseline": {
+          "moves": 72,
+          "total_ms": 413.9220040124201,
+          "max_ms": 11.730707999959122
+        }
+      }
+    },
+    {
+      "pair": 4,
+      "opening": "Ruy Lopez exchange",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 128,
+      "timing": {
+        "candidate": {
+          "moves": 59,
+          "total_ms": 275.2872289966035,
+          "max_ms": 11.778781001339667
+        },
+        "baseline": {
+          "moves": 59,
+          "total_ms": 285.57501499017235,
+          "max_ms": 18.323295000300277
+        }
+      }
+    },
+    {
+      "pair": 5,
+      "opening": "Scandinavian main line",
+      "candidate_color": "white",
+      "result": "1/2-1/2",
+      "candidate_score": 0.5,
+      "termination": "threefold_repetition",
+      "plies": 182,
+      "timing": {
+        "candidate": {
+          "moves": 86,
+          "total_ms": 393.3543239800201,
+          "max_ms": 17.398162999597844
+        },
+        "baseline": {
+          "moves": 86,
+          "total_ms": 372.47951299650595,
+          "max_ms": 9.720504000142682
+        }
+      }
+    },
+    {
+      "pair": 5,
+      "opening": "Scandinavian main line",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 126,
+      "timing": {
+        "candidate": {
+          "moves": 58,
+          "total_ms": 264.4561179840821,
+          "max_ms": 11.789200998464366
+        },
+        "baseline": {
+          "moves": 58,
+          "total_ms": 270.9655080070661,
+          "max_ms": 16.02169100078754
+        }
+      }
+    },
+    {
+      "pair": 6,
+      "opening": "Kings Indian fianchetto",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 123,
+      "timing": {
+        "candidate": {
+          "moves": 56,
+          "total_ms": 345.3478730043571,
+          "max_ms": 19.571641998481937
+        },
+        "baseline": {
+          "moves": 55,
+          "total_ms": 333.31812400501803,
+          "max_ms": 15.193005001492565
+        }
+      }
+    },
+    {
+      "pair": 6,
+      "opening": "Kings Indian fianchetto",
+      "candidate_color": "black",
+      "result": "1-0",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 125,
+      "timing": {
+        "candidate": {
+          "moves": 56,
+          "total_ms": 276.0999240017554,
+          "max_ms": 12.479824999900302
+        },
+        "baseline": {
+          "moves": 57,
+          "total_ms": 287.0809469859523,
+          "max_ms": 17.296014000748983
+        }
+      }
+    },
+    {
+      "pair": 7,
+      "opening": "English symmetrical",
+      "candidate_color": "white",
+      "result": "0-1",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 106,
+      "timing": {
+        "candidate": {
+          "moves": 48,
+          "total_ms": 336.1299979951582,
+          "max_ms": 16.49605200145743
+        },
+        "baseline": {
+          "moves": 48,
+          "total_ms": 321.3589589977346,
+          "max_ms": 14.336135998746613
+        }
+      }
+    },
+    {
+      "pair": 7,
+      "opening": "English symmetrical",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 152,
+      "timing": {
+        "candidate": {
+          "moves": 71,
+          "total_ms": 475.2222820206953,
+          "max_ms": 21.268820000841515
+        },
+        "baseline": {
+          "moves": 71,
+          "total_ms": 470.31233499001246,
+          "max_ms": 22.217963000002783
+        }
+      }
+    },
+    {
+      "pair": 8,
+      "opening": "Petrov modern",
+      "candidate_color": "white",
+      "result": "0-1",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 140,
+      "timing": {
+        "candidate": {
+          "moves": 65,
+          "total_ms": 329.32394000454224,
+          "max_ms": 18.784295996738365
+        },
+        "baseline": {
+          "moves": 65,
+          "total_ms": 329.78106398513773,
+          "max_ms": 13.704453001992078
+        }
+      }
+    },
+    {
+      "pair": 8,
+      "opening": "Petrov modern",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 162,
+      "timing": {
+        "candidate": {
+          "moves": 76,
+          "total_ms": 373.3015599937062,
+          "max_ms": 12.758386998029891
+        },
+        "baseline": {
+          "moves": 76,
+          "total_ms": 383.43260300098336,
+          "max_ms": 16.33787399987341
+        }
+      }
+    },
+    {
+      "pair": 9,
+      "opening": "Scotch Gambit",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 133,
+      "timing": {
+        "candidate": {
+          "moves": 62,
+          "total_ms": 310.0709060054214,
+          "max_ms": 18.957386000693077
+        },
+        "baseline": {
+          "moves": 61,
+          "total_ms": 314.5229540132277,
+          "max_ms": 15.945489998557605
+        }
+      }
+    },
+    {
+      "pair": 9,
+      "opening": "Scotch Gambit",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 74,
+      "timing": {
+        "candidate": {
+          "moves": 32,
+          "total_ms": 173.49202200421132,
+          "max_ms": 10.427392000565305
+        },
+        "baseline": {
+          "moves": 32,
+          "total_ms": 184.28735100314952,
+          "max_ms": 16.296385001624003
+        }
+      }
+    },
+    {
+      "pair": 10,
+      "opening": "Sicilian closed",
+      "candidate_color": "white",
+      "result": "0-1",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 68,
+      "timing": {
+        "candidate": {
+          "moves": 29,
+          "total_ms": 168.4058749851829,
+          "max_ms": 14.761092999833636
+        },
+        "baseline": {
+          "moves": 29,
+          "total_ms": 156.62020899981144,
+          "max_ms": 8.997572000225773
+        }
+      }
+    },
+    {
+      "pair": 10,
+      "opening": "Sicilian closed",
+      "candidate_color": "black",
+      "result": "1-0",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 125,
+      "timing": {
+        "candidate": {
+          "moves": 57,
+          "total_ms": 268.81929200681043,
+          "max_ms": 8.844790998409735
+        },
+        "baseline": {
+          "moves": 58,
+          "total_ms": 283.1780769956822,
+          "max_ms": 14.868075999402208
+        }
+      }
+    },
+    {
+      "pair": 11,
+      "opening": "Nimzo-Indian classical",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 97,
+      "timing": {
+        "candidate": {
+          "moves": 43,
+          "total_ms": 192.32646800446673,
+          "max_ms": 14.268506998632802
+        },
+        "baseline": {
+          "moves": 42,
+          "total_ms": 187.87427001007018,
+          "max_ms": 9.013742001116043
+        }
+      }
+    },
+    {
+      "pair": 11,
+      "opening": "Nimzo-Indian classical",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 72,
+      "timing": {
+        "candidate": {
+          "moves": 30,
+          "total_ms": 184.31518499346566,
+          "max_ms": 9.55468100073631
+        },
+        "baseline": {
+          "moves": 30,
+          "total_ms": 191.56723798732855,
+          "max_ms": 14.391335000254912
+        }
+      }
+    },
+    {
+      "pair": 12,
+      "opening": "Alekhine four pawns",
+      "candidate_color": "white",
+      "result": "0-1",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 96,
+      "timing": {
+        "candidate": {
+          "moves": 42,
+          "total_ms": 292.3095110054419,
+          "max_ms": 16.44026700159884
+        },
+        "baseline": {
+          "moves": 42,
+          "total_ms": 288.88018400175497,
+          "max_ms": 10.264022999763256
+        }
+      }
+    },
+    {
+      "pair": 12,
+      "opening": "Alekhine four pawns",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 124,
+      "timing": {
+        "candidate": {
+          "moves": 56,
+          "total_ms": 279.9841889864183,
+          "max_ms": 12.400711002555909
+        },
+        "baseline": {
+          "moves": 56,
+          "total_ms": 285.5588109814562,
+          "max_ms": 17.883223001263104
+        }
+      }
+    },
+    {
+      "pair": 13,
+      "opening": "Nimzo-Indian Rubinstein",
+      "candidate_color": "white",
+      "result": "0-1",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 112,
+      "timing": {
+        "candidate": {
+          "moves": 50,
+          "total_ms": 325.35837798786815,
+          "max_ms": 16.65658300044015
+        },
+        "baseline": {
+          "moves": 50,
+          "total_ms": 310.8459950199176,
+          "max_ms": 11.595050000323681
+        }
+      }
+    },
+    {
+      "pair": 13,
+      "opening": "Nimzo-Indian Rubinstein",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 122,
+      "timing": {
+        "candidate": {
+          "moves": 55,
+          "total_ms": 347.2924459929345,
+          "max_ms": 12.25884200175642
+        },
+        "baseline": {
+          "moves": 55,
+          "total_ms": 356.0814229967946,
+          "max_ms": 16.61665699793957
+        }
+      }
+    },
+    {
+      "pair": 14,
+      "opening": "Larsen Opening",
+      "candidate_color": "white",
+      "result": "0-1",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 108,
+      "timing": {
+        "candidate": {
+          "moves": 50,
+          "total_ms": 397.96003000083147,
+          "max_ms": 19.462012001895346
+        },
+        "baseline": {
+          "moves": 50,
+          "total_ms": 391.1243919937988,
+          "max_ms": 16.16440399811836
+        }
+      }
+    },
+    {
+      "pair": 14,
+      "opening": "Larsen Opening",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 106,
+      "timing": {
+        "candidate": {
+          "moves": 49,
+          "total_ms": 367.32887500329525,
+          "max_ms": 16.31764500052668
+        },
+        "baseline": {
+          "moves": 49,
+          "total_ms": 373.3403229925898,
+          "max_ms": 21.65525899908971
+        }
+      }
+    },
+    {
+      "pair": 15,
+      "opening": "Caro-Kann two knights",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 137,
+      "timing": {
+        "candidate": {
+          "moves": 64,
+          "total_ms": 467.1845120101352,
+          "max_ms": 20.876934999250807
+        },
+        "baseline": {
+          "moves": 63,
+          "total_ms": 461.58311999897705,
+          "max_ms": 14.687914001115132
+        }
+      }
+    },
+    {
+      "pair": 15,
+      "opening": "Caro-Kann two knights",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 110,
+      "timing": {
+        "candidate": {
+          "moves": 50,
+          "total_ms": 357.181267998385,
+          "max_ms": 15.239792999636848
+        },
+        "baseline": {
+          "moves": 50,
+          "total_ms": 370.35665600706125,
+          "max_ms": 21.020680000219727
+        }
+      }
+    },
+    {
+      "pair": 16,
+      "opening": "Two Knights defense",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 113,
+      "timing": {
+        "candidate": {
+          "moves": 52,
+          "total_ms": 422.6844270051515,
+          "max_ms": 19.379429999389686
+        },
+        "baseline": {
+          "moves": 51,
+          "total_ms": 408.3859249949455,
+          "max_ms": 15.3391570020176
+        }
+      }
+    },
+    {
+      "pair": 16,
+      "opening": "Two Knights defense",
+      "candidate_color": "black",
+      "result": "1-0",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 115,
+      "timing": {
+        "candidate": {
+          "moves": 52,
+          "total_ms": 438.1954409982427,
+          "max_ms": 14.913814000465209
+        },
+        "baseline": {
+          "moves": 53,
+          "total_ms": 447.2712649840105,
+          "max_ms": 20.264896000298904
+        }
+      }
+    },
+    {
+      "pair": 17,
+      "opening": "Kings Gambit declined",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 31,
+      "timing": {
+        "candidate": {
+          "moves": 12,
+          "total_ms": 125.74348100315547,
+          "max_ms": 21.69583500290173
+        },
+        "baseline": {
+          "moves": 11,
+          "total_ms": 112.1741060014756,
+          "max_ms": 17.793505001463927
+        }
+      }
+    },
+    {
+      "pair": 17,
+      "opening": "Kings Gambit declined",
+      "candidate_color": "black",
+      "result": "1-0",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 31,
+      "timing": {
+        "candidate": {
+          "moves": 11,
+          "total_ms": 107.33465000157594,
+          "max_ms": 20.328773000073852
+        },
+        "baseline": {
+          "moves": 12,
+          "total_ms": 122.42143800176564,
+          "max_ms": 23.208523001812864
+        }
+      }
+    },
+    {
+      "pair": 18,
+      "opening": "Kings Indian Saemisch",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 91,
+      "timing": {
+        "candidate": {
+          "moves": 40,
+          "total_ms": 342.0257840080012,
+          "max_ms": 19.133524998323992
+        },
+        "baseline": {
+          "moves": 39,
+          "total_ms": 327.3105480002414,
+          "max_ms": 15.167359000770375
+        }
+      }
+    },
+    {
+      "pair": 18,
+      "opening": "Kings Indian Saemisch",
+      "candidate_color": "black",
+      "result": "1-0",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 97,
+      "timing": {
+        "candidate": {
+          "moves": 42,
+          "total_ms": 357.1505990039441,
+          "max_ms": 17.534505001094658
+        },
+        "baseline": {
+          "moves": 43,
+          "total_ms": 367.28718501035473,
+          "max_ms": 21.203780997893773
+        }
+      }
+    },
+    {
+      "pair": 19,
+      "opening": "Slav exchange",
+      "candidate_color": "white",
+      "result": "0-1",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 50,
+      "timing": {
+        "candidate": {
+          "moves": 20,
+          "total_ms": 220.9322770104336,
+          "max_ms": 21.765421999589307
+        },
+        "baseline": {
+          "moves": 20,
+          "total_ms": 207.21630599655327,
+          "max_ms": 16.575659999944037
+        }
+      }
+    },
+    {
+      "pair": 19,
+      "opening": "Slav exchange",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 138,
+      "timing": {
+        "candidate": {
+          "moves": 64,
+          "total_ms": 438.7741799982905,
+          "max_ms": 16.924938001466217
+        },
+        "baseline": {
+          "moves": 64,
+          "total_ms": 444.3167129866197,
+          "max_ms": 20.129463002376724
+        }
+      }
+    },
+    {
+      "pair": 20,
+      "opening": "Petrov classical",
+      "candidate_color": "white",
+      "result": "1/2-1/2",
+      "candidate_score": 0.5,
+      "termination": "ply cap",
+      "plies": 312,
+      "timing": {
+        "candidate": {
+          "moves": 150,
+          "total_ms": 527.9226790189568,
+          "max_ms": 12.421803003235254
+        },
+        "baseline": {
+          "moves": 150,
+          "total_ms": 524.4411649910035,
+          "max_ms": 7.5322630000300705
+        }
+      }
+    },
+    {
+      "pair": 20,
+      "opening": "Petrov classical",
+      "candidate_color": "black",
+      "result": "1-0",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 231,
+      "timing": {
+        "candidate": {
+          "moves": 109,
+          "total_ms": 338.32680802152026,
+          "max_ms": 7.416587002808228
+        },
+        "baseline": {
+          "moves": 110,
+          "total_ms": 342.07857799265184,
+          "max_ms": 12.109807001252193
+        }
+      }
+    },
+    {
+      "pair": 21,
+      "opening": "Pirc Austrian Attack",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 125,
+      "timing": {
+        "candidate": {
+          "moves": 58,
+          "total_ms": 228.17737501463853,
+          "max_ms": 12.323218001256464
+        },
+        "baseline": {
+          "moves": 57,
+          "total_ms": 217.3650720178557,
+          "max_ms": 8.351196000148775
+        }
+      }
+    },
+    {
+      "pair": 21,
+      "opening": "Pirc Austrian Attack",
+      "candidate_color": "black",
+      "result": "1/2-1/2",
+      "candidate_score": 0.5,
+      "termination": "insufficient_material",
+      "plies": 114,
+      "timing": {
+        "candidate": {
+          "moves": 52,
+          "total_ms": 232.22200901000178,
+          "max_ms": 10.458070999447955
+        },
+        "baseline": {
+          "moves": 52,
+          "total_ms": 240.20297300739912,
+          "max_ms": 14.017917001183378
+        }
+      }
+    },
+    {
+      "pair": 22,
+      "opening": "Modern defense",
+      "candidate_color": "white",
+      "result": "1/2-1/2",
+      "candidate_score": 0.5,
+      "termination": "threefold_repetition",
+      "plies": 221,
+      "timing": {
+        "candidate": {
+          "moves": 107,
+          "total_ms": 350.0868610208272,
+          "max_ms": 12.484275001042988
+        },
+        "baseline": {
+          "moves": 106,
+          "total_ms": 339.4150750209519,
+          "max_ms": 7.856439999159193
+        }
+      }
+    },
+    {
+      "pair": 22,
+      "opening": "Modern defense",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 152,
+      "timing": {
+        "candidate": {
+          "moves": 72,
+          "total_ms": 259.2046149984526,
+          "max_ms": 11.481270001240773
+        },
+        "baseline": {
+          "moves": 72,
+          "total_ms": 259.0550040040398,
+          "max_ms": 13.444458003505133
+        }
+      }
+    },
+    {
+      "pair": 23,
+      "opening": "French advance",
+      "candidate_color": "white",
+      "result": "1/2-1/2",
+      "candidate_score": 0.5,
+      "termination": "insufficient_material",
+      "plies": 177,
+      "timing": {
+        "candidate": {
+          "moves": 84,
+          "total_ms": 302.2966590215219,
+          "max_ms": 13.605676998849958
+        },
+        "baseline": {
+          "moves": 83,
+          "total_ms": 291.54268398633576,
+          "max_ms": 8.72722900021472
+        }
+      }
+    },
+    {
+      "pair": 23,
+      "opening": "French advance",
+      "candidate_color": "black",
+      "result": "1/2-1/2",
+      "candidate_score": 0.5,
+      "termination": "insufficient_material",
+      "plies": 113,
+      "timing": {
+        "candidate": {
+          "moves": 51,
+          "total_ms": 209.17569601806463,
+          "max_ms": 8.608522999566048
+        },
+        "baseline": {
+          "moves": 52,
+          "total_ms": 216.51840099366382,
+          "max_ms": 13.302241000928916
+        }
+      }
+    },
+    {
+      "pair": 24,
+      "opening": "Sicilian Moscow",
+      "candidate_color": "white",
+      "result": "1/2-1/2",
+      "candidate_score": 0.5,
+      "termination": "threefold_repetition",
+      "plies": 114,
+      "timing": {
+        "candidate": {
+          "moves": 53,
+          "total_ms": 244.1311570109974,
+          "max_ms": 11.887949000083609
+        },
+        "baseline": {
+          "moves": 53,
+          "total_ms": 232.29255600381293,
+          "max_ms": 11.144903000968043
+        }
+      }
+    },
+    {
+      "pair": 24,
+      "opening": "Sicilian Moscow",
+      "candidate_color": "black",
+      "result": "1-0",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 135,
+      "timing": {
+        "candidate": {
+          "moves": 63,
+          "total_ms": 528.7808760040207,
+          "max_ms": 14.377376999618718
+        },
+        "baseline": {
+          "moves": 64,
+          "total_ms": 544.5802029898914,
+          "max_ms": 17.944276998605346
+        }
+      }
+    },
+    {
+      "pair": 25,
+      "opening": "Colle System",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 133,
+      "timing": {
+        "candidate": {
+          "moves": 62,
+          "total_ms": 476.3623779945192,
+          "max_ms": 19.15950900001917
+        },
+        "baseline": {
+          "moves": 61,
+          "total_ms": 467.3626109834004,
+          "max_ms": 14.634544000728056
+        }
+      }
+    },
+    {
+      "pair": 25,
+      "opening": "Colle System",
+      "candidate_color": "black",
+      "result": "1/2-1/2",
+      "candidate_score": 0.5,
+      "termination": "threefold_repetition",
+      "plies": 107,
+      "timing": {
+        "candidate": {
+          "moves": 48,
+          "total_ms": 357.4860589724267,
+          "max_ms": 14.376334998814855
+        },
+        "baseline": {
+          "moves": 49,
+          "total_ms": 371.8487619989901,
+          "max_ms": 19.175310000719037
+        }
+      }
+    },
+    {
+      "pair": 26,
+      "opening": "Modern Benoni",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 129,
+      "timing": {
+        "candidate": {
+          "moves": 59,
+          "total_ms": 529.6494670183165,
+          "max_ms": 19.377726999664446
+        },
+        "baseline": {
+          "moves": 58,
+          "total_ms": 527.1571690027486,
+          "max_ms": 15.12754500072333
+        }
+      }
+    },
+    {
+      "pair": 26,
+      "opening": "Modern Benoni",
+      "candidate_color": "black",
+      "result": "1-0",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 81,
+      "timing": {
+        "candidate": {
+          "moves": 34,
+          "total_ms": 268.15671598888,
+          "max_ms": 14.601626997318817
+        },
+        "baseline": {
+          "moves": 35,
+          "total_ms": 284.81915300289984,
+          "max_ms": 21.066983998025535
+        }
+      }
+    },
+    {
+      "pair": 27,
+      "opening": "Ruy Lopez Schliemann",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 255,
+      "timing": {
+        "candidate": {
+          "moves": 124,
+          "total_ms": 415.2813420369057,
+          "max_ms": 13.409543000307167
+        },
+        "baseline": {
+          "moves": 123,
+          "total_ms": 408.4077099832939,
+          "max_ms": 11.111271000117995
+        }
+      }
+    },
+    {
+      "pair": 27,
+      "opening": "Ruy Lopez Schliemann",
+      "candidate_color": "black",
+      "result": "1/2-1/2",
+      "candidate_score": 0.5,
+      "termination": "threefold_repetition",
+      "plies": 151,
+      "timing": {
+        "candidate": {
+          "moves": 71,
+          "total_ms": 259.28289799412596,
+          "max_ms": 7.664061999093974
+        },
+        "baseline": {
+          "moves": 72,
+          "total_ms": 263.99930498882895,
+          "max_ms": 12.562345000333153
+        }
+      }
+    },
+    {
+      "pair": 28,
+      "opening": "Sicilian Dragon",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 101,
+      "timing": {
+        "candidate": {
+          "moves": 44,
+          "total_ms": 157.66205301042646,
+          "max_ms": 11.835814999358263
+        },
+        "baseline": {
+          "moves": 43,
+          "total_ms": 150.5474200057506,
+          "max_ms": 9.265086002415046
+        }
+      }
+    },
+    {
+      "pair": 28,
+      "opening": "Sicilian Dragon",
+      "candidate_color": "black",
+      "result": "1/2-1/2",
+      "candidate_score": 0.5,
+      "termination": "insufficient_material",
+      "plies": 105,
+      "timing": {
+        "candidate": {
+          "moves": 45,
+          "total_ms": 159.35249300309806,
+          "max_ms": 7.751460998406401
+        },
+        "baseline": {
+          "moves": 46,
+          "total_ms": 171.86178100018878,
+          "max_ms": 14.379530999576673
+        }
+      }
+    },
+    {
+      "pair": 29,
+      "opening": "Catalan closed",
+      "candidate_color": "white",
+      "result": "0-1",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 106,
+      "timing": {
+        "candidate": {
+          "moves": 47,
+          "total_ms": 187.6116890052799,
+          "max_ms": 12.244731002283515
+        },
+        "baseline": {
+          "moves": 47,
+          "total_ms": 179.8966560018016,
+          "max_ms": 7.669371996598784
+        }
+      }
+    },
+    {
+      "pair": 29,
+      "opening": "Catalan closed",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 160,
+      "timing": {
+        "candidate": {
+          "moves": 74,
+          "total_ms": 289.1376680090616,
+          "max_ms": 7.577133001177572
+        },
+        "baseline": {
+          "moves": 74,
+          "total_ms": 293.9440090303833,
+          "max_ms": 13.68189500135486
+        }
+      }
+    },
+    {
+      "pair": 30,
+      "opening": "Sicilian Grand Prix",
+      "candidate_color": "white",
+      "result": "1/2-1/2",
+      "candidate_score": 0.5,
+      "termination": "ply cap",
+      "plies": 310,
+      "timing": {
+        "candidate": {
+          "moves": 150,
+          "total_ms": 618.1864589780162,
+          "max_ms": 14.381033997779014
+        },
+        "baseline": {
+          "moves": 150,
+          "total_ms": 604.59100299704,
+          "max_ms": 9.890007000649348
+        }
+      }
+    },
+    {
+      "pair": 30,
+      "opening": "Sicilian Grand Prix",
+      "candidate_color": "black",
+      "result": "1-0",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 207,
+      "timing": {
+        "candidate": {
+          "moves": 98,
+          "total_ms": 362.85226300242357,
+          "max_ms": 10.089079001772916
+        },
+        "baseline": {
+          "moves": 99,
+          "total_ms": 372.9718700160447,
+          "max_ms": 16.83902700096951
+        }
+      }
+    },
+    {
+      "pair": 31,
+      "opening": "Sicilian Najdorf",
+      "candidate_color": "white",
+      "result": "1/2-1/2",
+      "candidate_score": 0.5,
+      "termination": "threefold_repetition",
+      "plies": 135,
+      "timing": {
+        "candidate": {
+          "moves": 62,
+          "total_ms": 243.31693999192794,
+          "max_ms": 13.755459000094561
+        },
+        "baseline": {
+          "moves": 61,
+          "total_ms": 236.6267349862028,
+          "max_ms": 9.154510000371374
+        }
+      }
+    },
+    {
+      "pair": 31,
+      "opening": "Sicilian Najdorf",
+      "candidate_color": "black",
+      "result": "1/2-1/2",
+      "candidate_score": 0.5,
+      "termination": "fifty_moves",
+      "plies": 245,
+      "timing": {
+        "candidate": {
+          "moves": 116,
+          "total_ms": 416.30366999743273,
+          "max_ms": 9.834753000177443
+        },
+        "baseline": {
+          "moves": 117,
+          "total_ms": 427.3890850090538,
+          "max_ms": 13.704534001590218
+        }
+      }
+    },
+    {
+      "pair": 32,
+      "opening": "Sicilian Rossolimo",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 77,
+      "timing": {
+        "candidate": {
+          "moves": 35,
+          "total_ms": 164.9171900098736,
+          "max_ms": 15.467791999981273
+        },
+        "baseline": {
+          "moves": 34,
+          "total_ms": 158.9758129994152,
+          "max_ms": 10.218051000265405
+        }
+      }
+    },
+    {
+      "pair": 32,
+      "opening": "Sicilian Rossolimo",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 128,
+      "timing": {
+        "candidate": {
+          "moves": 60,
+          "total_ms": 254.97548399289371,
+          "max_ms": 8.411567003349774
+        },
+        "baseline": {
+          "moves": 60,
+          "total_ms": 263.40806600273936,
+          "max_ms": 13.461932001519017
+        }
+      }
+    }
+  ],
+  "pgn": "results/2026-09-14-review/history-matches.pgn",
+  "timing_policy": {
+    "wall_time_includes_position_and_ipc": true,
+    "overhead_ms": 20,
+    "timed_move_forfeit_after_ms": null
+  },
+  "note": "Approximate 95% percentile bootstrap resamples opening pairs. Small samples do not establish a strength gain.",
+  "summary": {
+    "wins": 30,
+    "draws": 14,
+    "losses": 20,
+    "score": 0.578125,
+    "completed_pairs": 32,
+    "score_interval_95": [
+      0.4921875,
+      0.6640625
+    ],
+    "elo_estimate": 54.735183963203085,
+    "elo_interval_95": [
+      -5.429122875709548,
+      118.38018805388248
+    ],
+    "engine_failures": 0,
+    "adjudicated_at_ply_cap": 2
+  },
+  "selected_openings": [
+    {
+      "name": "Sicilian Alapin",
+      "moves": [
+        "e2e4",
+        "c7c5",
+        "c2c3",
+        "d7d5",
+        "e4d5",
+        "d8d5",
+        "d2d4",
+        "g8f6"
+      ],
+      "san": "e4 c5 c3 d5 exd5 Qxd5 d4 Nf6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Queens Gambit exchange",
+      "moves": [
+        "d2d4",
+        "d7d5",
+        "c2c4",
+        "e7e6",
+        "b1c3",
+        "g8f6",
+        "c4d5",
+        "e6d5",
+        "c1g5",
+        "f8e7"
+      ],
+      "san": "d4 d5 c4 e6 Nc3 Nf6 cxd5 exd5 Bg5 Be7",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Caro-Kann classical",
+      "moves": [
+        "e2e4",
+        "c7c6",
+        "d2d4",
+        "d7d5",
+        "b1c3",
+        "d5e4",
+        "c3e4",
+        "c8f5",
+        "e4g3",
+        "f5g6"
+      ],
+      "san": "e4 c6 d4 d5 Nc3 dxe4 Nxe4 Bf5 Ng3 Bg6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Ruy Lopez exchange",
+      "moves": [
+        "e2e4",
+        "e7e5",
+        "g1f3",
+        "b8c6",
+        "f1b5",
+        "a7a6",
+        "b5c6",
+        "d7c6",
+        "e1g1",
+        "f7f6"
+      ],
+      "san": "e4 e5 Nf3 Nc6 Bb5 a6 Bxc6 dxc6 O-O f6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Scandinavian main line",
+      "moves": [
+        "e2e4",
+        "d7d5",
+        "e4d5",
+        "d8d5",
+        "b1c3",
+        "d5a5",
+        "d2d4",
+        "g8f6",
+        "g1f3",
+        "c7c6"
+      ],
+      "san": "e4 d5 exd5 Qxd5 Nc3 Qa5 d4 Nf6 Nf3 c6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Kings Indian fianchetto",
+      "moves": [
+        "d2d4",
+        "g8f6",
+        "c2c4",
+        "g7g6",
+        "g1f3",
+        "f8g7",
+        "g2g3",
+        "e8g8",
+        "f1g2",
+        "d7d6",
+        "e1g1",
+        "b8d7"
+      ],
+      "san": "d4 Nf6 c4 g6 Nf3 Bg7 g3 O-O Bg2 d6 O-O Nbd7",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "English symmetrical",
+      "moves": [
+        "c2c4",
+        "c7c5",
+        "b1c3",
+        "b8c6",
+        "g2g3",
+        "g7g6",
+        "f1g2",
+        "f8g7",
+        "g1f3",
+        "g8f6"
+      ],
+      "san": "c4 c5 Nc3 Nc6 g3 g6 Bg2 Bg7 Nf3 Nf6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Petrov modern",
+      "moves": [
+        "e2e4",
+        "e7e5",
+        "g1f3",
+        "g8f6",
+        "d2d4",
+        "f6e4",
+        "f1d3",
+        "d7d5",
+        "f3e5",
+        "b8d7"
+      ],
+      "san": "e4 e5 Nf3 Nf6 d4 Nxe4 Bd3 d5 Nxe5 Nd7",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Scotch Gambit",
+      "moves": [
+        "e2e4",
+        "e7e5",
+        "g1f3",
+        "b8c6",
+        "d2d4",
+        "e5d4",
+        "f1c4",
+        "f8c5",
+        "c2c3",
+        "g8f6"
+      ],
+      "san": "e4 e5 Nf3 Nc6 d4 exd4 Bc4 Bc5 c3 Nf6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Sicilian closed",
+      "moves": [
+        "e2e4",
+        "c7c5",
+        "b1c3",
+        "b8c6",
+        "g2g3",
+        "g7g6",
+        "f1g2",
+        "f8g7",
+        "d2d3",
+        "d7d6"
+      ],
+      "san": "e4 c5 Nc3 Nc6 g3 g6 Bg2 Bg7 d3 d6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Nimzo-Indian classical",
+      "moves": [
+        "d2d4",
+        "g8f6",
+        "c2c4",
+        "e7e6",
+        "b1c3",
+        "f8b4",
+        "d1c2",
+        "e8g8",
+        "a2a3",
+        "b4c3",
+        "c2c3",
+        "b7b6"
+      ],
+      "san": "d4 Nf6 c4 e6 Nc3 Bb4 Qc2 O-O a3 Bxc3+ Qxc3 b6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Alekhine four pawns",
+      "moves": [
+        "e2e4",
+        "g8f6",
+        "e4e5",
+        "f6d5",
+        "d2d4",
+        "d7d6",
+        "c2c4",
+        "d5b6",
+        "f2f4",
+        "d6e5",
+        "f4e5",
+        "b8c6"
+      ],
+      "san": "e4 Nf6 e5 Nd5 d4 d6 c4 Nb6 f4 dxe5 fxe5 Nc6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Nimzo-Indian Rubinstein",
+      "moves": [
+        "d2d4",
+        "g8f6",
+        "c2c4",
+        "e7e6",
+        "b1c3",
+        "f8b4",
+        "e2e3",
+        "e8g8",
+        "f1d3",
+        "d7d5",
+        "g1f3",
+        "c7c5"
+      ],
+      "san": "d4 Nf6 c4 e6 Nc3 Bb4 e3 O-O Bd3 d5 Nf3 c5",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Larsen Opening",
+      "moves": [
+        "b2b3",
+        "e7e5",
+        "c1b2",
+        "b8c6",
+        "e2e3",
+        "g8f6",
+        "f1b5",
+        "f8d6"
+      ],
+      "san": "b3 e5 Bb2 Nc6 e3 Nf6 Bb5 Bd6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Caro-Kann two knights",
+      "moves": [
+        "e2e4",
+        "c7c6",
+        "g1f3",
+        "d7d5",
+        "b1c3",
+        "c8g4",
+        "h2h3",
+        "g4f3",
+        "d1f3",
+        "g8f6"
+      ],
+      "san": "e4 c6 Nf3 d5 Nc3 Bg4 h3 Bxf3 Qxf3 Nf6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Two Knights defense",
+      "moves": [
+        "e2e4",
+        "e7e5",
+        "g1f3",
+        "b8c6",
+        "f1c4",
+        "g8f6",
+        "f3g5",
+        "d7d5",
+        "e4d5",
+        "c6a5"
+      ],
+      "san": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Na5",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Kings Gambit declined",
+      "moves": [
+        "e2e4",
+        "e7e5",
+        "f2f4",
+        "f8c5",
+        "g1f3",
+        "d7d6",
+        "f1c4",
+        "g8f6"
+      ],
+      "san": "e4 e5 f4 Bc5 Nf3 d6 Bc4 Nf6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Kings Indian Saemisch",
+      "moves": [
+        "d2d4",
+        "g8f6",
+        "c2c4",
+        "g7g6",
+        "b1c3",
+        "f8g7",
+        "e2e4",
+        "d7d6",
+        "f2f3",
+        "e8g8",
+        "c1e3",
+        "b8c6"
+      ],
+      "san": "d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 f3 O-O Be3 Nc6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Slav exchange",
+      "moves": [
+        "d2d4",
+        "d7d5",
+        "c2c4",
+        "c7c6",
+        "c4d5",
+        "c6d5",
+        "b1c3",
+        "g8f6",
+        "g1f3",
+        "b8c6"
+      ],
+      "san": "d4 d5 c4 c6 cxd5 cxd5 Nc3 Nf6 Nf3 Nc6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Petrov classical",
+      "moves": [
+        "e2e4",
+        "e7e5",
+        "g1f3",
+        "g8f6",
+        "f3e5",
+        "d7d6",
+        "e5f3",
+        "f6e4",
+        "d2d4",
+        "d6d5",
+        "f1d3",
+        "f8d6"
+      ],
+      "san": "e4 e5 Nf3 Nf6 Nxe5 d6 Nf3 Nxe4 d4 d5 Bd3 Bd6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Pirc Austrian Attack",
+      "moves": [
+        "e2e4",
+        "d7d6",
+        "d2d4",
+        "g8f6",
+        "b1c3",
+        "g7g6",
+        "f2f4",
+        "f8g7",
+        "g1f3",
+        "e8g8"
+      ],
+      "san": "e4 d6 d4 Nf6 Nc3 g6 f4 Bg7 Nf3 O-O",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Modern defense",
+      "moves": [
+        "e2e4",
+        "g7g6",
+        "d2d4",
+        "f8g7",
+        "b1c3",
+        "d7d6",
+        "c1e3",
+        "a7a6"
+      ],
+      "san": "e4 g6 d4 Bg7 Nc3 d6 Be3 a6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "French advance",
+      "moves": [
+        "e2e4",
+        "e7e6",
+        "d2d4",
+        "d7d5",
+        "e4e5",
+        "c7c5",
+        "c2c3",
+        "b8c6",
+        "g1f3",
+        "d8b6"
+      ],
+      "san": "e4 e6 d4 d5 e5 c5 c3 Nc6 Nf3 Qb6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Sicilian Moscow",
+      "moves": [
+        "e2e4",
+        "c7c5",
+        "g1f3",
+        "d7d6",
+        "f1b5",
+        "c8d7",
+        "b5d7",
+        "d8d7"
+      ],
+      "san": "e4 c5 Nf3 d6 Bb5+ Bd7 Bxd7+ Qxd7",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Colle System",
+      "moves": [
+        "d2d4",
+        "d7d5",
+        "g1f3",
+        "g8f6",
+        "e2e3",
+        "e7e6",
+        "f1d3",
+        "c7c5",
+        "c2c3",
+        "b8c6"
+      ],
+      "san": "d4 d5 Nf3 Nf6 e3 e6 Bd3 c5 c3 Nc6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Modern Benoni",
+      "moves": [
+        "d2d4",
+        "g8f6",
+        "c2c4",
+        "c7c5",
+        "d4d5",
+        "e7e6",
+        "b1c3",
+        "e6d5",
+        "c4d5",
+        "d7d6",
+        "e2e4",
+        "g7g6"
+      ],
+      "san": "d4 Nf6 c4 c5 d5 e6 Nc3 exd5 cxd5 d6 e4 g6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Ruy Lopez Schliemann",
+      "moves": [
+        "e2e4",
+        "e7e5",
+        "g1f3",
+        "b8c6",
+        "f1b5",
+        "f7f5",
+        "b1c3",
+        "g8f6"
+      ],
+      "san": "e4 e5 Nf3 Nc6 Bb5 f5 Nc3 Nf6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Sicilian Dragon",
+      "moves": [
+        "e2e4",
+        "c7c5",
+        "g1f3",
+        "d7d6",
+        "d2d4",
+        "c5d4",
+        "f3d4",
+        "g8f6",
+        "b1c3",
+        "g7g6",
+        "c1e3",
+        "f8g7",
+        "f2f3",
+        "e8g8"
+      ],
+      "san": "e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 g6 Be3 Bg7 f3 O-O",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Catalan closed",
+      "moves": [
+        "d2d4",
+        "g8f6",
+        "c2c4",
+        "e7e6",
+        "g2g3",
+        "d7d5",
+        "f1g2",
+        "f8e7",
+        "g1f3",
+        "e8g8",
+        "e1g1",
+        "c7c6"
+      ],
+      "san": "d4 Nf6 c4 e6 g3 d5 Bg2 Be7 Nf3 O-O O-O c6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Sicilian Grand Prix",
+      "moves": [
+        "e2e4",
+        "c7c5",
+        "b1c3",
+        "b8c6",
+        "f2f4",
+        "g7g6",
+        "g1f3",
+        "f8g7",
+        "f1c4",
+        "e7e6"
+      ],
+      "san": "e4 c5 Nc3 Nc6 f4 g6 Nf3 Bg7 Bc4 e6",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Sicilian Najdorf",
+      "moves": [
+        "e2e4",
+        "c7c5",
+        "g1f3",
+        "d7d6",
+        "d2d4",
+        "c5d4",
+        "f3d4",
+        "g8f6",
+        "b1c3",
+        "a7a6",
+        "f1e2",
+        "e7e5"
+      ],
+      "san": "e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 a6 Be2 e5",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    },
+    {
+      "name": "Sicilian Rossolimo",
+      "moves": [
+        "e2e4",
+        "c7c5",
+        "g1f3",
+        "b8c6",
+        "f1b5",
+        "g7g6",
+        "e1g1",
+        "f8g7"
+      ],
+      "san": "e4 c5 Nf3 Nc6 Bb5 g6 O-O Bg7",
+      "source": "Curated conventional opening line; independently replayed with python-chess."
+    }
+  ],
+  "finished_at": "2026-09-14T16:17:47+00:00"
+}

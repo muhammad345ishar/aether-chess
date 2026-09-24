@@ -150,6 +150,9 @@ public:
     [[nodiscard]] std::uint64_t key() const { return key_; }
     // Reversible-position multiset, used to qualify history-dependent TT scores.
     [[nodiscard]] std::uint64_t repetitionContext() const { return repetitionContext_; }
+    // Excludes the current occurrence, which belongs to the search path when
+    // this position becomes a search root.
+    [[nodiscard]] std::uint64_t repetitionContextBeforeCurrent() const;
     [[nodiscard]] int castlingRights() const { return castling_; }
     [[nodiscard]] int epSquare() const { return epSquare_; }
     [[nodiscard]] int halfmoveClock() const { return halfmove_; }
@@ -162,6 +165,9 @@ public:
     void generate(MoveList& out, bool capturesOnly = false) const;
     [[nodiscard]] std::vector<Move> legalMoves(bool capturesOnly = false) const;
     [[nodiscard]] bool hasLegalMove() const;
+    // Reuse a complete pseudo-legal list generated for this exact position.
+    // Legality only needs hypothetical occupancy, not a copy of game history.
+    [[nodiscard]] bool hasLegalMove(const MoveList& candidates) const;
 
     [[nodiscard]] bool isSquareAttacked(int sq, int byColor) const;
     [[nodiscard]] bool inCheck() const { return isSquareAttacked(kingSq_[static_cast<std::size_t>(side_)], side_ ^ 1); }
@@ -183,6 +189,9 @@ public:
     [[nodiscard]] int see(const Move& move) const;
 
     [[nodiscard]] bool isRepetition(int minCount = 2) const;
+    // A cycle back to the search root (or a later path position) is a search
+    // draw. Matches strictly before the root still require three occurrences.
+    [[nodiscard]] bool isSearchRepetition(int rootGamePly) const;
     [[nodiscard]] bool insufficientMaterial() const;
     [[nodiscard]] bool hasNonPawnMaterial(int color) const;
     [[nodiscard]] GameResult result() const;
@@ -286,6 +295,7 @@ private:
     struct TTEntry {
         std::uint64_t key = 0;
         std::uint64_t repetitionContext = 0;
+        std::uint64_t rootHistoryContext = 0;
         int score = 0;
         Move best{};
         std::int16_t depth = -1;
@@ -313,8 +323,11 @@ private:
     int hardLimitMs_ = 0;
     int selDepth_ = 0;
     int rootColor_ = WHITE;
+    int rootGamePly_ = 1;
+    std::uint64_t rootHistoryContext_ = 0;
     bool aborted_ = false;
 
+    [[nodiscard]] bool isDraw(const Position& position) const;
     int negamax(Position& position, int depth, int alpha, int beta, int ply, bool allowNull);
     int quiescence(Position& position, int alpha, int beta, int ply);
     bool timeUp(bool checkClock = true);

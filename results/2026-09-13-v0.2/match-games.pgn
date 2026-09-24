@@ -1,0 +1,288 @@
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "1.1"]
+[White "Aether candidate"]
+[Black "Baseline"]
+[Result "1-0"]
+[Opening "Sicilian"]
+[Termination "checkmate"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 e5 5. Nf3 Nc6 6. Bc4 Nf6 7. Ng5 Be6 8. Bxe6 fxe6 9. Nc3 Nd4 10. O-O d5 11. Be3 Qb6 12. exd5 Qxb2 13. Bxd4 exd4 14. Qxd4 Bb4 15. Nxe6 Bxc3 16. Qd3 Rb8 17. Rab1 Qxa2 18. Qxc3 Qa4 19. Qg3 Ke7 20. Qxg7+ Kd6 21. Qxf6 Rhc8 22. Nf4+ Kd7 23. Qe6+ Kd8 24. Qg8+ Qe8 25. Qxh7 Qe5 26. Rfe1 Qd6 27. Ne6+ Ke8 28. Qg6+ Kd7 29. Qf7+ Qe7 30. Nf8+ Rxf8 31. Qxe7+ Kc8 32. d6 Rd8 33. Qc7# 1-0
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "1.2"]
+[White "Baseline"]
+[Black "Aether candidate"]
+[Result "0-1"]
+[Opening "Sicilian"]
+[Termination "checkmate"]
+
+1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 e5 5. Nf5 Nf6 6. Nc3 Bxf5 7. exf5 Nc6 8. Bd3 d5 9. O-O Bc5 10. Bg5 O-O 11. Bxf6 gxf6 12. Qg4+ Kh8 13. Rfb1 Rg8 14. Qa4 e4 15. Bb5 Qd7 16. Bxc6 Qxc6 17. Qxc6 bxc6 18. Ne2 Rab8 19. h4 d4 20. h5 d3 21. cxd3 exd3 22. Nc1 d2 23. Nb3 Bb4 24. a3 Bf8 25. Nxd2 Rg5 26. Nf3 Rxf5 27. Nd4 Rxh5 28. Nxc6 Rb7 29. a4 Rc5 30. Nd4 Rd5 31. Nf3 a6 32. Ra2 Bd6 33. Kf1 Rc7 34. a5 Bb4 35. Kg1 Kg8 36. Ra4 Rb7 37. Rc1 Rxa5 38. Rc8+ Kg7 39. Rxa5 Bxa5 40. Rc5 Bc7 41. b4 Be5 42. Nxe5 fxe5 43. Rxe5 Rxb4 44. Re1 a5 45. Rf1 a4 46. Re1 a3 47. Ra1 Rb3 48. f4 Kf6 49. Kh2 Kf5 50. Ra2 Kxf4 51. Rf2+ Ke5 52. Rxf7 a2 53. Ra7 Rb2 54. Ra8 h5 55. Ra7 h4 56. Ra4 Kd5 57. Kh3 Rc2 58. Kh2 Ke6 59. Kh3 Ke5 60. Kh2 Rb2 61. Kh3 Kd5 62. Kh2 Ke6 63. Kh3 Rd2 64. Kh2 Ke5 65. Kh3 Kd5 66. Kh2 Ke6 67. Kh3 Ke5 68. Kh2 Rc2 69. Kh3 Rf2 70. Kh2 Re2 71. Kh3 Kd5 72. Kh2 Ke6 73. Kh3 Ke5 74. Kh2 Kf5 75. Kh3 Ke6 76. Kh2 Kd5 77. Kh3 Rf2 78. Kh2 Ke6 79. Kg1 Rc2 80. Kh2 Kf5 81. Kh3 Rb2 82. Ra5+ Kf6 83. Ra4 Ke7 84. Ra5 Rc2 85. Ra4 Kd6 86. Kh2 Kd5 87. Kh3 Kc5 88. Kh2 Kb5 89. Ra7 Kb6 90. Ra4 Kc5 91. Ra7 Re2 92. Ra6 Rb2 93. Ra4 Kb5 94. Ra7 Kb6 95. Ra4 Kc5 96. Kh3 Rd2 97. Kh2 Kb5 98. Ra8 Kc4 99. Ra4+ Kb3 100. Ra7 Rd7 101. Ra8 Rd8 102. Ra7 Rb8 103. Kh3 Kb2 104. Kxh4 a1=Q 105. Rxa1 Rh8+ 106. Kg3 Kxa1 107. Kf2 Kb2 108. Kg1 Kc3 109. Kf1 Kd4 110. Kf2 Ke4 111. Ke2 Ra8 112. g3 Ra2+ 113. Kd1 Kf3 114. Kc1 Kxg3 115. Kb1 Rg2 116. Kc1 Kf4 117. Kb1 Ke3 118. Kc1 Kd3 119. Kb1 Kc3 120. Ka1 Kb3 121. Kb1 Rg1# 0-1
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "2.1"]
+[White "Aether candidate"]
+[Black "Baseline"]
+[Result "1-0"]
+[Opening "Reti"]
+[Termination "checkmate"]
+
+1. Nf3 d5 2. c4 dxc4 3. e3 Nc6 4. Nc3 Be6 5. Qa4 Nf6 6. Bxc4 Bxc4 7. Qxc4 Qd6 8. O-O e5 9. d4 e4 10. Ng5 Qe7 11. Qb3 Rb8 12. d5 Nb4 13. d6 Qd7 14. Qxb4 Bxd6 15. Qa5 Qc6 16. Qxa7 O-O 17. Rd1 h6 18. Nh3 Be5 19. Qa5 Bxc3 20. Qxc3 Qxc3 21. bxc3 Rbd8 22. Bb2 Nd5 23. c4 Nb6 24. c5 Nc4 25. Bd4 Rfe8 26. Rab1 Rb8 27. Rb4 Na5 28. Nf4 Nc6 29. Rbb1 Red8 30. a3 Rd7 31. a4 Rdd8 32. Bc3 Rxd1+ 33. Rxd1 Re8 34. Nd5 Rd8 35. Rd2 Ra8 36. a5 Nxa5 37. Nxc7 Ra7 38. Nb5 Ra6 39. Rd8+ Kh7 40. Rd7 Nb3 41. Rxf7 Rg6 42. Rc7 Rg5 43. h4 Rg4 44. Nd6 h5 45. Nxb7 Nc1 46. Kf1 Na2 47. Bd4 Nc1 48. Nd6 Nb3 49. Bc3 Nc1 50. Ra7 Nd3 51. c6 Nc1 52. c7 Rxh4 53. g4 Rh1+ 54. Kg2 Rh4 55. gxh5 Rg4+ 56. Kf1 Nd3 57. c8=Q Rg5 58. Nxe4 Rg4 59. Nf6+ Kh6 60. Qh8+ Kg5 61. Qxg7+ Kh4 62. Qxg4# 1-0
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "2.2"]
+[White "Baseline"]
+[Black "Aether candidate"]
+[Result "1-0"]
+[Opening "Reti"]
+[Termination "checkmate"]
+
+1. Nf3 d5 2. c4 dxc4 3. e3 Be6 4. Na3 c3 5. dxc3 Qxd1+ 6. Kxd1 Nc6 7. Nd4 Nxd4 8. cxd4 Nf6 9. Nb5 Kd8 10. Nc3 Bf5 11. Be2 e6 12. Bf3 Rb8 13. e4 Bg4 14. Be2 Bd6 15. e5 Bxe2+ 16. Kxe2 Ke7 17. exf6+ gxf6 18. Nb5 Rhg8 19. Kf1 a6 20. Nxd6 cxd6 21. Be3 Rbc8 22. Kg1 Rc2 23. Rb1 h5 24. a3 h4 25. h3 Rgc8 26. b4 Ra2 27. Rb3 b5 28. Kh2 d5 29. Rhb1 Rac2 30. Kg1 Kd6 31. Rd1 Rg8 32. Rbd3 Rgc8 33. R3d2 Rxd2 34. Rxd2 Rc1+ 35. Kh2 Rc3 36. Ra2 e5 37. a4 Rc8 38. axb5 axb5 39. Ra6+ Rc6 40. dxe5+ fxe5 41. Bc5+ Kd7 42. Ra5 d4 43. Rxb5 d3 44. Rb7+ Kc8 45. Ra7 d2 46. Ra8+ Kd7 47. Ra1 Ra6 48. Rd1 Ra2 49. Be3 Kc6 50. Rxd2 Rxd2 51. Bxd2 f6 52. f3 f5 53. Bg5 Kb5 54. Bxh4 Kxb4 55. Bf6 e4 56. Kg3 Kc4 57. Kf4 Kd3 58. Kxf5 e3 59. Be5 e2 60. Bg3 Kd2 61. Kg4 Kd1 62. f4 e1=Q 63. Bxe1 Kxe1 64. Kg3 Kd2 65. f5 Kd3 66. f6 Kd4 67. f7 Kd5 68. f8=Q Kc6 69. Qe7 Kd5 70. Qf6 Ke4 71. Qg5 Kd4 72. Kh2 Ke4 73. Kg1 Kd4 74. Qb5 Ke4 75. Qc5 Kd3 76. Qc6 Kd4 77. h4 Ke5 78. h5 Kd4 79. h6 Ke5 80. h7 Kf5 81. h8=Q Kf4 82. Qf3+ Kg5 83. Qhf6# 1-0
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "3.1"]
+[White "Aether candidate"]
+[Black "Baseline"]
+[Result "0-1"]
+[Opening "English"]
+[Termination "checkmate"]
+
+1. c4 e5 2. Nc3 Nf6 3. Nf3 Nc6 4. e3 Bb4 5. Bd3 Bxc3 6. dxc3 e4 7. O-O exd3 8. Qxd3 d6 9. e4 O-O 10. Bf4 Qe7 11. Rfe1 Be6 12. e5 dxe5 13. Nxe5 Qc5 14. Qf3 Nxe5 15. Bxe5 Ng4 16. Bg3 Qb6 17. Rad1 Nf6 18. c5 Qxb2 19. Re2 Qb5 20. h3 Bd5 21. Qe3 Qc6 22. f3 Rae8 23. Be5 Nd7 24. Qd4 Nxe5 25. Rxe5 Rxe5 26. Qxe5 Bxa2 27. Re1 Be6 28. Ra1 a6 29. Qd4 Re8 30. Re1 Re7 31. Qd8+ Qe8 32. Qxe8+ Rxe8 33. c4 Rb8 34. Rc1 h6 35. Kf2 Re8 36. Rb1 Bc8 37. g4 Re5 38. Rd1 Be6 39. c6 bxc6 40. Rd8+ Kh7 41. Re8 Rc5 42. Re7 Rxc4 43. Rxc7 Bd5 44. Re7 Rc2+ 45. Re2 Rxe2+ 46. Kxe2 g5 47. Ke3 c5 48. Ke2 c4 49. Ke3 Kg8 50. Ke2 c3 51. Kd3 Bxf3 52. Kxc3 Bg2 53. Kb4 Bxh3 54. Ka5 Bf1 55. Ka4 Bc4 56. Kb4 Be2 57. Ka5 Bxg4 58. Kb4 Be6 59. Kc5 g4 60. Kd4 g3 61. Ke3 Bg4 62. Kf4 g2 63. Kxg4 g1=Q+ 64. Kf5 Qg5+ 65. Ke4 Qg3 66. Kd4 a5 67. Ke4 a4 68. Kd4 a3 69. Ke4 a2 70. Kd5 a1=Q 71. Kc6 Qa6+ 72. Kd5 Qgd3+ 73. Ke5 Qad6# 0-1
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "3.2"]
+[White "Baseline"]
+[Black "Aether candidate"]
+[Result "0-1"]
+[Opening "English"]
+[Termination "checkmate"]
+
+1. c4 e5 2. Nc3 Nf6 3. Nf3 Nc6 4. e4 Bd6 5. d4 exd4 6. Nxd4 O-O 7. Be3 Nxd4 8. Bxd4 c5 9. Be3 Qb6 10. Qd2 Be5 11. Na4 Qc6 12. Nxc5 d6 13. f4 Bxb2 14. Qxb2 dxc5 15. e5 Ng4 16. Bg1 Bf5 17. h3 Nh6 18. Be3 Rfd8 19. Qf2 b6 20. Be2 Be4 21. O-O Nf5 22. Bf3 Rd3 23. Rae1 Rad8 24. Bxe4 Qxe4 25. Bxc5 Qxc4 26. Rc1 Qb5 27. g4 Rd2 28. gxf5 Rxf2 29. Bxf2 Qe2 30. Rfe1 Qb2 31. Ra1 Qc2 32. f6 gxf6 33. Rac1 Qf5 34. Rc3 Qxf4 35. Rg3+ Kh8 36. Rg4 Rg8 37. Rxg8+ Kxg8 38. exf6 Qxf6 39. Re2 h6 40. Kh2 Qf3 41. Re8+ Kh7 42. Bg3 Qd5 43. Re2 b5 44. Kg1 Qf3 45. Rg2 f5 46. Bf2 Qa3 47. Bg3 Qc1+ 48. Kh2 f4 49. Bf2 f3 50. Rg3 Qf4 51. Kg1 a5 52. Kh2 b4 53. Kg1 Qe4 54. Kh2 a4 55. Kg1 h5 56. Kh2 b3 57. axb3 axb3 58. Bd4 Qe2+ 59. Kh1 f2 60. Bxf2 b2 61. Rg1 Qf3+ 62. Kh2 Qxf2+ 63. Kh1 Qxg1+ 64. Kxg1 b1=Q+ 65. Kh2 Qg6 66. h4 Qg4 67. Kh1 Kh6 68. Kh2 Qxh4+ 69. Kg2 Qe4+ 70. Kf2 h4 71. Kf1 h3 72. Kf2 h2 73. Kf1 h1=Q+ 74. Kf2 Qee1# 0-1
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "4.1"]
+[White "Aether candidate"]
+[Black "Baseline"]
+[Result "1-0"]
+[Opening "Slav"]
+[Termination "checkmate"]
+
+1. d4 d5 2. c4 c6 3. cxd5 cxd5 4. Nf3 Nc6 5. Nc3 Nf6 6. e3 e6 7. Bb5 Bd6 8. O-O O-O 9. Bd2 Bd7 10. Qb3 Qb6 11. a3 Rfe8 12. Rfc1 Rad8 13. Ba4 Qxb3 14. Bxb3 Na5 15. Bc2 Nc4 16. h3 Nxb2 17. Rcb1 Nc4 18. Rxb7 Nxd2 19. Nxd2 Rc8 20. Ba4 Rxc3 21. Bxd7 Re7 22. Rxa7 Rxd7 23. Ra8+ Bf8 24. Rb8 Ra7 25. a4 Rc2 26. Nb3 Ne4 27. f3 Nc3 28. Nc5 Re2 29. a5 Rxe3 30. a6 e5 31. Rb7 Ra8 32. Nb3 exd4 33. a7 d3 34. Rb8 d2 35. Nxd2 Rd3 36. Rxa8 Ne2+ 37. Kf2 Rxd2 38. Rxf8+ Kxf8 39. a8=Q+ Ke7 40. Qb7+ Ke6 41. Qb6+ Kf5 42. g4+ Kg5 43. h4+ Kxh4 44. Rh1+ Kg5 45. Rh5+ Kf4 46. Qe3# 1-0
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "4.2"]
+[White "Baseline"]
+[Black "Aether candidate"]
+[Result "0-1"]
+[Opening "Slav"]
+[Termination "checkmate"]
+
+1. d4 d5 2. c4 c6 3. Nd2 Nf6 4. Ngf3 Bf5 5. Qb3 Qc7 6. e3 Nbd7 7. cxd5 cxd5 8. h3 Rc8 9. Be2 e6 10. O-O Bc2 11. Qc3 Qd8 12. Bc4 Be4 13. Nxe4 Nxe4 14. Qb3 Rxc4 15. Qxb7 Rc7 16. Qb3 Bd6 17. Bd2 Nxd2 18. Nxd2 O-O 19. Rfe1 Qc8 20. Rab1 Rc2 21. Rbd1 Qc6 22. e4 Rb8 23. Qd3 Rbxb2 24. exd5 Qxd5 25. a4 Nc5 26. Qe3 Nxa4 27. Ne4 Nb6 28. Qd3 Qf5 29. g4 Qf4 30. Qg3 Qxg3+ 31. fxg3 Bxg3 32. Re3 Bh2+ 33. Kh1 Bf4 34. Ra3 Rh2+ 35. Kg1 Nc4 36. Rf3 Rbg2+ 37. Kf1 Ne3+ 38. Rxe3 Bxe3 39. Nf2 Rxf2+ 40. Kg1 Rd2+ 41. Kf1 Rxd1# 0-1
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "5.1"]
+[White "Aether candidate"]
+[Black "Baseline"]
+[Result "1-0"]
+[Opening "Scandinavian"]
+[Termination "checkmate"]
+
+1. e4 d5 2. exd5 Qxd5 3. Nc3 Qe6+ 4. Be2 Nf6 5. d4 Nbd7 6. Nf3 Qb6 7. O-O e6 8. Bd3 Be7 9. Re1 O-O 10. a3 Re8 11. Ne5 Bd6 12. Nc4 Qc6 13. Nxd6 Qxd6 14. Nb5 Qc6 15. Bf4 Nd5 16. Qd2 a6 17. Nc3 Nxf4 18. Qxf4 Nf6 19. Be4 Nxe4 20. Qxe4 Bd7 21. Qd3 h6 22. a4 Qb6 23. b3 Bc6 24. a5 Qb4 25. Ne4 e5 26. d5 Rad8 27. Qc4 Qxc4 28. bxc4 Bd7 29. Nc5 Bc8 30. Ra3 Re7 31. Rae3 f6 32. f4 Rde8 33. c3 h5 34. h3 h4 35. Kf2 b6 36. axb6 cxb6 37. Na4 b5 38. cxb5 axb5 39. Nb6 Bf5 40. d6 Re6 41. fxe5 fxe5 42. Rf3 Bg6 43. d7 Rd8 44. Nd5 e4 45. Nf4 Rxd7 46. Nxe6 exf3 47. Kxf3 Rd2 48. Nf4 Bc2 49. Re5 Ba4 50. Kg4 Rf2 51. Re4 Rc2 52. Ne2 Rxe2 53. Rxe2 Bd1 54. Kf3 Bxe2+ 55. Kxe2 Kf7 56. Kf3 g5 57. Ke4 Ke6 58. Kd4 Kf5 59. Ke3 Kg6 60. Ke4 Kg7 61. Kd4 Kg6 62. Kc5 Kf5 63. Kxb5 Ke4 64. c4 Kf4 65. c5 Ke5 66. c6 Kd6 67. Kb6 g4 68. hxg4 Ke6 69. c7 Ke5 70. c8=Q Kf4 71. Qf5+ Kg3 72. Qf3+ Kh2 73. g5 h3 74. Qxh3+ Kg1 75. g6 Kf1 76. g7 Kf2 77. g8=Q Kf1 78. Qc4+ Kf2 79. Qf3+ Kg1 80. Qc5+ Kh2 81. Qh3# 1-0
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "5.2"]
+[White "Baseline"]
+[Black "Aether candidate"]
+[Result "0-1"]
+[Opening "Scandinavian"]
+[Termination "checkmate"]
+
+1. e4 d5 2. exd5 Qxd5 3. Nc3 Qe6+ 4. Nge2 Nf6 5. d4 Qb6 6. Nf4 Nc6 7. Ncd5 Nxd5 8. Nxd5 Qa5+ 9. Nc3 Be6 10. Bb5 O-O-O 11. Bxc6 bxc6 12. Be3 Qb4 13. Qc1 Qc4 14. Qd2 Kb8 15. O-O-O Bg4 16. Qd3 Qxd3 17. Rxd3 Bf5 18. Rdd1 e6 19. Kb1 Bb4 20. h3 Bxc3 21. bxc3 h5 22. c4 f6 23. f4 Be4 24. Rdg1 h4 25. c5 Rh5 26. Rh2 e5 27. fxe5 fxe5 28. Rd1 Rf5 29. a3 exd4 30. Rxd4 Rxd4 31. Bxd4 Rg5 32. g4 hxg3 33. Re2 Bd5 34. Re8+ Kb7 35. Re5 Rxe5 36. Bxe5 g2 37. Bd4 g5 38. Bf2 Be6 39. a4 Bxh3 40. Be3 Be6 41. Kb2 Ka6 42. Kc1 Ka5 43. Kb2 Kxa4 44. Kb1 a5 45. Kb2 Kb4 46. Kc1 a4 47. Kb1 a3 48. Bd4 a2+ 49. Kb2 g4 50. Bf2 g3 51. Be3 Bc4 52. Bd4 Bd5 53. Ka1 Kc4 54. c3 Kb3 55. Bg1 Kxc3 56. Bf2 Kd3 57. Bg1 Be6 58. Kb2 Ke2 59. Bd4 Kf1 60. Kc2 a1=Q 61. Bxa1 g1=Q 62. Kd3 Qxc5 63. Bd4 Qc4+ 64. Ke4 g2 65. Ke5 Qd5+ 66. Kf6 Qf5+ 67. Kg7 Qg5+ 68. Kh7 Bf5+ 69. Kh8 Qh6+ 70. Kg8 Be6# 0-1
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "6.1"]
+[White "Aether candidate"]
+[Black "Baseline"]
+[Result "1-0"]
+[Opening "French"]
+[Termination "checkmate"]
+
+1. e4 e6 2. d4 d5 3. Nc3 dxe4 4. Nxe4 Nf6 5. Bg5 Bb4+ 6. c3 Be7 7. Bxf6 Bxf6 8. Nf3 O-O 9. Bd3 Nc6 10. O-O Be7 11. Qd2 f5 12. Ng3 Qd6 13. Rfe1 Bd7 14. a3 Rfe8 15. Bc4 Kh8 16. Qc2 Bf6 17. Rad1 Rad8 18. Re3 h6 19. Rde1 Re7 20. Nd2 Bg5 21. Rf3 e5 22. Nxf5 Bxf5 23. Rxf5 exd4 24. Rxe7 Nxe7 25. Rf7 d3 26. Qd1 Bf4 27. g3 Bxd2 28. Qxd2 Nc6 29. Qxd3 Qxd3 30. Bxd3 Rxd3 31. Rxc7 Rd1+ 32. Kg2 Nd8 33. Kf3 Rd2 34. Ke3 Rd6 35. f4 Kh7 36. f5 Rb6 37. Rd7 Nc6 38. f6 Rxb2 39. f7 Ne5 40. f8=Q Nxd7 41. Qf5+ Kg8 42. Qxd7 Kh8 43. c4 Kh7 44. Qd4 Rxh2 45. Qe4+ Kg8 46. Qxb7 Kh7 47. Qxa7 Rg2 48. Qb8 Rh2 49. c5 Rh5 50. Qb1+ Kh8 51. c6 Rg5 52. c7 Rxg3+ 53. Kd4 Rg4+ 54. Kc5 Rg5+ 55. Kd6 Rc5 56. Kxc5 Kg8 57. Qg6 Kf8 58. c8=Q+ Ke7 59. Qxg7# 1-0
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "6.2"]
+[White "Baseline"]
+[Black "Aether candidate"]
+[Result "1-0"]
+[Opening "French"]
+[Termination "checkmate"]
+
+1. e4 e6 2. d4 d5 3. Nc3 Bb4 4. Qg4 dxe4 5. Ne2 Nf6 6. Qxg7 Rg8 7. Qh6 Bxc3+ 8. bxc3 Rg6 9. Qf4 Rg4 10. Qd2 Nc6 11. h3 Rg8 12. c4 Qd6 13. c5 Qd5 14. Bb2 Bd7 15. Qf4 Nb4 16. O-O-O Qg5 17. Qxg5 Rxg5 18. Kb1 O-O-O 19. a3 Nbd5 20. c4 Ba4 21. Re1 Ne7 22. Ng3 Bc6 23. d5 Nexd5 24. cxd5 Nxd5 25. Nxe4 Rg6 26. Rd1 f5 27. Nd2 Nf4 28. Be5 Nxg2 29. Bxg2 Bxg2 30. Rhe1 Rd5 31. h4 Rxc5 32. h5 Rg8 33. Bd4 Rb5+ 34. Ka1 c5 35. Nc4 Rd8 36. Be5 Rxd1+ 37. Rxd1 Bf3 38. Rd2 Rb6 39. Nxb6+ axb6 40. Rd6 Bd5 41. Rxb6 Kd7 42. h6 Bf3 43. Rd6+ Ke7 44. Rd3 Be4 45. Rc3 b6 46. Rb3 c4 47. Rxb6 Bg2 48. Rb8 Be4 49. Rc8 Bd3 50. Rc7+ Kd8 51. Rxh7 f4 52. Rh8+ Ke7 53. h7 Kd7 54. Rd8+ Kxd8 55. h8=Q+ Kd7 56. Qf8 Kc6 57. Qd6+ Kb5 58. Bxf4 e5 59. Bxe5 Be2 60. Bd4 Bd3 61. Qb6+ Ka4 62. Qb4# 1-0
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "7.1"]
+[White "Aether candidate"]
+[Black "Baseline"]
+[Result "1-0"]
+[Opening "Caro-Kann"]
+[Termination "checkmate"]
+
+1. e4 c6 2. d4 d5 3. e5 Nd7 4. Nc3 e6 5. Nf3 Ne7 6. Bd3 c5 7. dxc5 Nxc5 8. O-O Nxd3 9. Qxd3 Qb6 10. Nb5 Nf5 11. Nbd4 Nxd4 12. Nxd4 Bc5 13. Nb3 Be7 14. Rd1 O-O 15. a3 f6 16. exf6 Bxf6 17. Be3 Qc7 18. Bc5 Rd8 19. Bd4 e5 20. Bc3 e4 21. Qe3 Bxc3 22. Qxc3 Qxc3 23. bxc3 Bg4 24. Rd4 Rac8 25. f3 Bf5 26. fxe4 Bxe4 27. Rb4 Rd7 28. Nd4 Rxc3 29. Rab1 Rcc7 30. R4b2 a6 31. Rf1 h6 32. h4 Rc4 33. Rb4 Rc3 34. Rb3 Rcc7 35. Rb2 Re7 36. h5 Re5 37. g4 Re8 38. a4 Re5 39. Kh2 Rc4 40. Rd1 Re7 41. Ra2 Rf7 42. a5 Rf2+ 43. Kg3 Rg2+ 44. Kf4 Bxc2 45. Ke5 Re2+ 46. Nxe2 Bxd1 47. Rd2 Bxe2 48. Rxe2 Rxg4 49. Rb2 Rg5+ 50. Kd4 Rxh5 51. Rxb7 Rh4+ 52. Kc5 Ra4 53. Kb6 Rb4+ 54. Kxa6 Rd4 55. Kb5 Rf4 56. a6 Rf2 57. Rb8+ Kh7 58. a7 Rb2+ 59. Kc5 Ra2 60. a8=Q Rxa8 61. Rxa8 g5 62. Kxd5 g4 63. Ke5 h5 64. Kf4 Kg7 65. Kg5 g3 66. Ra2 g2 67. Rxg2 Kh8 68. Kxh5 Kh7 69. Rg6 Kh8 70. Kg5 Kh7 71. Kf6 Kh8 72. Rh6+ Kg8 73. Rh5 Kf8 74. Rh8# 1-0
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "7.2"]
+[White "Baseline"]
+[Black "Aether candidate"]
+[Result "0-1"]
+[Opening "Caro-Kann"]
+[Termination "checkmate"]
+
+1. e4 c6 2. d4 d5 3. exd5 Qxd5 4. Nc3 Qe6+ 5. Qe2 Nf6 6. Nf3 Qxe2+ 7. Bxe2 Bf5 8. Bd1 Na6 9. a3 Nd5 10. Nxd5 cxd5 11. Bf4 Rc8 12. Rc1 h6 13. O-O g5 14. Be5 f6 15. Bg3 Nc7 16. Be2 Ne6 17. Bb5+ Kd8 18. c4 g4 19. cxd5 Rxc1 20. Rxc1 gxf3 21. dxe6 Bxe6 22. Bc7+ Kc8 23. gxf3 Rg8+ 24. Bg3+ Kd8 25. f4 h5 26. Bd3 h4 27. f5 Bh6 28. Rc5 Bf7 29. Bc4 Bxc4 30. Rxc4 hxg3 31. hxg3 Kd7 32. Ra4 a6 33. d5 Bc1 34. Rb4 b5 35. a4 bxa4 36. Rxa4 Rg5 37. Rxa6 Bxb2 38. Ra7+ Kd6 39. Ra4 Kxd5 40. Ra5+ Ke4 41. Ra7 Rxg3+ 42. fxg3 Bd4+ 43. Kg2 Bxa7 44. g4 Kf4 45. Kh3 Bd4 46. Kh4 Bf2+ 47. Kh5 Bg3 48. g5 fxg5 49. Kg6 g4 50. f6 exf6 51. Kf7 Ke5 52. Kg6 Bf4 53. Kh5 f5 54. Kh4 Ke6 55. Kh5 g3 56. Kg6 g2 57. Kh7 g1=Q 58. Kh8 Be5+ 59. Kh7 Qg7# 0-1
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "8.1"]
+[White "Aether candidate"]
+[Black "Baseline"]
+[Result "0-1"]
+[Opening "Nimzo-Indian"]
+[Termination "checkmate"]
+
+1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. Nf3 d5 5. Qb3 Nc6 6. cxd5 exd5 7. Ne5 Nxd4 8. Qa4+ Bd7 9. Nxd7 Qxd7 10. Qd1 Bxc3+ 11. bxc3 Ne6 12. Rb1 O-O-O 13. Qd3 Kb8 14. Qb5 Qxb5 15. Rxb5 Ne4 16. Bd2 Nxd2 17. Kxd2 a6 18. Rb4 c5 19. Rb1 c4 20. e3 Nc5 21. f3 Rhe8 22. h4 Rd6 23. Be2 Rde6 24. e4 f5 25. Bxc4 dxc4 26. Rb4 fxe4 27. Rxc4 Rc8 28. Re1 exf3 29. Rxe6 Rd8+ 30. Kc2 Nxe6 31. gxf3 h6 32. Re4 Nc5 33. Re5 Rc8 34. f4 Na4 35. Re3 Rc4 36. Rf3 Nb6 37. Kd3 Ra4 38. Rf2 Nd5 39. c4 Rxa2 40. Rxa2 Nb4+ 41. Ke4 Nxa2 42. Kf5 Nc3 43. Kg6 Ne2 44. Kxg7 Nxf4 45. Kxh6 Nd3 46. Kg5 Ne5 47. h5 b6 48. h6 Nf7+ 49. Kg6 Nxh6 50. Kxh6 a5 51. Kg5 a4 52. Kf5 a3 53. Ke4 a2 54. c5 bxc5 55. Kd5 a1=Q 56. Kxc5 Qa4 57. Kd5 Ka7 58. Ke5 Qg4 59. Kd6 Qf5 60. Kc6 Qe5 61. Kd7 Kb7 62. Kd8 Kc6 63. Kc8 Qe8# 0-1
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "8.2"]
+[White "Baseline"]
+[Black "Aether candidate"]
+[Result "1-0"]
+[Opening "Nimzo-Indian"]
+[Termination "checkmate"]
+
+1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. Nf3 Bxc3+ 5. bxc3 d6 6. Qc2 Nc6 7. e4 O-O 8. Bd3 e5 9. d5 Ne7 10. O-O Bg4 11. Qe2 Qd7 12. Be3 Bxf3 13. Qxf3 Qg4 14. Qd1 Qh4 15. g3 Qh3 16. f3 c5 17. Qc2 Qd7 18. Rfe1 h6 19. Rad1 Qc7 20. f4 exf4 21. gxf4 Ng4 22. Bd2 Ng6 23. h3 Nf6 24. a3 Rfe8 25. Be3 a6 26. Kh1 b5 27. Bd2 bxc4 28. Bxc4 Qa5 29. Ra1 Rab8 30. Kg1 Rb7 31. Bd3 Reb8 32. c4 Qc7 33. Be3 Rb2 34. Qd1 Re8 35. Qf3 Rb3 36. Bd2 a5 37. Kh1 Reb8 38. Rec1 Rb2 39. Bc3 R2b3 40. Bxf6 gxf6 41. Qg3 Kh7 42. Rd1 a4 43. Qf3 Rb2 44. Qe3 R8b3 45. Kg1 Kg7 46. Qg3 Kh7 47. Qg4 Qe7 48. h4 Qc7 49. h5 Ne7 50. Qh4 Kg7 51. Qg3+ Kh8 52. f5 Kh7 53. Qe3 Rb8 54. Kh1 Re8 55. Qf4 Rg8 56. Qf3 Qa5 57. Rab1 Rb3 58. Qf4 Qc7 59. Qh4 Rg5 60. Ra1 Rb2 61. Rdb1 Rbg2 62. Qf4 R5g3 63. Rd1 Rg4 64. Qf1 Rb2 65. Qf3 Rg7 66. Rdb1 Rb3 67. Rg1 Rg5 68. Rge1 Kg7 69. Re3 Kh7 70. Re2 Rb8 71. Ree1 Rb2 72. Rab1 Rb3 73. Rxb3 axb3 74. Be2 b2 75. Qc3 Nxf5 76. exf5 Qe7 77. Bf3 Qb7 78. Rb1 Qc8 79. Qxf6 Rg3 80. Qxf7+ Rg7 81. Qf6 Rg3 82. Bg2 Qe8 83. Rxb2 Qxh5+ 84. Kg1 Rg7 85. Qxd6 Qxf5 86. Qxc5 Qf4 87. Rf2 Qe5 88. Qf8 h5 89. Qf5+ Qxf5 90. Rxf5 Kg6 91. Be4 Rc7 92. Bd3 Ra7 93. Rf3+ Kg5 94. Be4 Re7 95. Bc2 Rc7 96. Rg3+ Kf4 97. Rc3 Ke5 98. Bd3 Rb7 99. Rc2 h4 100. Re2+ Kd4 101. Rd2 Ke3 102. Rd1 Rg7+ 103. Kh1 Ra7 104. d6 Kf4 105. Bf1 Rd7 106. Bg2 Rd8 107. d7 Ke3 108. c5 Ke2 109. c6 Kxd1 110. c7 Rxd7 111. c8=Q Rd3 112. Qg4+ Kd2 113. Qf4+ Re3 114. Bf1 Ke1 115. Qxe3+ Kxf1 116. Kh2 h3 117. Kg3 h2 118. Qf2# 1-0
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "9.1"]
+[White "Aether candidate"]
+[Black "Baseline"]
+[Result "1-0"]
+[Opening "Queen's Gambit"]
+[Termination "checkmate"]
+
+1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 Nc6 5. e3 Bb4 6. Bd3 Ne4 7. Bd2 Bxc3 8. Bxc3 Nxc3 9. bxc3 O-O 10. O-O Qd6 11. c5 Qe7 12. Qc2 h6 13. Rab1 e5 14. Bb5 e4 15. Bxc6 bxc6 16. Ne5 Qe6 17. c4 Rd8 18. cxd5 cxd5 19. Rb4 Qf5 20. Rfb1 a5 21. Rb5 a4 22. c6 f6 23. Nc4 Qg6 24. Nd2 Ba6 25. R5b4 Bd3 26. Qc5 Bxb1 27. Rxb1 f5 28. Rb7 Qf7 29. a3 f4 30. exf4 Qxf4 31. Nf1 Qf7 32. Ne3 Kh8 33. Rb2 Rd6 34. Rb7 Rf8 35. Rb2 Kg8 36. h3 Re8 37. Rb5 Red8 38. Rb7 Rg6 39. Rb5 Rg5 40. Rb2 Qf6 41. h4 Rh5 42. g3 Qg6 43. Rb7 Qd6 44. Qxd6 Rxd6 45. Rxc7 Kh8 46. Kf1 Kh7 47. Ke2 Rd8 48. Rd7 Rb8 49. c7 Rb2+ 50. Kd1 Rb3 51. c8=Q Rd3+ 52. Kc2 Rxe3 53. Qf8 Rxg3 54. fxg3 Rg5 55. hxg5 Kg6 56. Qf7+ Kxg5 57. Qxg7+ Kf5 58. Rf7+ Ke6 59. Qf6# 1-0
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "9.2"]
+[White "Baseline"]
+[Black "Aether candidate"]
+[Result "1/2-1/2"]
+[Opening "Queen's Gambit"]
+[Termination "fifty_moves"]
+
+1. d4 d5 2. c4 e6 3. Nc3 dxc4 4. e3 Bb4 5. Bxc4 Nf6 6. Nf3 Nc6 7. Qc2 O-O 8. O-O Bxc3 9. Qxc3 Qd6 10. Bd3 Nb4 11. Bb5 Bd7 12. Bc4 Ne4 13. Qb3 b5 14. Be2 a6 15. Nd2 Nf6 16. Re1 Nbd5 17. Bd3 e5 18. e4 Nf4 19. Nf3 Nxd3 20. Qxd3 c5 21. Nxe5 Qxd4 22. Qxd4 cxd4 23. Rd1 Be6 24. Rxd4 Rad8 25. Rxd8 Rxd8 26. Bg5 Rd6 27. Bxf6 gxf6 28. Nf3 Bxa2 29. h4 Bc4 30. Re1 Rd8 31. h5 b4 32. h6 b3 33. Rc1 Be2 34. Nd2 Bd3 35. Nxb3 Bxe4 36. Nc5 Rc8 37. Rc3 Bf5 38. Nxa6 Ra8 39. Nc5 Ra1+ 40. Kh2 Rb1 41. Rb3 Kf8 42. Rb8+ Ke7 43. Rb7+ Kd6 44. b4 Be6 45. Nxe6 Kxe6 46. g4 f5 47. g5 Ke5 48. Rxf7 Rxb4 49. Rg7 Rh4+ 50. Kg2 Kf4 51. Kg1 Rg4+ 52. Kf1 Rxg5 53. Rxh7 Rh5 54. Rg7 Rxh6 55. Kg1 Ke4 56. Rg8 f4 57. Rg5 f3 58. Rg7 Rc6 59. Kh2 Rc2 60. Kg3 Rc3 61. Rf7 Rd3 62. Rf4+ Ke5 63. Rxf3 Rd7 64. Kh2 Rh7+ 65. Kg1 Kd4 66. Rf5 Ra7 67. Rg5 Ke4 68. Kg2 Kf4 69. Rd5 Ke4 70. Rb5 Ra2 71. Kg1 Ra1+ 72. Kh2 Kf3 73. Rf5+ Ke4 74. Rf7 Rb1 75. Kg2 Rb2 76. Rf8 Ke5 77. Ra8 Ke4 78. Ra5 Kd4 79. Rg5 Ke4 80. Rc5 Rb7 81. Ra5 Rg7+ 82. Kf1 Rb7 83. Rh5 Rb2 84. Kg1 Ra2 85. Rc5 Rb2 86. Ra5 Rd2 87. Rg5 Rb2 88. Kg2 Rb1 89. Rg7 Rb2 90. Rf7 Ke5 91. Rh7 Ke4 92. Rh5 Kd4 93. Kg1 Rb1+ 94. Kh2 Rb3 95. Ra5 Ke4 96. Kg2 Rb2 97. Ra7 Rc2 98. Kg1 Kf3 99. Rf7+ Ke4 100. Rf8 Kd5 101. Rf6 Rc7 102. Rg6 Ke4 103. Rb6 Rc2 104. Rb5 Rd2 105. Ra5 Kf3 106. Rf5+ Ke4 107. Rf6 Ke5 108. Rc6 Ke4 109. Rg6 Rb2 110. Kg2 Ra2 111. Rb6 Kd4 112. Rb7 Ke5 113. Kg1 1/2-1/2
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "10.1"]
+[White "Aether candidate"]
+[Black "Baseline"]
+[Result "1/2-1/2"]
+[Opening "Open game"]
+[Termination "fifty_moves"]
+
+1. e4 e5 2. Nf3 Nc6 3. Nc3 Nf6 4. Bb5 Nd4 5. Bc4 d6 6. Ng5 Ne6 7. d4 exd4 8. Nxe6 Bxe6 9. Qxd4 c5 10. Qd3 Bxc4 11. Qxc4 Be7 12. O-O O-O 13. Re1 Qb6 14. Rd1 Rfe8 15. a4 Rad8 16. a5 Qb4 17. Qd3 c4 18. Qf3 a6 19. Ra4 Qc5 20. Be3 Qc6 21. Raa1 Nd7 22. Nd5 Ne5 23. Qf5 h6 24. Bf4 Ng6 25. Ra3 Nxf4 26. Qxf4 Bg5 27. Qf5 Qb5 28. Rc3 Qxb2 29. Rxc4 Qe5 30. Qf3 Rd7 31. Qb3 Red8 32. Qh3 Bf4 33. Rb4 Bd2 34. Ra4 Bf4 35. Rad4 Bg5 36. Qg4 Bf6 37. R4d3 Bg5 38. Rb3 Be7 39. Rdb1 h5 40. Qe2 Rb8 41. Rb6 f5 42. Nxe7+ Rxe7 43. Qc4+ Kh7 44. exf5 Qxa5 45. Rxd6 Qxf5 46. Rd5 Qf7 47. Rbd1 Ree8 48. Qd3+ Kg8 49. Rf5 Qe6 50. Rxh5 Qe1+ 51. Qf1 Qc3 52. Rc1 Rbd8 53. Rh3 Qc5 54. Rd3 Rd4 55. Rxd4 Qxd4 56. Qd3 Qxd3 57. cxd3 Rd8 58. Rd1 Rd4 59. Kf1 b5 60. Ra1 Rxd3 61. Rxa6 Rd1+ 62. Ke2 Rg1 63. g3 Rg2 64. h4 Rg1 65. Ra8+ Kh7 66. Ra7 b4 67. Rb7 Rb1 68. Kd3 Rb2 69. f3 Kg8 70. Kc4 Rc2+ 71. Kd4 Rc3 72. Rxb4 Rxf3 73. g4 Rh3 74. h5 Rg3 75. Kd5 Rg2 76. Rc4 Kh7 77. Ke5 g6 78. Kf4 gxh5 79. Rc7+ Kg8 80. gxh5 Rh2 81. Kg5 Rb2 82. h6 Rg2+ 83. Kh5 Rh2+ 84. Kg6 Rg2+ 85. Kf5 Rh2 86. Rc6 Kh7 87. Kg5 Rg2+ 88. Kf4 Rh2 89. Kf5 Rxh6 90. Rc7+ Kg8 91. Ke4 Rh2 92. Kd4 Rg2 93. Rb7 Kh8 94. Ke3 Rh2 95. Ke4 Kg8 96. Ke5 Rh4 97. Rd7 Rb4 98. Kf6 Rb8 99. Rg7+ Kh8 100. Ra7 Rg8 101. Ke5 Rd8 102. Ke4 Rb8 103. Kd4 Rb2 104. Kc3 Rf2 105. Kd3 Rg2 106. Ke4 Kg8 107. Kd4 Rg3 108. Rd7 Kf8 109. Rc7 Rg2 110. Ke4 Rb2 111. Kd3 Kg8 112. Ra7 Rh2 113. Kd4 Rh3 114. Rb7 Rf3 115. Ke5 Rf2 116. Kd5 Rf4 117. Ra7 Kh8 118. Rc7 Rg4 119. Rf7 Kg8 120. Rf2 Kh7 121. Rb2 Rg7 122. Ke5 Rf7 123. Ke6 Rc7 124. Kd6 Rc8 125. Rg2 Kh8 126. Kd5 Rc3 127. Kd4 Rh3 128. Ke4 Kh7 129. Ke5 Rh4 130. Kd5 Kh8 131. Ke6 Rh5 132. Kf6 Rd5 133. Rc2 Rd7 134. Ke5 Rd8 135. Rc7 Kg8 136. Re7 Rd2 137. Rc7 Rf2 138. Kd5 Rg2 139. Kd4 Kh8 1/2-1/2
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "10.2"]
+[White "Baseline"]
+[Black "Aether candidate"]
+[Result "0-1"]
+[Opening "Open game"]
+[Termination "checkmate"]
+
+1. e4 e5 2. Nf3 Nc6 3. Nc3 Nf6 4. d4 exd4 5. Nxd4 Nxd4 6. Qxd4 d6 7. Bb5+ c6 8. Bc4 b5 9. Bd3 Qb6 10. Qxb6 axb6 11. Bg5 Be6 12. Bxf6 gxf6 13. a3 Rg8 14. Kf1 b4 15. Ne2 bxa3 16. bxa3 d5 17. Nd4 Rxa3 18. Rxa3 Bxa3 19. Nxe6 fxe6 20. exd5 cxd5 21. Bxh7 Rg4 22. Bd3 Bd6 23. Kg1 Ke7 24. h3 Ra4 25. g4 e5 26. Kg2 e4 27. Bb5 Ra2 28. Rc1 Ke6 29. Bc6 Ke5 30. Kh1 Ba3 31. Rd1 Rxc2 32. Bb7 Rc1 33. Rxc1 Bxc1 34. Kg2 d4 35. Kg1 d3 36. f3 d2 37. Kg2 d1=Q 38. fxe4 Qe2+ 39. Kg3 Qe1+ 40. Kg2 Bf4 41. h4 Qe2+ 42. Kg1 Be3+ 43. Kh1 Qf1+ 44. Kh2 Bf4# 0-1
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "11.1"]
+[White "Aether candidate"]
+[Black "Baseline"]
+[Result "1-0"]
+[Opening "Alekhine"]
+[Termination "checkmate"]
+
+1. e4 Nf6 2. e5 Nd5 3. d4 Nc6 4. c4 Nb6 5. Nc3 d5 6. c5 Nc4 7. b3 N4a5 8. Nf3 e6 9. Bd3 Nb4 10. O-O Nxd3 11. Qxd3 Nc6 12. Bg5 Qd7 13. a3 h6 14. Bh4 Na5 15. b4 Nc4 16. Nd2 Nxd2 17. Qxd2 a6 18. Rfe1 Qc6 19. a4 Bd7 20. b5 Qxc5 21. dxc5 Bxc5 22. Qc2 Bb6 23. a5 Bd4 24. Rad1 Bxc3 25. Qxc3 g5 26. bxa6 Rxa6 27. Qxc7 Rc6 28. Qxb7 gxh4 29. a6 Rc8 30. a7 Ke7 31. Qb4+ Ke8 32. Qxh4 Kf8 33. Rb1 Kg8 34. Rb8 Kh7 35. Qf6 Rhf8 36. Rxc8 Rxc8 37. Qxf7+ Kh8 38. Qxd7 Rf8 39. Ra1 Ra8 40. Qb7 h5 41. Qxa8+ Kh7 42. Qe8 h4 43. Qh5+ Kg7 44. a8=Q d4 45. Ra7# 1-0
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "11.2"]
+[White "Baseline"]
+[Black "Aether candidate"]
+[Result "0-1"]
+[Opening "Alekhine"]
+[Termination "checkmate"]
+
+1. e4 Nf6 2. e5 Nd5 3. d4 d6 4. c4 Nb4 5. Qa4+ N8c6 6. d5 dxe5 7. dxc6 Nxc6 8. Nf3 e4 9. Ne5 Qd6 10. Nxc6 Bd7 11. Nc3 Qxc6 12. Qc2 Bf5 13. f3 exf3 14. Qxf5 fxg2 15. Bxg2 Qxg2 16. Rf1 f6 17. Qb5+ Kd8 18. Nd5 Rb8 19. Qa5 Qxh2 20. Bf4 Qh4+ 21. Kd2 Ke8 22. Qa4+ b5 23. Nxc7+ Kf7 24. Nxb5 Rd8+ 25. Kc1 g5 26. Be3 Qh3 27. Re1 Qh4 28. Rg1 a6 29. Nc3 Rd6 30. Rd1 Rxd1+ 31. Nxd1 a5 32. Bb6 e5 33. Bxa5 Bc5 34. Qd7+ Kg6 35. Qd5 Rc8 36. Kb1 Qd4 37. Bc3 Qxd5 38. cxd5 Rd8 39. Ba5 Rxd5 40. Nc3 Rd2 41. a3 f5 42. Nb5 Rd1+ 43. Ka2 Rxa1+ 44. Kxa1 f4 45. Bc3 f3 46. Be1 f2 47. Bxf2 Bxf2 48. Nc7 g4 49. Kb1 g3 50. Ka1 g2 51. Ka2 g1=Q 52. Nd5 Qg2 53. Nc3 h5 54. Ka1 Qf1+ 55. Ka2 Qc4+ 56. Kb1 Bd4 57. Nd1 e4 58. Nc3 Qb3 59. Ka1 e3 60. Na4 e2 61. Nc3 e1=Q+ 62. Nd1 Qexd1# 0-1
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "12.1"]
+[White "Aether candidate"]
+[Black "Baseline"]
+[Result "1-0"]
+[Opening "King's Indian"]
+[Termination "checkmate"]
+
+1. d4 Nf6 2. c4 g6 3. Nc3 Bg7 4. Nf3 e6 5. e4 d5 6. Bg5 dxe4 7. Nxe4 Nc6 8. d5 exd5 9. cxd5 Qe7 10. Bd3 Qb4+ 11. Bd2 Qe7 12. O-O Nxe4 13. Re1 Bxb2 14. Rxe4 Ne5 15. Bg5 f6 16. Nxe5 Bxe5 17. Bh6 Bf5 18. Bb5+ Kf7 19. d6 Bxh2+ 20. Kxh2 Qxe4 21. Kg1 cxd6 22. Qxd6 Rhc8 23. Rd1 Qe5 24. Qb4 Kg8 25. Bc4+ Rxc4 26. Qxb7 Qc7 27. Qd5+ Kh8 28. Qxa8+ Bc8 29. Qd5 Bd7 30. Qf7 Qh2+ 31. Kxh2 Rh4+ 32. Kg1 Rh1+ 33. Kxh1 Bb5 34. Bg7# 1-0
+
+[Event "Aether paired regression match"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "12.2"]
+[White "Baseline"]
+[Black "Aether candidate"]
+[Result "1-0"]
+[Opening "King's Indian"]
+[Termination "checkmate"]
+
+1. d4 Nf6 2. c4 g6 3. Nc3 Bg7 4. e4 d6 5. Nf3 Nc6 6. d5 Ne5 7. Nxe5 dxe5 8. Bd3 O-O 9. Be3 Ng4 10. Bc5 b6 11. Ba3 Bh6 12. O-O Bf4 13. h3 Nf6 14. c5 bxc5 15. Bxc5 Nd7 16. Bb4 a5 17. Ba3 Ba6 18. Re1 Bxd3 19. Qxd3 Rb8 20. Rad1 Rb6 21. Ne2 Bg5 22. Qg3 h6 23. Qc3 Rb5 24. Qc4 Rb6 25. Nc3 Re8 26. Nb5 Rb7 27. Qa4 Qa8 28. Nc3 Rd8 29. Qc6 Qa7 30. Qc4 Qb6 31. Qa4 Nc5 32. Qc6 Nd7 33. Na4 Qb5 34. Qxb5 Rxb5 35. Nc3 Rb6 36. Re2 e6 37. d6 Rc6 38. dxc7 Rxc7 39. Bd6 Rc4 40. a3 Rdc8 41. Ree1 Rd4 42. g4 Rd2 43. Na4 Rc4 44. Rxd2 Bxd2 45. Rd1 Rxa4 46. Rxd2 Rxe4 47. Bc7 Rd4 48. Bxa5 f5 49. Bc3 Rxd2 50. Bxd2 Kg7 51. Bc3 Kf6 52. f4 fxg4 53. hxg4 h5 54. gxh5 gxh5 55. fxe5+ Kf5 56. a4 Nxe5 57. a5 h4 58. Bxe5 Kxe5 59. a6 Kf4 60. a7 Ke3 61. a8=Q e5 62. Qh8 e4 63. Qxh4 Kd4 64. Qf6+ Kd3 65. Qg6 Kd4 66. Qd6+ Ke3 67. Kg2 Ke2 68. Qd4 Ke1 69. Kg1 Ke2 70. Qxe4+ Kd1 71. Qc6 Ke2 72. Kg2 Ke3 73. Qc4 Kd2 74. Kf3 Kd1 75. Ke3 Ke1 76. Qc1# 1-0
+

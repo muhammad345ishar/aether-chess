@@ -1,0 +1,106 @@
+{
+  "engine": "build/aether",
+  "sha256": "3987e84429719a2e68e87ff5734197ddf0727d893f8c1a0f50c1069ae3d59a22",
+  "suite": "tests/positions.json",
+  "node_limit": 50000,
+  "results": [
+    {
+      "name": "mate on the hundredth halfmove",
+      "fen": "7k/5Q2/5K2/8/8/8/8/8 w - - 99 1",
+      "passed": true,
+      "bestmove": "f7g7",
+      "expected": [
+        "f7g7"
+      ],
+      "score": "PovScore(Mate(+1), WHITE)",
+      "depth": 1,
+      "nodes": 25,
+      "wall_ms": 4.197
+    },
+    {
+      "name": "quiet promotion",
+      "fen": "8/P7/8/8/8/6b1/5k2/7K w - - 0 1",
+      "passed": true,
+      "bestmove": "a7a8q",
+      "expected": [
+        "a7a8q"
+      ],
+      "score": "PovScore(Cp(+590), WHITE)",
+      "depth": 7,
+      "nodes": 50000,
+      "wall_ms": 33.64
+    },
+    {
+      "name": "capture the hanging queen",
+      "fen": "6k1/8/8/8/3q4/8/3R4/6K1 w - - 0 1",
+      "passed": true,
+      "bestmove": "d2d4",
+      "expected": [
+        "d2d4"
+      ],
+      "score": "PovScore(Cp(+572), WHITE)",
+      "depth": 8,
+      "nodes": 50000,
+      "wall_ms": 25.829
+    },
+    {
+      "name": "knight fork",
+      "fen": "6k1/7q/8/3N4/8/8/7P/6K1 w - - 0 1",
+      "passed": true,
+      "bestmove": "d5f6",
+      "expected": [
+        "d5f6"
+      ],
+      "score": "PovScore(Cp(+134), WHITE)",
+      "depth": 12,
+      "nodes": 50000,
+      "wall_ms": 27.207
+    },
+    {
+      "name": "stalemate",
+      "fen": "7k/5Q2/6K1/8/8/8/8/8 b - - 0 1",
+      "passed": true,
+      "bestmove": "0000",
+      "expected": [],
+      "score": "PovScore(Cp(0), BLACK)",
+      "depth": 0,
+      "nodes": 0,
+      "wall_ms": 3.236
+    },
+    {
+      "name": "bare kings",
+      "fen": "7k/8/5K2/8/8/8/8/8 w - - 0 1",
+      "passed": true,
+      "bestmove": "f6g6",
+      "expected": [],
+      "score": "PovScore(Cp(0), WHITE)",
+      "depth": 0,
+      "nodes": 0,
+      "wall_ms": 3.263
+    },
+    {
+      "name": "mate before move-count draw",
+      "fen": "7k/6Q1/5K2/8/8/8/8/8 b - - 100 1",
+      "passed": true,
+      "bestmove": "0000",
+      "expected": [],
+      "score": "PovScore(Mate(-0), BLACK)",
+      "depth": 0,
+      "nodes": 0,
+      "wall_ms": 3.421
+    },
+    {
+      "name": "rule fifty draw",
+      "fen": "7k/8/5K2/8/8/8/8/Q7 w - - 100 1",
+      "passed": true,
+      "bestmove": "f6g6",
+      "expected": [],
+      "score": "PovScore(Cp(0), WHITE)",
+      "depth": 0,
+      "nodes": 0,
+      "wall_ms": 3.179
+    }
+  ],
+  "passed": 8,
+  "total": 8
+}

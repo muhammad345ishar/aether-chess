@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 .DS_Store
 .venv/
+baselines/*/aether
+baselines/*/aether.exe
+baselines/*/source.tar.gz

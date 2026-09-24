@@ -1,0 +1,99 @@
+{
+  "schema_version": 2,
+  "started_utc": "2026-09-14T16:17:49.965349+00:00",
+  "engine": "build/aether",
+  "seeds": [
+    20260913,
+    20260914,
+    7,
+    42
+  ],
+  "count_per_seed": 100,
+  "depth": 2,
+  "stride": 4,
+  "max_plies": 160,
+  "python_chess_version": "1.11.2",
+  "results": [
+    {
+      "name": "start position",
+      "category": "opening",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "kind": "targeted",
+      "depth": 2,
+      "passed": true,
+      "expected": 400,
+      "actual": 400,
+      "wall_ms": 1.485
+    },
+    {
+      "name": "Kiwipete castling and pins",
+      "category": "castling",
+      "fen": "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1",
+      "legal": [
+        "e1g1",
+        "e1c1"
+      ],
+      "kind": "targeted",
+      "depth": 2,
+      "passed": true,
+      "expected": 2039,
+      "actual": 2039,
+      "wall_ms": 5.739
+    },
+    {
+      "name": "all castling rights with open rook files",
+      "category": "castling",
+      "fen": "r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1",
+      "legal": [
+        "e1g1",
+        "e1c1",
+        "a1a8",
+        "h1h8"
+      ],
+      "kind": "targeted",
+      "depth": 2,
+      "passed": true,
+      "expected": 568,
+      "actual": 568,
+      "wall_ms": 2.098
+    },
+    {
+      "name": "castling through bishop attack is forbidden",
+      "category": "castling",
+      "fen": "4k3/8/8/8/2b5/8/8/R3K2R w KQ - 0 1",
+      "legal": [
+        "e1c1"
+      ],
+      "illegal": [
+        "e1g1"
+      ],
+      "kind": "targeted",
+      "depth": 2,
+      "passed": true,
+      "expected": 331,
+      "actual": 331,
+      "wall_ms": 1.38
+    },
+    {
+      "name": "castling out of rook check is forbidden",
+      "category": "castling",
+      "fen": "k3r3/8/8/8/8/8/8/R3K2R w KQ - 0 1",
+      "illegal": [
+        "e1g1",
+        "e1c1"
+      ],
+      "kind": "targeted",
+      "depth": 2,
+      "passed": false,
+      "error": "ValueError: invalid fixture FEN",
+      "wall_ms": 0.121
+    }
+  ],
+  "positions": 4,
+  "passed": false,
+  "status": "failed",
+  "sha256": "2027aafe393347fd30ffb61749c28694832e83d2945d48efb7f8b214a5047c23",
+  "planned_positions": 417,
+  "error": "RuntimeError: castling out of rook check is forbidden: k3r3/8/8/8/8/8/8/R3K2R w KQ - 0 1 at depth 2: invalid fixture FEN",
+  "finished_utc": "2026-09-14T16:17:50.195654+00:00"
+}

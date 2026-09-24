@@ -1,0 +1,553 @@
+{
+  "engines": [
+    {
+      "role": "candidate",
+      "path": "build/aether",
+      "sha256": "3987e84429719a2e68e87ff5734197ddf0727d893f8c1a0f50c1069ae3d59a22"
+    },
+    {
+      "role": "baseline",
+      "path": "build/aether-baseline",
+      "sha256": "09b3c47dd385f04399aa21621337966b082d2e8750dc8d9e6695f3a1b8e2565a"
+    }
+  ],
+  "options": {
+    "Hash": 32,
+    "Threads": 1
+  },
+  "limit": {
+    "movetime_ms": 25
+  },
+  "seed": 0,
+  "max_plies": 300,
+  "games": [
+    {
+      "pair": 1,
+      "opening": "Sicilian",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 65,
+      "timing": {
+        "candidate": {
+          "moves": 29,
+          "total_ms": 570.1138499571243,
+          "max_ms": 23.366843997791875
+        },
+        "baseline": {
+          "moves": 29,
+          "total_ms": 575.9053069850779,
+          "max_ms": 27.911177996429615
+        }
+      }
+    },
+    {
+      "pair": 1,
+      "opening": "Sicilian",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 242,
+      "timing": {
+        "candidate": {
+          "moves": 118,
+          "total_ms": 2450.744139008748,
+          "max_ms": 32.325667001714464
+        },
+        "baseline": {
+          "moves": 117,
+          "total_ms": 2428.0755880390643,
+          "max_ms": 23.685307998675853
+        }
+      }
+    },
+    {
+      "pair": 2,
+      "opening": "Reti",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 123,
+      "timing": {
+        "candidate": {
+          "moves": 60,
+          "total_ms": 1196.1828109560884,
+          "max_ms": 22.950169994146563
+        },
+        "baseline": {
+          "moves": 60,
+          "total_ms": 1199.3235980189638,
+          "max_ms": 27.8694570006337
+        }
+      }
+    },
+    {
+      "pair": 2,
+      "opening": "Reti",
+      "candidate_color": "black",
+      "result": "1-0",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 165,
+      "timing": {
+        "candidate": {
+          "moves": 81,
+          "total_ms": 1672.8372800571378,
+          "max_ms": 27.640417996735778
+        },
+        "baseline": {
+          "moves": 81,
+          "total_ms": 1637.304145937378,
+          "max_ms": 24.49548200092977
+        }
+      }
+    },
+    {
+      "pair": 3,
+      "opening": "English",
+      "candidate_color": "white",
+      "result": "0-1",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 146,
+      "timing": {
+        "candidate": {
+          "moves": 71,
+          "total_ms": 1457.0113759982632,
+          "max_ms": 27.54357099911431
+        },
+        "baseline": {
+          "moves": 71,
+          "total_ms": 1416.6897160102963,
+          "max_ms": 23.194549001345877
+        }
+      }
+    },
+    {
+      "pair": 3,
+      "opening": "English",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 148,
+      "timing": {
+        "candidate": {
+          "moves": 72,
+          "total_ms": 1489.2507460026536,
+          "max_ms": 24.289833003422245
+        },
+        "baseline": {
+          "moves": 72,
+          "total_ms": 1457.7992289632675,
+          "max_ms": 27.452771995740477
+        }
+      }
+    },
+    {
+      "pair": 4,
+      "opening": "Slav",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 91,
+      "timing": {
+        "candidate": {
+          "moves": 44,
+          "total_ms": 863.6334419934428,
+          "max_ms": 27.948645998549182
+        },
+        "baseline": {
+          "moves": 43,
+          "total_ms": 844.9657800229033,
+          "max_ms": 23.423865000950173
+        }
+      }
+    },
+    {
+      "pair": 4,
+      "opening": "Slav",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 82,
+      "timing": {
+        "candidate": {
+          "moves": 39,
+          "total_ms": 731.3373739962117,
+          "max_ms": 23.638202997972257
+        },
+        "baseline": {
+          "moves": 39,
+          "total_ms": 729.7835660065175,
+          "max_ms": 27.497415998368524
+        }
+      }
+    },
+    {
+      "pair": 5,
+      "opening": "Scandinavian",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 161,
+      "timing": {
+        "candidate": {
+          "moves": 78,
+          "total_ms": 1594.1355309769278,
+          "max_ms": 29.897358996095136
+        },
+        "baseline": {
+          "moves": 78,
+          "total_ms": 1577.3940449871588,
+          "max_ms": 28.107837002607994
+        }
+      }
+    },
+    {
+      "pair": 5,
+      "opening": "Scandinavian",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 140,
+      "timing": {
+        "candidate": {
+          "moves": 68,
+          "total_ms": 1366.334479978832,
+          "max_ms": 27.705512999091297
+        },
+        "baseline": {
+          "moves": 67,
+          "total_ms": 1315.0059149847948,
+          "max_ms": 23.285718001716305
+        }
+      }
+    },
+    {
+      "pair": 6,
+      "opening": "French",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 117,
+      "timing": {
+        "candidate": {
+          "moves": 56,
+          "total_ms": 1091.8590540095465,
+          "max_ms": 24.09680300479522
+        },
+        "baseline": {
+          "moves": 56,
+          "total_ms": 1107.3717159888474,
+          "max_ms": 27.75239699985832
+        }
+      }
+    },
+    {
+      "pair": 6,
+      "opening": "French",
+      "candidate_color": "black",
+      "result": "1-0",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 123,
+      "timing": {
+        "candidate": {
+          "moves": 59,
+          "total_ms": 1218.6000879955827,
+          "max_ms": 27.488928993989248
+        },
+        "baseline": {
+          "moves": 59,
+          "total_ms": 1186.899715976324,
+          "max_ms": 24.389886995777488
+        }
+      }
+    },
+    {
+      "pair": 7,
+      "opening": "Caro-Kann",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 147,
+      "timing": {
+        "candidate": {
+          "moves": 72,
+          "total_ms": 1439.4097570402664,
+          "max_ms": 27.789541003585327
+        },
+        "baseline": {
+          "moves": 71,
+          "total_ms": 1399.0684860109468,
+          "max_ms": 27.379204002500046
+        }
+      }
+    },
+    {
+      "pair": 7,
+      "opening": "Caro-Kann",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 118,
+      "timing": {
+        "candidate": {
+          "moves": 57,
+          "total_ms": 1114.775704976637,
+          "max_ms": 23.347907997958828
+        },
+        "baseline": {
+          "moves": 57,
+          "total_ms": 1103.151909999724,
+          "max_ms": 27.594153994868975
+        }
+      }
+    },
+    {
+      "pair": 8,
+      "opening": "Nimzo-Indian",
+      "candidate_color": "white",
+      "result": "0-1",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 126,
+      "timing": {
+        "candidate": {
+          "moves": 60,
+          "total_ms": 1227.5258969821152,
+          "max_ms": 27.450895999209024
+        },
+        "baseline": {
+          "moves": 60,
+          "total_ms": 1184.856474006665,
+          "max_ms": 23.317357001360506
+        }
+      }
+    },
+    {
+      "pair": 8,
+      "opening": "Nimzo-Indian",
+      "candidate_color": "black",
+      "result": "1-0",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 235,
+      "timing": {
+        "candidate": {
+          "moves": 114,
+          "total_ms": 2387.523972989584,
+          "max_ms": 22.942143004911486
+        },
+        "baseline": {
+          "moves": 115,
+          "total_ms": 2424.7774130199105,
+          "max_ms": 28.34373700170545
+        }
+      }
+    },
+    {
+      "pair": 9,
+      "opening": "Queen's Gambit",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 117,
+      "timing": {
+        "candidate": {
+          "moves": 56,
+          "total_ms": 1111.6930499920272,
+          "max_ms": 23.354373006441165
+        },
+        "baseline": {
+          "moves": 56,
+          "total_ms": 1110.0567419271101,
+          "max_ms": 27.993244002573192
+        }
+      }
+    },
+    {
+      "pair": 9,
+      "opening": "Queen's Gambit",
+      "candidate_color": "black",
+      "result": "1/2-1/2",
+      "candidate_score": 0.5,
+      "termination": "fifty_moves",
+      "plies": 225,
+      "timing": {
+        "candidate": {
+          "moves": 110,
+          "total_ms": 2329.142180060444,
+          "max_ms": 27.737115997297224
+        },
+        "baseline": {
+          "moves": 110,
+          "total_ms": 2331.084622972412,
+          "max_ms": 24.9204580031801
+        }
+      }
+    },
+    {
+      "pair": 10,
+      "opening": "Open game",
+      "candidate_color": "white",
+      "result": "1/2-1/2",
+      "candidate_score": 0.5,
+      "termination": "fifty_moves",
+      "plies": 278,
+      "timing": {
+        "candidate": {
+          "moves": 137,
+          "total_ms": 2910.13236897561,
+          "max_ms": 28.730347999953665
+        },
+        "baseline": {
+          "moves": 137,
+          "total_ms": 2940.264473989373,
+          "max_ms": 26.71508299681591
+        }
+      }
+    },
+    {
+      "pair": 10,
+      "opening": "Open game",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 88,
+      "timing": {
+        "candidate": {
+          "moves": 42,
+          "total_ms": 812.0367110095685,
+          "max_ms": 23.309848002099898
+        },
+        "baseline": {
+          "moves": 42,
+          "total_ms": 824.3320919718826,
+          "max_ms": 28.076116999727674
+        }
+      }
+    },
+    {
+      "pair": 11,
+      "opening": "Alekhine",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 89,
+      "timing": {
+        "candidate": {
+          "moves": 42,
+          "total_ms": 853.7699870139477,
+          "max_ms": 24.522047002392355
+        },
+        "baseline": {
+          "moves": 42,
+          "total_ms": 837.6032739761285,
+          "max_ms": 27.088016002380755
+        }
+      }
+    },
+    {
+      "pair": 11,
+      "opening": "Alekhine",
+      "candidate_color": "black",
+      "result": "0-1",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 124,
+      "timing": {
+        "candidate": {
+          "moves": 60,
+          "total_ms": 1200.7279600438778,
+          "max_ms": 28.735573003359605
+        },
+        "baseline": {
+          "moves": 59,
+          "total_ms": 1199.5053280406864,
+          "max_ms": 23.10444400063716
+        }
+      }
+    },
+    {
+      "pair": 12,
+      "opening": "King's Indian",
+      "candidate_color": "white",
+      "result": "1-0",
+      "candidate_score": 1.0,
+      "termination": "checkmate",
+      "plies": 67,
+      "timing": {
+        "candidate": {
+          "moves": 31,
+          "total_ms": 573.013319990423,
+          "max_ms": 28.91733800061047
+        },
+        "baseline": {
+          "moves": 30,
+          "total_ms": 562.1762069713441,
+          "max_ms": 23.599544998432975
+        }
+      }
+    },
+    {
+      "pair": 12,
+      "opening": "King's Indian",
+      "candidate_color": "black",
+      "result": "1-0",
+      "candidate_score": 0.0,
+      "termination": "checkmate",
+      "plies": 151,
+      "timing": {
+        "candidate": {
+          "moves": 72,
+          "total_ms": 1487.0575789827853,
+          "max_ms": 23.78462100023171
+        },
+        "baseline": {
+          "moves": 73,
+          "total_ms": 1502.734488036367,
+          "max_ms": 27.83712599921273
+        }
+      }
+    }
+  ],
+  "timing_policy": {
+    "wall_time_includes_position_and_ipc": true,
+    "overhead_ms": 20,
+    "timed_move_forfeit_after_ms": 45
+  },
+  "note": "Approximate 95% percentile bootstrap resamples opening pairs. Small samples do not establish a strength gain.",
+  "summary": {
+    "wins": 16,
+    "draws": 2,
+    "losses": 6,
+    "score": 0.7083333333333334,
+    "completed_pairs": 12,
+    "score_interval_95": [
+      0.5208333333333334,
+      0.875
+    ],
+    "elo_estimate": 154.14035254560685,
+    "elo_interval_95": [
+      14.48486906177792,
+      338.0392160057027
+    ],
+    "engine_failures": 0,
+    "adjudicated_at_ply_cap": 0
+  }
+}

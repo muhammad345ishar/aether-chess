@@ -152,6 +152,8 @@ void epHashing() {
     repeated.makeNullMove(nullB);
     require(repeated.key() == beforeNull.key && repeated.consistent(), "two nulls restore board hash");
     require(!repeated.isRepetition(1), "null barrier excludes game history");
+    require(!repeated.isSearchRepetition(1), "search repetition crossed a null barrier");
+    require(repeated.repetitionContextBeforeCurrent() == 0, "null retained pre-root history context");
     require(repeated.gamePly() == beforeNull.ply, "null move must not append game history");
     struct Step { Move move; Undo undo; };
     std::vector<Step> steps;
@@ -162,6 +164,7 @@ void epHashing() {
             steps.push_back({move, undo});
         }
         require(repeated.isRepetition(1) == (cycle == 1), "only legal history after null contributes");
+        require(repeated.isSearchRepetition(1) == (cycle == 1), "search must exclude synthetic null occurrences");
         require(!repeated.isRepetition(), "synthetic null state cannot become a third occurrence");
     }
     for (auto it = steps.rbegin(); it != steps.rend(); ++it) repeated.unmakeMove(it->move, it->undo);
@@ -209,11 +212,39 @@ void repetitionContext() {
     play(first, "e2e4");
     play(fresh, "e2e4");
     require(first.repetitionContext() == fresh.repetitionContext(), "pawn move resets reversible history");
+    require(first.repetitionContextBeforeCurrent() == 0, "pawn move retained pre-root context");
 
     Position rook("r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1");
     play(rook, "h1h2");
     Position rookFresh(rook.fen());
     require(rook.repetitionContext() == rookFresh.repetitionContext(), "castling-rights loss resets reversible history");
+    require(rook.repetitionContextBeforeCurrent() == 0, "castling-rights loss retained pre-root context");
+}
+
+void searchRepetitionBoundaries() {
+    Position position;
+    const int originalRoot = position.gamePly();
+    const std::uint64_t initialContext = position.repetitionContext();
+    require(position.repetitionContextBeforeCurrent() == 0, "fresh root has pre-root context");
+    play(position, "g1f3");
+    require(position.repetitionContextBeforeCurrent() == initialContext, "pre-root context excludes current occurrence");
+    for (const char* move : {"g8f6", "f3g1"}) play(position, move);
+    const int recentRoot = position.gamePly();
+    play(position, "f6g8");
+    require(position.isSearchRepetition(originalRoot), "cycle back to root was not a search draw");
+    require(!position.isSearchRepetition(recentRoot), "second occurrence in pre-root history was a search draw");
+    require(!position.isSearchRepetition(position.gamePly()), "root second occurrence was a search draw");
+    require(position.result() == GameResult::Ongoing, "search cycle changed threefold game rules");
+
+    for (const char* move : {"g1f3", "g8f6", "f3g1", "f6g8"}) play(position, move);
+    require(position.isSearchRepetition(position.gamePly()) && position.isRepetition(),
+        "third occurrence in game history must remain a draw");
+
+    play(position, "e2e4");
+    require(!position.isSearchRepetition(originalRoot), "irreversible move retained a repetition");
+    for (const char* move : {"g8f6", "g1f3", "f6g8", "f3g1"}) play(position, move);
+    require(position.isSearchRepetition(originalRoot), "post-irreversible path cycle was lost");
+    require(!position.isSearchRepetition(position.gamePly()), "post-irreversible second occurrence became threefold");
 }
 
 void promotionsAndSee() {
@@ -275,8 +306,13 @@ void randomRestoration() {
                 position.generate(moves);
                 std::vector<Move> legal;
                 for (const Move& move : moves) {
+                    MoveList candidate;
+                    candidate.add(move);
+                    const bool occupancyLegal = position.hasLegalMove(candidate);
                     Undo undo;
-                    if (position.makeMove(move, undo)) {
+                    const bool made = position.makeMove(move, undo);
+                    require(occupancyLegal == made, "occupancy legality differs from make/unmake " + move.uci());
+                    if (made) {
                         require(position.consistent(), "random make/hash oracle " + move.uci());
                         flags[move.flag] = true;
                         legal.push_back(move);
@@ -285,6 +321,9 @@ void randomRestoration() {
                     before.check(position, "random legal/rejected unmake " + move.uci());
                     ++checked;
                 }
+                require(position.hasLegalMove(moves) == !legal.empty()
+                    && position.hasLegalMove() == !legal.empty(), "complete legal-move probe disagrees with oracle");
+                before.check(position, "occupancy-only legal-move probe");
                 if (legal.empty()) break;
                 if (!position.inCheck() && rng() % 5 == 0) {
                     Undo nullUndo;
@@ -331,6 +370,7 @@ int main() {
     epHashing();
     terminalAndNotation();
     repetitionContext();
+    searchRepetitionBoundaries();
     promotionsAndSee();
     randomRestoration();
     return 0;

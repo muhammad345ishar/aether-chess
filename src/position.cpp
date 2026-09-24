@@ -457,10 +457,27 @@ std::vector<Move> Position::legalMoves(bool capturesOnly) const {
 bool Position::hasLegalMove() const {
     MoveList moves;
     generate(moves);
-    Position work = *this;
-    for (const Move& move : moves) {
-        Undo undo;
-        if (work.makeMove(move, undo)) return true;
+    return hasLegalMove(moves);
+}
+
+bool Position::hasLegalMove(const MoveList& candidates) const {
+    for (const Move& move : candidates) {
+        // generate() already checks movement geometry and castle transit
+        // squares. Only the final occupancy and our king's safety remain.
+        Board after = board_;
+        const int moving = after[move.from];
+        after[move.from] = EMPTY;
+        if (move.flag == EP_CAPTURE) after[move.to + (side_ == WHITE ? -16 : 16)] = EMPTY;
+        after[move.to] = static_cast<std::uint8_t>(move.isPromotion()
+            ? makePiece(side_, move.promotionType()) : moving);
+        if (move.isCastle()) {
+            const int rank = side_ == WHITE ? 0 : 7;
+            const bool kingSide = move.flag == KING_CASTLE;
+            after[squareOf(kingSide ? 7 : 0, rank)] = EMPTY;
+            after[squareOf(kingSide ? 5 : 3, rank)] = static_cast<std::uint8_t>(makePiece(side_, ROOK));
+        }
+        const int king = typeOf(moving) == KING ? move.to : kingSq_[side_];
+        if (!squareAttacked(after, king, side_ ^ 1)) return true;
     }
     return false;
 }
@@ -679,6 +696,27 @@ bool Position::isRepetition(int minCount) const {
     const std::size_t first = std::max(current - reversible, repetitionStart_);
     for (std::size_t distance = 2; distance <= current - first; distance += 2) {
         if (keyHistory_[current - distance] == key_ && ++matches >= minCount) return true;
+    }
+    return false;
+}
+
+std::uint64_t Position::repetitionContextBeforeCurrent() const {
+    // Null moves are deliberately absent from the legal history.
+    if (repetitionStart_ >= keyHistory_.size()) return 0;
+    return repetitionContext_ - appendHistory(0, key_);
+}
+
+bool Position::isSearchRepetition(int rootGamePly) const {
+    if (keyHistory_.size() < 3 || repetitionStart_ >= keyHistory_.size()) return false;
+    const std::size_t current = keyHistory_.size() - 1;
+    const std::size_t root = static_cast<std::size_t>(std::max(0, rootGamePly - 1));
+    const std::size_t reversible = std::min(static_cast<std::size_t>(halfmove_), current);
+    const std::size_t first = std::max(current - reversible, repetitionStart_);
+    int matches = 0;
+    for (std::size_t distance = 2; distance <= current - first; distance += 2) {
+        const std::size_t previous = current - distance;
+        if (keyHistory_[previous] != key_) continue;
+        if (previous >= root || ++matches >= 2) return true;
     }
     return false;
 }

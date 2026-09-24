@@ -1,0 +1,8 @@
+{
+  "version": "review-correctness",
+  "source_tag": "aether-0.2-review-baseline",
+  "source_patch": "source.patch",
+  "source_patch_sha256": "29e072f0ef396d6545cdac497188b5aa1a25b512193a542a7b637140df62c198",
+  "binary_sha256": "55cc66533076ff3cd747d9891e5d7046ea7e661a7092720065e4570ad0603bbf",
+  "note": "Apply source.patch to source_tag to rebuild the correctness-only ablation. All six release CTest suites passed."
+}

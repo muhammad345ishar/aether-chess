@@ -1,0 +1,84 @@
+Report: results/2026-09-14-review/history-matches.json
+PGN: results/2026-09-14-review/history-matches.pgn
+1.1 Sicilian Alapin: candidate white 1/2-1/2 (threefold_repetition)
+1.2 Sicilian Alapin: candidate black 1-0 (checkmate)
+2.1 Queens Gambit exchange: candidate white 0-1 (checkmate)
+2.2 Queens Gambit exchange: candidate black 0-1 (checkmate)
+3.1 Caro-Kann classical: candidate white 1-0 (checkmate)
+3.2 Caro-Kann classical: candidate black 0-1 (checkmate)
+4.1 Ruy Lopez exchange: candidate white 0-1 (checkmate)
+4.2 Ruy Lopez exchange: candidate black 0-1 (checkmate)
+5.1 Scandinavian main line: candidate white 1/2-1/2 (threefold_repetition)
+5.2 Scandinavian main line: candidate black 0-1 (checkmate)
+6.1 Kings Indian fianchetto: candidate white 1-0 (checkmate)
+6.2 Kings Indian fianchetto: candidate black 1-0 (checkmate)
+7.1 English symmetrical: candidate white 0-1 (checkmate)
+7.2 English symmetrical: candidate black 0-1 (checkmate)
+8.1 Petrov modern: candidate white 0-1 (checkmate)
+8.2 Petrov modern: candidate black 0-1 (checkmate)
+9.1 Scotch Gambit: candidate white 1-0 (checkmate)
+9.2 Scotch Gambit: candidate black 0-1 (checkmate)
+10.1 Sicilian closed: candidate white 0-1 (checkmate)
+10.2 Sicilian closed: candidate black 1-0 (checkmate)
+11.1 Nimzo-Indian classical: candidate white 1-0 (checkmate)
+11.2 Nimzo-Indian classical: candidate black 0-1 (checkmate)
+12.1 Alekhine four pawns: candidate white 0-1 (checkmate)
+12.2 Alekhine four pawns: candidate black 0-1 (checkmate)
+13.1 Nimzo-Indian Rubinstein: candidate white 0-1 (checkmate)
+13.2 Nimzo-Indian Rubinstein: candidate black 0-1 (checkmate)
+14.1 Larsen Opening: candidate white 0-1 (checkmate)
+14.2 Larsen Opening: candidate black 0-1 (checkmate)
+15.1 Caro-Kann two knights: candidate white 1-0 (checkmate)
+15.2 Caro-Kann two knights: candidate black 0-1 (checkmate)
+16.1 Two Knights defense: candidate white 1-0 (checkmate)
+16.2 Two Knights defense: candidate black 1-0 (checkmate)
+17.1 Kings Gambit declined: candidate white 1-0 (checkmate)
+17.2 Kings Gambit declined: candidate black 1-0 (checkmate)
+18.1 Kings Indian Saemisch: candidate white 1-0 (checkmate)
+18.2 Kings Indian Saemisch: candidate black 1-0 (checkmate)
+19.1 Slav exchange: candidate white 0-1 (checkmate)
+19.2 Slav exchange: candidate black 0-1 (checkmate)
+20.1 Petrov classical: candidate white 1/2-1/2 (ply cap)
+20.2 Petrov classical: candidate black 1-0 (checkmate)
+21.1 Pirc Austrian Attack: candidate white 1-0 (checkmate)
+21.2 Pirc Austrian Attack: candidate black 1/2-1/2 (insufficient_material)
+22.1 Modern defense: candidate white 1/2-1/2 (threefold_repetition)
+22.2 Modern defense: candidate black 0-1 (checkmate)
+23.1 French advance: candidate white 1/2-1/2 (insufficient_material)
+23.2 French advance: candidate black 1/2-1/2 (insufficient_material)
+24.1 Sicilian Moscow: candidate white 1/2-1/2 (threefold_repetition)
+24.2 Sicilian Moscow: candidate black 1-0 (checkmate)
+25.1 Colle System: candidate white 1-0 (checkmate)
+25.2 Colle System: candidate black 1/2-1/2 (threefold_repetition)
+26.1 Modern Benoni: candidate white 1-0 (checkmate)
+26.2 Modern Benoni: candidate black 1-0 (checkmate)
+27.1 Ruy Lopez Schliemann: candidate white 1-0 (checkmate)
+27.2 Ruy Lopez Schliemann: candidate black 1/2-1/2 (threefold_repetition)
+28.1 Sicilian Dragon: candidate white 1-0 (checkmate)
+28.2 Sicilian Dragon: candidate black 1/2-1/2 (insufficient_material)
+29.1 Catalan closed: candidate white 0-1 (checkmate)
+29.2 Catalan closed: candidate black 0-1 (checkmate)
+30.1 Sicilian Grand Prix: candidate white 1/2-1/2 (ply cap)
+30.2 Sicilian Grand Prix: candidate black 1-0 (checkmate)
+31.1 Sicilian Najdorf: candidate white 1/2-1/2 (threefold_repetition)
+31.2 Sicilian Najdorf: candidate black 1/2-1/2 (fifty_moves)
+32.1 Sicilian Rossolimo: candidate white 1-0 (checkmate)
+32.2 Sicilian Rossolimo: candidate black 0-1 (checkmate)
+{
+  "wins": 30,
+  "draws": 14,
+  "losses": 20,
+  "score": 0.578125,
+  "completed_pairs": 32,
+  "score_interval_95": [
+    0.4921875,
+    0.6640625
+  ],
+  "elo_estimate": 54.735183963203085,
+  "elo_interval_95": [
+    -5.429122875709548,
+    118.38018805388248
+  ],
+  "engine_failures": 0,
+  "adjudicated_at_ply_cap": 2
+}

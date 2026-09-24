@@ -1,0 +1,402 @@
+diff --git a/src/engine.hpp b/src/engine.hpp
+--- a/src/engine.hpp
++++ b/src/engine.hpp
+@@ -150,6 +150,9 @@
+     [[nodiscard]] std::uint64_t key() const { return key_; }
+     // Reversible-position multiset, used to qualify history-dependent TT scores.
+     [[nodiscard]] std::uint64_t repetitionContext() const { return repetitionContext_; }
++    // Excludes the current occurrence, which belongs to the search path when
++    // this position becomes a search root.
++    [[nodiscard]] std::uint64_t repetitionContextBeforeCurrent() const;
+     [[nodiscard]] int castlingRights() const { return castling_; }
+     [[nodiscard]] int epSquare() const { return epSquare_; }
+     [[nodiscard]] int halfmoveClock() const { return halfmove_; }
+@@ -183,6 +186,9 @@
+     [[nodiscard]] int see(const Move& move) const;
+ 
+     [[nodiscard]] bool isRepetition(int minCount = 2) const;
++    // A cycle back to the search root (or a later path position) is a search
++    // draw. Matches strictly before the root still require three occurrences.
++    [[nodiscard]] bool isSearchRepetition(int rootGamePly) const;
+     [[nodiscard]] bool insufficientMaterial() const;
+     [[nodiscard]] bool hasNonPawnMaterial(int color) const;
+     [[nodiscard]] GameResult result() const;
+@@ -286,6 +292,7 @@
+     struct TTEntry {
+         std::uint64_t key = 0;
+         std::uint64_t repetitionContext = 0;
++        std::uint64_t rootHistoryContext = 0;
+         int score = 0;
+         Move best{};
+         std::int16_t depth = -1;
+@@ -313,8 +320,11 @@
+     int hardLimitMs_ = 0;
+     int selDepth_ = 0;
+     int rootColor_ = WHITE;
++    int rootGamePly_ = 1;
++    std::uint64_t rootHistoryContext_ = 0;
+     bool aborted_ = false;
+ 
++    [[nodiscard]] bool isDraw(const Position& position) const;
+     int negamax(Position& position, int depth, int alpha, int beta, int ply, bool allowNull);
+     int quiescence(Position& position, int alpha, int beta, int ply);
+     bool timeUp(bool checkClock = true);
+diff --git a/src/position.cpp b/src/position.cpp
+--- a/src/position.cpp
++++ b/src/position.cpp
+@@ -683,6 +683,27 @@
+     return false;
+ }
+ 
++std::uint64_t Position::repetitionContextBeforeCurrent() const {
++    // Null moves are deliberately absent from the legal history.
++    if (repetitionStart_ >= keyHistory_.size()) return 0;
++    return repetitionContext_ - appendHistory(0, key_);
++}
++
++bool Position::isSearchRepetition(int rootGamePly) const {
++    if (keyHistory_.size() < 3 || repetitionStart_ >= keyHistory_.size()) return false;
++    const std::size_t current = keyHistory_.size() - 1;
++    const std::size_t root = static_cast<std::size_t>(std::max(0, rootGamePly - 1));
++    const std::size_t reversible = std::min(static_cast<std::size_t>(halfmove_), current);
++    const std::size_t first = std::max(current - reversible, repetitionStart_);
++    int matches = 0;
++    for (std::size_t distance = 2; distance <= current - first; distance += 2) {
++        const std::size_t previous = current - distance;
++        if (keyHistory_[previous] != key_) continue;
++        if (previous >= root || ++matches >= 2) return true;
++    }
++    return false;
++}
++
+ bool Position::hasNonPawnMaterial(int color) const {
+     for (int i = 0; i < count_[color]; ++i) {
+         const int type = typeOf(pieceAt(list_[color][static_cast<std::size_t>(i)]));
+diff --git a/src/search.cpp b/src/search.cpp
+--- a/src/search.cpp
++++ b/src/search.cpp
+@@ -22,11 +22,6 @@
+     if (score >= VALUE_MATE_IN_MAX_PLY) return score - ply;
+     if (score <= -VALUE_MATE_IN_MAX_PLY) return score + ply;
+     return score;
+-}
+-
+-bool isDraw(const Position& position, int ply) {
+-    return position.halfmoveClock() >= 100 || position.insufficientMaterial()
+-        || position.isRepetition(ply == 0 ? 2 : 1);
+ }
+ 
+ } // namespace
+@@ -183,16 +178,23 @@
+     TTEntry& entry = tt_[static_cast<std::size_t>(key % tt_.size())];
+     if (entry.bound == BOUND_NONE) ++used_;
+     if (entry.key != key || entry.age != age_ || depth >= entry.depth || bound == BOUND_EXACT
+-        || entry.halfmoveClock != position.halfmoveClock() || entry.repetitionContext != position.repetitionContext()) {
++        || entry.halfmoveClock != position.halfmoveClock() || entry.repetitionContext != position.repetitionContext()
++        || entry.rootHistoryContext != rootHistoryContext_) {
+         entry.key = key;
+         entry.halfmoveClock = static_cast<std::uint16_t>(position.halfmoveClock());
+         entry.repetitionContext = position.repetitionContext();
++        entry.rootHistoryContext = rootHistoryContext_;
+         entry.score = scoreToTt(score, ply);
+         entry.best = best;
+         entry.depth = static_cast<std::int16_t>(depth);
+         entry.bound = static_cast<std::uint8_t>(bound);
+         entry.age = age_;
+     }
++}
++
++bool Searcher::isDraw(const Position& position) const {
++    return position.halfmoveClock() >= 100 || position.insufficientMaterial()
++        || position.isSearchRepetition(rootGamePly_);
+ }
+ 
+ void Searcher::setUpTiming(const Position& position, const SearchLimits& limits) {
+@@ -243,7 +245,7 @@
+ int Searcher::quiescence(Position& position, int alpha, int beta, int ply) {
+     if (!enterNode(ply)) return 0;
+     const bool check = position.inCheck();
+-    if (isDraw(position, ply)) {
++    if (isDraw(position)) {
+         // A mating move ends the game before a fifty-move claim can apply.
+         if (check && !position.hasLegalMove()) return -VALUE_MATE + ply;
+         return 0;
+@@ -280,7 +282,7 @@
+     if (depth <= 0 || ply >= MAX_PLY) return quiescence(position, alpha, beta, ply);
+     if (!enterNode(ply)) return 0;
+     const bool check = position.inCheck();
+-    if (isDraw(position, ply)) {
++    if (isDraw(position)) {
+         if (check && !position.hasLegalMove()) return -VALUE_MATE + ply;
+         return 0;
+     }
+@@ -291,9 +293,12 @@
+         ttMove = entry->best;
+         // The board key deliberately excludes the draw clock and history:
+         // it is also used for repetition. A different context may suggest a
+-        // move, but cannot prove a score bound in the current position.
++        // move, but cannot prove a score bound in the current position. The
++        // pre-root multiset also matters: the same total history can place an
++        // occurrence in game history in one search and on the path in another.
+         if (entry->depth >= depth && ply > 0 && entry->halfmoveClock == position.halfmoveClock()
+-            && entry->repetitionContext == position.repetitionContext()) {
++            && entry->repetitionContext == position.repetitionContext()
++            && entry->rootHistoryContext == rootHistoryContext_) {
+             const int ttScore = scoreFromTt(entry->score, ply);
+             if (entry->bound == BOUND_EXACT) return ttScore;
+             if (entry->bound == BOUND_LOWER && ttScore >= beta) return ttScore;
+@@ -367,6 +372,8 @@
+     startMs_ = nowMs();
+     selDepth_ = 0;
+     rootColor_ = position.sideToMove();
++    rootGamePly_ = position.gamePly();
++    rootHistoryContext_ = position.repetitionContextBeforeCurrent();
+     ++age_;
+     pvLength_.fill(0);
+     setUpTiming(position, limits);
+@@ -381,7 +388,7 @@
+         return completed;
+     }
+     completed.best = rootMoves.front();
+-    if (isDraw(position, 0)) {
++    if (isDraw(position)) {
+         completed.elapsedMs = nowMs() - startMs_;
+         if (onInfo_) onInfo_(completed);
+         return completed;
+diff --git a/tests/position_regressions.cpp b/tests/position_regressions.cpp
+--- a/tests/position_regressions.cpp
++++ b/tests/position_regressions.cpp
+@@ -152,6 +152,8 @@
+     repeated.makeNullMove(nullB);
+     require(repeated.key() == beforeNull.key && repeated.consistent(), "two nulls restore board hash");
+     require(!repeated.isRepetition(1), "null barrier excludes game history");
++    require(!repeated.isSearchRepetition(1), "search repetition crossed a null barrier");
++    require(repeated.repetitionContextBeforeCurrent() == 0, "null retained pre-root history context");
+     require(repeated.gamePly() == beforeNull.ply, "null move must not append game history");
+     struct Step { Move move; Undo undo; };
+     std::vector<Step> steps;
+@@ -162,6 +164,7 @@
+             steps.push_back({move, undo});
+         }
+         require(repeated.isRepetition(1) == (cycle == 1), "only legal history after null contributes");
++        require(repeated.isSearchRepetition(1) == (cycle == 1), "search must exclude synthetic null occurrences");
+         require(!repeated.isRepetition(), "synthetic null state cannot become a third occurrence");
+     }
+     for (auto it = steps.rbegin(); it != steps.rend(); ++it) repeated.unmakeMove(it->move, it->undo);
+@@ -209,11 +212,39 @@
+     play(first, "e2e4");
+     play(fresh, "e2e4");
+     require(first.repetitionContext() == fresh.repetitionContext(), "pawn move resets reversible history");
++    require(first.repetitionContextBeforeCurrent() == 0, "pawn move retained pre-root context");
+ 
+     Position rook("r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1");
+     play(rook, "h1h2");
+     Position rookFresh(rook.fen());
+     require(rook.repetitionContext() == rookFresh.repetitionContext(), "castling-rights loss resets reversible history");
++    require(rook.repetitionContextBeforeCurrent() == 0, "castling-rights loss retained pre-root context");
++}
++
++void searchRepetitionBoundaries() {
++    Position position;
++    const int originalRoot = position.gamePly();
++    const std::uint64_t initialContext = position.repetitionContext();
++    require(position.repetitionContextBeforeCurrent() == 0, "fresh root has pre-root context");
++    play(position, "g1f3");
++    require(position.repetitionContextBeforeCurrent() == initialContext, "pre-root context excludes current occurrence");
++    for (const char* move : {"g8f6", "f3g1"}) play(position, move);
++    const int recentRoot = position.gamePly();
++    play(position, "f6g8");
++    require(position.isSearchRepetition(originalRoot), "cycle back to root was not a search draw");
++    require(!position.isSearchRepetition(recentRoot), "second occurrence in pre-root history was a search draw");
++    require(!position.isSearchRepetition(position.gamePly()), "root second occurrence was a search draw");
++    require(position.result() == GameResult::Ongoing, "search cycle changed threefold game rules");
++
++    for (const char* move : {"g1f3", "g8f6", "f3g1", "f6g8"}) play(position, move);
++    require(position.isSearchRepetition(position.gamePly()) && position.isRepetition(),
++        "third occurrence in game history must remain a draw");
++
++    play(position, "e2e4");
++    require(!position.isSearchRepetition(originalRoot), "irreversible move retained a repetition");
++    for (const char* move : {"g8f6", "g1f3", "f6g8", "f3g1"}) play(position, move);
++    require(position.isSearchRepetition(originalRoot), "post-irreversible path cycle was lost");
++    require(!position.isSearchRepetition(position.gamePly()), "post-irreversible second occurrence became threefold");
+ }
+ 
+ void promotionsAndSee() {
+@@ -331,6 +362,7 @@
+     epHashing();
+     terminalAndNotation();
+     repetitionContext();
++    searchRepetitionBoundaries();
+     promotionsAndSee();
+     randomRestoration();
+     return 0;
+diff --git a/tests/search_regressions.cpp b/tests/search_regressions.cpp
+--- a/tests/search_regressions.cpp
++++ b/tests/search_regressions.cpp
+@@ -13,7 +13,7 @@
+ // Keep horizon and TT regressions precise without making search internals a
+ // production API or changing access keywords with preprocessor macros.
+ struct SearcherTestAccess {
+-    static void reset(Searcher& searcher) {
++    static void reset(Searcher& searcher, const Position& root) {
+         searcher.prepareSearch();
+         searcher.aborted_ = false;
+         searcher.nodes_ = 0;
+@@ -21,20 +21,24 @@
+         searcher.hardLimitMs_ = 0;
+         searcher.softLimitMs_ = 0;
+         searcher.selDepth_ = 0;
++        searcher.rootGamePly_ = root.gamePly();
++        searcher.rootHistoryContext_ = root.repetitionContextBeforeCurrent();
+         searcher.pvLength_.fill(0);
+     }
+ 
+-    static int quiescence(Searcher& searcher, Position& position, int alpha = -VALUE_INF, int beta = VALUE_INF, int ply = 0) {
+-        reset(searcher);
++    static int quiescence(Searcher& searcher, Position& position, int alpha = -VALUE_INF, int beta = VALUE_INF,
++        int ply = 0, const Position* root = nullptr) {
++        reset(searcher, root ? *root : position);
+         return searcher.quiescence(position, alpha, beta, ply);
+     }
+ 
+-    static int cachedSearch(Searcher& searcher, Position& position) {
+-        reset(searcher);
++    static int cachedSearch(Searcher& searcher, Position& position, const Position* root = nullptr) {
++        reset(searcher, root ? *root : position);
+         return searcher.negamax(position, 1, -VALUE_INF, VALUE_INF, 1, false);
+     }
+ 
+-    static void seedExact(Searcher& searcher, const Position& position, int score) {
++    static void seedExact(Searcher& searcher, const Position& position, int score, const Position* root = nullptr) {
++        reset(searcher, root ? *root : position);
+         searcher.store(position, 5, score, Searcher::BOUND_EXACT, Move{}, 1);
+     }
+ 
+@@ -163,6 +167,73 @@
+     const Snapshot historyBefore(secondHistory);
+     require(SearcherTestAccess::cachedSearch(contextual, secondHistory) != 12345, "TT ignored repetition-history context");
+     historyBefore.check(secondHistory, "history-sensitive TT search");
++
++    // Even the identical history has different draw semantics when its current
++    // node becomes the next search root. Do not reuse a bound from the old path.
++    Position initial;
++    Searcher rerooted;
++    SearcherTestAccess::seedExact(rerooted, firstHistory, 12345, &initial);
++    require(SearcherTestAccess::cachedSearch(rerooted, firstHistory, &initial) == 12345,
++        "same search root/context did not reuse a bound");
++    require(SearcherTestAccess::cachedSearch(rerooted, firstHistory) != 12345,
++        "TT reused a bound after moving the root within identical history");
++
++    // These histories have identical board/clock/total multiset and roots at
++    // the same history index, but put different cycles before their roots.
++    Position kingFirst, queenFirst;
++    for (const char* move : {"g1f3", "g8f6", "f3g1", "f6g8"}) play(kingFirst, move);
++    for (const char* move : {"b1c3", "b8c6", "c3b1", "c6b8"}) play(queenFirst, move);
++    const Position kingRoot = kingFirst;
++    const Position queenRoot = queenFirst;
++    for (const char* move : {"b1c3", "b8c6", "c3b1", "c6b8", "b1a3"}) play(kingFirst, move);
++    for (const char* move : {"g1f3", "g8f6", "f3g1", "f6g8", "b1a3"}) play(queenFirst, move);
++    require(kingFirst.fen() == queenFirst.fen() && kingFirst.repetitionContext() == queenFirst.repetitionContext(),
++        "split-history TT fixture has different total context");
++    require(kingRoot.gamePly() == queenRoot.gamePly()
++        && kingRoot.repetitionContextBeforeCurrent() != queenRoot.repetitionContextBeforeCurrent(),
++        "split-history TT fixture has equivalent pre-root history");
++    Searcher split;
++    SearcherTestAccess::seedExact(split, kingFirst, 12345, &kingRoot);
++    require(SearcherTestAccess::cachedSearch(split, kingFirst, &kingRoot) == 12345,
++        "matching split-history context did not cut off");
++    require(SearcherTestAccess::cachedSearch(split, queenFirst, &queenRoot) != 12345,
++        "TT ignored how the root partitions an identical history multiset");
++}
++
++void searchRepetitions() {
++    Position position("rnb1kbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
++    const Position cycleRoot = position;
++    for (const char* move : {"g1f3", "g8f6", "f3g1"}) play(position, move);
++    const Position historicalRoot = position;
++    const Snapshot before(position);
++    SearchLimits limits;
++    limits.depth = 4;
++    Searcher searcher;
++    const SearchReport losing = searcher.search(position, limits);
++    require(losing.score < -500 && legalBest(position, losing),
++        "second historical occurrence hid a missing queen as a draw");
++    validatePv(position, losing);
++    before.check(position, "historical second-occurrence search");
++
++    play(position, "f6g8");
++    require(position.isRepetition(1) && !position.isRepetition(), "second occurrence fixture");
++    require(SearcherTestAccess::quiescence(searcher, position, -VALUE_INF, VALUE_INF, 1, &historicalRoot) > 500,
++        "quiescence treated one pre-root occurrence as a draw");
++    require(SearcherTestAccess::cachedSearch(searcher, position, &historicalRoot) > 500,
++        "negamax treated one pre-root occurrence as a draw");
++    require(SearcherTestAccess::quiescence(searcher, position, -VALUE_INF, VALUE_INF, 4, &cycleRoot) == 0,
++        "quiescence missed a cycle back to the search root");
++    require(SearcherTestAccess::cachedSearch(searcher, position, &cycleRoot) == 0,
++        "negamax missed a cycle back to the search root");
++    const SearchReport winning = searcher.search(position, limits);
++    require(winning.score > 500, "second occurrence at the root was adjudicated a draw");
++
++    for (const char* move : {"g1f3", "g8f6", "f3g1"}) play(position, move);
++    const Snapshot thirdBefore(position);
++    const SearchReport claim = searcher.search(position, limits);
++    require(claim.score == 0 && claim.best.uci() == "f6g8",
++        "search failed to choose a move producing a genuine third occurrence");
++    thirdBefore.check(position, "third-occurrence search");
+ }
+ 
+ void horizonRegressions() {
+@@ -181,9 +252,10 @@
+         "quiescence draw check hid mate");
+ 
+     Position repetition("rnb1kbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
++    const Position repetitionRoot = repetition;
+     for (const char* move : {"g1f3", "g8f6", "f3g1", "f6g8"}) play(repetition, move);
+     require(evaluate(repetition) > 500 && repetition.isRepetition(1), "horizon repetition fixture");
+-    require(SearcherTestAccess::quiescence(searcher, repetition, -VALUE_INF, VALUE_INF, 1) == 0,
++    require(SearcherTestAccess::quiescence(searcher, repetition, -VALUE_INF, VALUE_INF, 4, &repetitionRoot) == 0,
+         "quiescence missed path repetition");
+ 
+     Position promotion("7k/P7/6K1/8/8/8/8/8 w - - 0 1");
+@@ -268,6 +340,7 @@
+ int main() {
+     mateAndDraws();
+     transpositionContexts();
++    searchRepetitions();
+     horizonRegressions();
+     limitsAndReports();
+     std::cout << "search regressions ok\n";
+diff --git a/tests/uci_regressions.py b/tests/uci_regressions.py
+--- a/tests/uci_regressions.py
++++ b/tests/uci_regressions.py
+@@ -71,6 +71,29 @@
+             lines = engine.read_until("bestmove", timeout=4)
+             check(lines[-1].split()[1] != "0000", f"reusable search after stop: {limit}")
+ 
++        # A knight returning to a position seen once before the search root is
++        # not a threefold claim. Reuse one engine so TT entries survive reroots.
++        queen_missing = "rnb1kbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
++        cycle = "g1f3 g8f6 f3g1 f6g8"
++
++        def repetition_score(moves: str) -> tuple[int, str]:
++            engine.send(f"position fen {queen_missing} moves {moves}")
++            engine.send("go depth 4")
++            lines = engine.read_until("bestmove", timeout=5)
++            scores = [int(m.group(1)) for line in lines if (m := re.search(r"\bscore cp (-?\d+)", line))]
++            check(bool(scores), f"missing repetition score: {lines}")
++            return scores[-1], lines[-1].split()[1]
++
++        engine.send("ucinewgame")
++        score, best = repetition_score("g1f3 g8f6 f3g1")
++        check(score < -500 and best != "0000", "a historical second occurrence hid the missing queen")
++        score, _ = repetition_score(cycle)
++        check(score > 500, "a second occurrence at the root was treated as threefold")
++        score, best = repetition_score(f"{cycle} g1f3 g8f6 f3g1")
++        check(score == 0 and best == "f6g8", "engine did not choose a genuine third occurrence")
++        score, _ = repetition_score(f"{cycle} {cycle}")
++        check(score == 0, "threefold at the root was not a draw")
++
+         engine.send("position fen 7k/5Q2/5K2/8/8/8/8/8 w - - 99 1")
+         engine.send("go infinite")
+         # Mate should be reported promptly, but bestmove must wait for stop.

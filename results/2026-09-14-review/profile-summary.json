@@ -1,0 +1,9 @@
+{
+  "method": "macOS sample, 3 seconds, 1 ms sampling interval, baseline 0.2, Kiwipete infinite search",
+  "inclusive_stack_samples": {
+    "legal_move_probe": 578,
+    "evaluation": 562,
+    "static_exchange": 494
+  },
+  "note": "Counts locate work; they are not comparative speed measurements. Threads waiting for input are excluded from interpretation."
+}

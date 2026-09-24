@@ -71,6 +71,29 @@ def main() -> None:
             lines = engine.read_until("bestmove", timeout=4)
             check(lines[-1].split()[1] != "0000", f"reusable search after stop: {limit}")
 
+        # A knight returning to a position seen once before the search root is
+        # not a threefold claim. Reuse one engine so TT entries survive reroots.
+        queen_missing = "rnb1kbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+        cycle = "g1f3 g8f6 f3g1 f6g8"
+
+        def repetition_score(moves: str) -> tuple[int, str]:
+            engine.send(f"position fen {queen_missing} moves {moves}")
+            engine.send("go depth 4")
+            lines = engine.read_until("bestmove", timeout=5)
+            scores = [int(m.group(1)) for line in lines if (m := re.search(r"\bscore cp (-?\d+)", line))]
+            check(bool(scores), f"missing repetition score: {lines}")
+            return scores[-1], lines[-1].split()[1]
+
+        engine.send("ucinewgame")
+        score, best = repetition_score("g1f3 g8f6 f3g1")
+        check(score < -500 and best != "0000", "a historical second occurrence hid the missing queen")
+        score, _ = repetition_score(cycle)
+        check(score > 500, "a second occurrence at the root was treated as threefold")
+        score, best = repetition_score(f"{cycle} g1f3 g8f6 f3g1")
+        check(score == 0 and best == "f6g8", "engine did not choose a genuine third occurrence")
+        score, _ = repetition_score(f"{cycle} {cycle}")
+        check(score == 0, "threefold at the root was not a draw")
+
         engine.send("position fen 7k/5Q2/5K2/8/8/8/8/8 w - - 99 1")
         engine.send("go infinite")
         # Mate should be reported promptly, but bestmove must wait for stop.

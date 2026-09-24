@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 option(AETHER_SANITIZERS "Enable AddressSanitizer and UndefinedBehaviorSanitizer" OFF)
+option(AETHER_ASPIRATION "Experiment: use aspiration windows in iterative deepening" OFF)
+option(AETHER_HISTORY_AGING "Experiment: age quiet-move history between searches" OFF)
 add_library(aether_build_options INTERFACE)
 if(MSVC)
     target_compile_options(aether_build_options INTERFACE /W4)
@@ -29,6 +31,9 @@ add_library(aether_core
 )
 target_include_directories(aether_core PUBLIC src)
 target_link_libraries(aether_core PUBLIC aether_build_options)
+target_compile_definitions(aether_core PRIVATE
+    AETHER_ASPIRATION=$<BOOL:${AETHER_ASPIRATION}>
+    AETHER_HISTORY_AGING=$<BOOL:${AETHER_HISTORY_AGING}>)
 
 add_executable(aether src/main.cpp)
 target_link_libraries(aether PRIVATE aether_core Threads::Threads)

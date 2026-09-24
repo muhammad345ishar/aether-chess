@@ -2,7 +2,9 @@ name: Engine checks
 on: [push, pull_request]
 jobs:
   test:
+    timeout-minutes: 15
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest]
         sanitizers: ['OFF', 'ON']
@@ -14,8 +16,20 @@ jobs:
           python-version: '3.12'
       - run: cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo -DAETHER_SANITIZERS=${{ matrix.sanitizers }}
       - run: cmake --build build --parallel 2
-      - run: ctest --test-dir build --output-on-failure
+      - run: mkdir -p results/ci
+      - run: ctest --test-dir build --output-on-failure --output-log "${{ github.workspace }}/results/ci/ctest.log"
       - run: python -m pip install -r scripts/requirements.txt
       - run: python tests/tooling_regressions.py
-      - run: python tests/differential_perft.py build/aether
-      - run: python scripts/run_suite.py --engine build/aether --nodes 50000
+      - run: python tests/differential_perft.py build/aether --output results/ci/differential-perft.json
+      - run: python scripts/run_suite.py --engine build/aether --nodes 50000 --output results/ci/tactical-suite.json
+      - name: Preserve validation reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: engine-checks-${{ matrix.os }}-sanitizers-${{ matrix.sanitizers }}
+          path: |
+            results/ci/
+            build/Testing/Temporary/LastTest.log
+            build/CMakeCache.txt
+          if-no-files-found: warn
+          retention-days: 30

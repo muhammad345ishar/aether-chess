@@ -1,0 +1,431 @@
+{
+  "started_at": "2026-09-14T16:15:33+00:00",
+  "status": "completed",
+  "failures": [],
+  "environment": {
+    "platform": "macOS-15.7.9-x86_64-i386-64bit-Mach-O",
+    "machine": "x86_64",
+    "python": "3.14.2",
+    "command": [
+      "scripts/compare_engines.py",
+      "--aether",
+      "build/aether",
+      "--reference",
+      "build-repetition/aether",
+      "--depth",
+      "6",
+      "--repeat",
+      "3",
+      "--output",
+      "results/2026-09-14-review/efficient-vs-correctness.json"
+    ]
+  },
+  "source": {
+    "revision": "0052adfca6feddb5ca0dfe0345c668feaeff9e85",
+    "dirty": true,
+    "diff_sha256": "aae38c650fa11fdfd61dd349a288dbc04491867c5b0403236435281751f1fa18",
+    "note": "Checkout at run start; does not assert that every binary was built from this revision."
+  },
+  "fixtures": [],
+  "limit": {
+    "depth": 6
+  },
+  "hash_mb": 32,
+  "repeat": 3,
+  "engines": [
+    {
+      "name": "Aether",
+      "path": "build/aether",
+      "sha256": "2027aafe393347fd30ffb61749c28694832e83d2945d48efb7f8b214a5047c23",
+      "build": {
+        "cache": {
+          "path": "build/CMakeCache.txt",
+          "sha256": "80372e61c6443a75f556e64dec0042fda4bba5b21417194937fc19ec11a34c5a"
+        },
+        "settings": {
+          "AETHER_ASPIRATION": "OFF",
+          "AETHER_HISTORY_AGING": "OFF",
+          "AETHER_SANITIZERS": "OFF",
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+          "CMAKE_CXX_FLAGS": "",
+          "CMAKE_CXX_FLAGS_DEBUG": "-g",
+          "CMAKE_CXX_FLAGS_MINSIZEREL": "-Os -DNDEBUG",
+          "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+          "CMAKE_CXX_FLAGS_RELWITHDEBINFO": "-O2 -g -DNDEBUG",
+          "CMAKE_CXX_FLAGS-ADVANCED": "1",
+          "CMAKE_CXX_FLAGS_DEBUG-ADVANCED": "1",
+          "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED": "1",
+          "CMAKE_CXX_FLAGS_RELEASE-ADVANCED": "1",
+          "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED": "1",
+          "CMAKE_GENERATOR": "Unix Makefiles"
+        },
+        "note": "Adjacent build configuration; binary identity is its SHA-256."
+      }
+    },
+    {
+      "name": "Reference",
+      "path": "build-repetition/aether",
+      "sha256": "55cc66533076ff3cd747d9891e5d7046ea7e661a7092720065e4570ad0603bbf",
+      "build": {
+        "cache": {
+          "path": "build-repetition/CMakeCache.txt",
+          "sha256": "9079b40e6fb9624818ca66e95da050be9798210e68772c4c26ad8313fa1f4801"
+        },
+        "settings": {
+          "AETHER_SANITIZERS": "OFF",
+          "CMAKE_BUILD_TYPE": "Release",
+          "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+          "CMAKE_CXX_FLAGS": "",
+          "CMAKE_CXX_FLAGS_DEBUG": "-g",
+          "CMAKE_CXX_FLAGS_MINSIZEREL": "-Os -DNDEBUG",
+          "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+          "CMAKE_CXX_FLAGS_RELWITHDEBINFO": "-O2 -g -DNDEBUG",
+          "CMAKE_CXX_FLAGS-ADVANCED": "1",
+          "CMAKE_CXX_FLAGS_DEBUG-ADVANCED": "1",
+          "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED": "1",
+          "CMAKE_CXX_FLAGS_RELEASE-ADVANCED": "1",
+          "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED": "1",
+          "CMAKE_GENERATOR": "Unix Makefiles"
+        },
+        "note": "Adjacent build configuration; binary identity is its SHA-256."
+      }
+    }
+  ],
+  "position_fixtures": {
+    "positions": [
+      [
+        "start",
+        "startpos"
+      ],
+      [
+        "open game",
+        "fen r1bqk2r/pppp1ppp/2n2n2/2b1p3/4P3/2NP1N2/PPP2PPP/R1BQKB1R w KQkq - 4 5"
+      ],
+      [
+        "tactical",
+        "fen r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1"
+      ],
+      [
+        "endgame",
+        "fen 8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1"
+      ]
+    ],
+    "sha256": "1fc82704159d30a1527c8d1e94d15cc5c226a6c421ed53074bb937df816cfff5"
+  },
+  "results": [
+    {
+      "repeat": 1,
+      "position": "start",
+      "engine": "Aether",
+      "bestmove": "g1f3",
+      "wall_ms": 12.416,
+      "depth": 6,
+      "seldepth": 12,
+      "nodes": 9992,
+      "nps": 832666,
+      "time": 12,
+      "score": "cp -1"
+    },
+    {
+      "repeat": 1,
+      "position": "start",
+      "engine": "Reference",
+      "bestmove": "g1f3",
+      "wall_ms": 14.57,
+      "depth": 6,
+      "seldepth": 12,
+      "nodes": 9992,
+      "nps": 713714,
+      "time": 14,
+      "score": "cp -1"
+    },
+    {
+      "repeat": 1,
+      "position": "open game",
+      "engine": "Aether",
+      "bestmove": "c1g5",
+      "wall_ms": 53.759,
+      "depth": 6,
+      "seldepth": 17,
+      "nodes": 37040,
+      "nps": 685925,
+      "time": 54,
+      "score": "cp -6"
+    },
+    {
+      "repeat": 1,
+      "position": "open game",
+      "engine": "Reference",
+      "bestmove": "c1g5",
+      "wall_ms": 61.471,
+      "depth": 6,
+      "seldepth": 17,
+      "nodes": 37040,
+      "nps": 607213,
+      "time": 61,
+      "score": "cp -6"
+    },
+    {
+      "repeat": 1,
+      "position": "tactical",
+      "engine": "Aether",
+      "bestmove": "d5e6",
+      "wall_ms": 330.549,
+      "depth": 6,
+      "seldepth": 26,
+      "nodes": 182588,
+      "nps": 551625,
+      "time": 331,
+      "score": "cp 41"
+    },
+    {
+      "repeat": 1,
+      "position": "tactical",
+      "engine": "Reference",
+      "bestmove": "d5e6",
+      "wall_ms": 397.149,
+      "depth": 6,
+      "seldepth": 26,
+      "nodes": 182588,
+      "nps": 459919,
+      "time": 397,
+      "score": "cp 41"
+    },
+    {
+      "repeat": 1,
+      "position": "endgame",
+      "engine": "Aether",
+      "bestmove": "b4f4",
+      "wall_ms": 6.369,
+      "depth": 6,
+      "seldepth": 12,
+      "nodes": 8911,
+      "nps": 1273000,
+      "time": 7,
+      "score": "cp 24"
+    },
+    {
+      "repeat": 1,
+      "position": "endgame",
+      "engine": "Reference",
+      "bestmove": "b4f4",
+      "wall_ms": 8.175,
+      "depth": 6,
+      "seldepth": 12,
+      "nodes": 8911,
+      "nps": 1113875,
+      "time": 8,
+      "score": "cp 24"
+    },
+    {
+      "repeat": 2,
+      "position": "start",
+      "engine": "Reference",
+      "bestmove": "g1f3",
+      "wall_ms": 15.02,
+      "depth": 6,
+      "seldepth": 12,
+      "nodes": 9992,
+      "nps": 713714,
+      "time": 14,
+      "score": "cp -1"
+    },
+    {
+      "repeat": 2,
+      "position": "start",
+      "engine": "Aether",
+      "bestmove": "g1f3",
+      "wall_ms": 12.638,
+      "depth": 6,
+      "seldepth": 12,
+      "nodes": 9992,
+      "nps": 768615,
+      "time": 13,
+      "score": "cp -1"
+    },
+    {
+      "repeat": 2,
+      "position": "open game",
+      "engine": "Reference",
+      "bestmove": "c1g5",
+      "wall_ms": 64.103,
+      "depth": 6,
+      "seldepth": 17,
+      "nodes": 37040,
+      "nps": 578750,
+      "time": 64,
+      "score": "cp -6"
+    },
+    {
+      "repeat": 2,
+      "position": "open game",
+      "engine": "Aether",
+      "bestmove": "c1g5",
+      "wall_ms": 52.084,
+      "depth": 6,
+      "seldepth": 17,
+      "nodes": 37040,
+      "nps": 712307,
+      "time": 52,
+      "score": "cp -6"
+    },
+    {
+      "repeat": 2,
+      "position": "tactical",
+      "engine": "Reference",
+      "bestmove": "d5e6",
+      "wall_ms": 404.11,
+      "depth": 6,
+      "seldepth": 26,
+      "nodes": 182588,
+      "nps": 451950,
+      "time": 404,
+      "score": "cp 41"
+    },
+    {
+      "repeat": 2,
+      "position": "tactical",
+      "engine": "Aether",
+      "bestmove": "d5e6",
+      "wall_ms": 416.646,
+      "depth": 6,
+      "seldepth": 26,
+      "nodes": 182588,
+      "nps": 437860,
+      "time": 417,
+      "score": "cp 41"
+    },
+    {
+      "repeat": 2,
+      "position": "endgame",
+      "engine": "Reference",
+      "bestmove": "b4f4",
+      "wall_ms": 9.092,
+      "depth": 6,
+      "seldepth": 12,
+      "nodes": 8911,
+      "nps": 1113875,
+      "time": 8,
+      "score": "cp 24"
+    },
+    {
+      "repeat": 2,
+      "position": "endgame",
+      "engine": "Aether",
+      "bestmove": "b4f4",
+      "wall_ms": 8.173,
+      "depth": 6,
+      "seldepth": 12,
+      "nodes": 8911,
+      "nps": 1113875,
+      "time": 8,
+      "score": "cp 24"
+    },
+    {
+      "repeat": 3,
+      "position": "start",
+      "engine": "Aether",
+      "bestmove": "g1f3",
+      "wall_ms": 13.721,
+      "depth": 6,
+      "seldepth": 12,
+      "nodes": 9992,
+      "nps": 768615,
+      "time": 13,
+      "score": "cp -1"
+    },
+    {
+      "repeat": 3,
+      "position": "start",
+      "engine": "Reference",
+      "bestmove": "g1f3",
+      "wall_ms": 15.873,
+      "depth": 6,
+      "seldepth": 12,
+      "nodes": 9992,
+      "nps": 624500,
+      "time": 16,
+      "score": "cp -1"
+    },
+    {
+      "repeat": 3,
+      "position": "open game",
+      "engine": "Aether",
+      "bestmove": "c1g5",
+      "wall_ms": 58.639,
+      "depth": 6,
+      "seldepth": 17,
+      "nodes": 37040,
+      "nps": 627796,
+      "time": 59,
+      "score": "cp -6"
+    },
+    {
+      "repeat": 3,
+      "position": "open game",
+      "engine": "Reference",
+      "bestmove": "c1g5",
+      "wall_ms": 66.817,
+      "depth": 6,
+      "seldepth": 17,
+      "nodes": 37040,
+      "nps": 552835,
+      "time": 67,
+      "score": "cp -6"
+    },
+    {
+      "repeat": 3,
+      "position": "tactical",
+      "engine": "Aether",
+      "bestmove": "d5e6",
+      "wall_ms": 335.751,
+      "depth": 6,
+      "seldepth": 26,
+      "nodes": 182588,
+      "nps": 543416,
+      "time": 336,
+      "score": "cp 41"
+    },
+    {
+      "repeat": 3,
+      "position": "tactical",
+      "engine": "Reference",
+      "bestmove": "d5e6",
+      "wall_ms": 416.485,
+      "depth": 6,
+      "seldepth": 26,
+      "nodes": 182588,
+      "nps": 438913,
+      "time": 416,
+      "score": "cp 41"
+    },
+    {
+      "repeat": 3,
+      "position": "endgame",
+      "engine": "Aether",
+      "bestmove": "b4f4",
+      "wall_ms": 7.601,
+      "depth": 6,
+      "seldepth": 12,
+      "nodes": 8911,
+      "nps": 1113875,
+      "time": 8,
+      "score": "cp 24"
+    },
+    {
+      "repeat": 3,
+      "position": "endgame",
+      "engine": "Reference",
+      "bestmove": "b4f4",
+      "wall_ms": 8.941,
+      "depth": 6,
+      "seldepth": 12,
+      "nodes": 8911,
+      "nps": 990111,
+      "time": 9,
+      "score": "cp 24"
+    }
+  ],
+  "finished_at": "2026-09-14T16:15:36+00:00"
+}

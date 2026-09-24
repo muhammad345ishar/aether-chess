@@ -1,0 +1,17 @@
+Test project build-sanitize
+    Start 1: perft
+1/6 Test #1: perft ............................   Passed    1.79 sec
+    Start 2: core
+2/6 Test #2: core .............................   Passed    0.74 sec
+    Start 3: position_regressions
+3/6 Test #3: position_regressions .............   Passed    2.60 sec
+    Start 4: search_regressions
+4/6 Test #4: search_regressions ...............   Passed    1.36 sec
+    Start 5: evaluation_regressions
+5/6 Test #5: evaluation_regressions ...........   Passed    0.79 sec
+    Start 6: uci_regressions
+6/6 Test #6: uci_regressions ..................   Passed    1.46 sec
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) =   8.74 sec

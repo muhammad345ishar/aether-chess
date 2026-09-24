@@ -24,20 +24,20 @@ int scoreFromTt(int score, int ply) {
     return score;
 }
 
-bool isDraw(const Position& position, int ply) {
-    return position.halfmoveClock() >= 100 || position.insufficientMaterial()
-        || position.isRepetition(ply == 0 ? 2 : 1);
-}
-
 } // namespace
 
 // Only score a stage when it is reached, and select its next move on demand.
 // Most cut nodes therefore never score their quiet moves or sort a full list.
 class Searcher::MovePicker {
 public:
-    MovePicker(Searcher& searcher, const Position& position, const Move& ttMove, int ply, bool tacticalOnly = false)
+    MovePicker(Searcher& searcher, const Position& position, const Move& ttMove, int ply,
+        bool tacticalOnly = false, const MoveList* candidates = nullptr)
         : searcher_(searcher), position_(position), ttMove_(ttMove), ply_(ply) {
-        position.generate(moves_, tacticalOnly);
+        if (candidates) {
+            for (const Move& move : *candidates) {
+                if (!tacticalOnly || isTactical(move)) moves_.add(move);
+            }
+        } else position.generate(moves_, tacticalOnly);
     }
 
     Move next() {
@@ -183,16 +183,23 @@ void Searcher::store(const Position& position, int depth, int score, int bound, 
     TTEntry& entry = tt_[static_cast<std::size_t>(key % tt_.size())];
     if (entry.bound == BOUND_NONE) ++used_;
     if (entry.key != key || entry.age != age_ || depth >= entry.depth || bound == BOUND_EXACT
-        || entry.halfmoveClock != position.halfmoveClock() || entry.repetitionContext != position.repetitionContext()) {
+        || entry.halfmoveClock != position.halfmoveClock() || entry.repetitionContext != position.repetitionContext()
+        || entry.rootHistoryContext != rootHistoryContext_) {
         entry.key = key;
         entry.halfmoveClock = static_cast<std::uint16_t>(position.halfmoveClock());
         entry.repetitionContext = position.repetitionContext();
+        entry.rootHistoryContext = rootHistoryContext_;
         entry.score = scoreToTt(score, ply);
         entry.best = best;
         entry.depth = static_cast<std::int16_t>(depth);
         entry.bound = static_cast<std::uint8_t>(bound);
         entry.age = age_;
     }
+}
+
+bool Searcher::isDraw(const Position& position) const {
+    return position.halfmoveClock() >= 100 || position.insufficientMaterial()
+        || position.isSearchRepetition(rootGamePly_);
 }
 
 void Searcher::setUpTiming(const Position& position, const SearchLimits& limits) {
@@ -243,14 +250,16 @@ void Searcher::updatePv(int ply, const Move& move) {
 int Searcher::quiescence(Position& position, int alpha, int beta, int ply) {
     if (!enterNode(ply)) return 0;
     const bool check = position.inCheck();
-    if (isDraw(position, ply)) {
+    if (isDraw(position)) {
         // A mating move ends the game before a fifty-move claim can apply.
         if (check && !position.hasLegalMove()) return -VALUE_MATE + ply;
         return 0;
     }
     // Stand pat assumes the side may play a legal move. In stalemate that
     // assumption is false, including when stand pat would fail high.
-    if ((!check || ply >= MAX_PLY) && !position.hasLegalMove()) return check ? -VALUE_MATE + ply : 0;
+    MoveList candidates;
+    position.generate(candidates);
+    if ((!check || ply >= MAX_PLY) && !position.hasLegalMove(candidates)) return check ? -VALUE_MATE + ply : 0;
     if (ply >= MAX_PLY) return evaluate(position);
     if (!check) {
         const int standPat = evaluate(position);
@@ -258,7 +267,7 @@ int Searcher::quiescence(Position& position, int alpha, int beta, int ply) {
         alpha = std::max(alpha, standPat);
     }
 
-    MovePicker moves(*this, position, Move{}, ply, !check);
+    MovePicker moves(*this, position, Move{}, ply, !check, &candidates);
     int legal = 0;
     for (Move move = moves.next(); !move.isNull(); move = moves.next()) {
         Undo undo;
@@ -280,7 +289,7 @@ int Searcher::negamax(Position& position, int depth, int alpha, int beta, int pl
     if (depth <= 0 || ply >= MAX_PLY) return quiescence(position, alpha, beta, ply);
     if (!enterNode(ply)) return 0;
     const bool check = position.inCheck();
-    if (isDraw(position, ply)) {
+    if (isDraw(position)) {
         if (check && !position.hasLegalMove()) return -VALUE_MATE + ply;
         return 0;
     }
@@ -291,9 +300,12 @@ int Searcher::negamax(Position& position, int depth, int alpha, int beta, int pl
         ttMove = entry->best;
         // The board key deliberately excludes the draw clock and history:
         // it is also used for repetition. A different context may suggest a
-        // move, but cannot prove a score bound in the current position.
+        // move, but cannot prove a score bound in the current position. The
+        // pre-root multiset also matters: the same total history can place an
+        // occurrence in game history in one search and on the path in another.
         if (entry->depth >= depth && ply > 0 && entry->halfmoveClock == position.halfmoveClock()
-            && entry->repetitionContext == position.repetitionContext()) {
+            && entry->repetitionContext == position.repetitionContext()
+            && entry->rootHistoryContext == rootHistoryContext_) {
             const int ttScore = scoreFromTt(entry->score, ply);
             if (entry->bound == BOUND_EXACT) return ttScore;
             if (entry->bound == BOUND_LOWER && ttScore >= beta) return ttScore;
@@ -367,9 +379,17 @@ SearchReport Searcher::search(Position& position, const SearchLimits& limits) {
     startMs_ = nowMs();
     selDepth_ = 0;
     rootColor_ = position.sideToMove();
+    rootGamePly_ = position.gamePly();
+    rootHistoryContext_ = position.repetitionContextBeforeCurrent();
     ++age_;
     pvLength_.fill(0);
     setUpTiming(position, limits);
+
+#if AETHER_HISTORY_AGING
+    // Retain useful ordering from the previous move without letting bonuses
+    // accumulated much earlier in the game dominate forever.
+    for (auto& color : history_) for (auto& from : color) for (int& value : from) value /= 2;
+#endif
 
     SearchReport completed;
     const std::vector<Move> rootMoves = position.legalMoves();
@@ -381,7 +401,7 @@ SearchReport Searcher::search(Position& position, const SearchLimits& limits) {
         return completed;
     }
     completed.best = rootMoves.front();
-    if (isDraw(position, 0)) {
+    if (isDraw(position)) {
         completed.elapsedMs = nowMs() - startMs_;
         if (onInfo_) onInfo_(completed);
         return completed;
@@ -390,8 +410,30 @@ SearchReport Searcher::search(Position& position, const SearchLimits& limits) {
     std::uint64_t lastReportedNodes = 0;
     for (int depth = 1; depth <= maximumDepth; ++depth) {
         selDepth_ = 0;
-        pvLength_.fill(0);
-        const int score = negamax(position, depth, -VALUE_INF, VALUE_INF, 0, true);
+        int alpha = -VALUE_INF;
+        int beta = VALUE_INF;
+#if AETHER_ASPIRATION
+        int window = 25;
+        if (depth >= 4 && !completed.mate) {
+            alpha = std::max(-VALUE_INF, completed.score - window);
+            beta = std::min(VALUE_INF, completed.score + window);
+        }
+#endif
+        int score = 0;
+        for (;;) {
+            pvLength_.fill(0);
+            score = negamax(position, depth, alpha, beta, 0, true);
+            if (aborted_ || (score > alpha && score < beta)) break;
+#if AETHER_ASPIRATION
+            // A failed window gives only a bound. Widen and retry before
+            // publishing the iteration; cancellation retains the previous PV.
+            window = std::min(VALUE_INF, window * 2);
+            if (score <= alpha) alpha = window == VALUE_INF ? -VALUE_INF : std::max(-VALUE_INF, score - window);
+            if (score >= beta) beta = window == VALUE_INF ? VALUE_INF : std::min(VALUE_INF, score + window);
+#else
+            break;
+#endif
+        }
         if (aborted_) break;
         completed.depth = depth;
         completed.selDepth = selDepth_;

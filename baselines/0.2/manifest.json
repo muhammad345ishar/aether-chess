@@ -1,0 +1,22 @@
+{
+  "version": "0.2",
+  "binary_sha256": "3987e84429719a2e68e87ff5734197ddf0727d893f8c1a0f50c1069ae3d59a22",
+  "source_tag": "aether-0.2-review-baseline",
+  "note": "Original reviewed 0.2 binary and exact Git-tagged source archive preserved before edits; Release CTest and sanitizer suites passed during review.",
+  "source_revision": "0052adfca6feddb5ca0dfe0345c668feaeff9e85",
+  "source_archive_sha256": "7e32ec1dfc7a65e8e9d586345a01ebc553ea2618ed9a767ed8c873545dc69d0d",
+  "cmake_settings": {
+    "CMAKE_BUILD_TYPE:STRING": "Release",
+    "CMAKE_CXX_COMPILER:FILEPATH": "/usr/bin/c++",
+    "CMAKE_CXX_FLAGS:STRING": "",
+    "CMAKE_CXX_FLAGS_DEBUG:STRING": "-g",
+    "CMAKE_CXX_FLAGS_MINSIZEREL:STRING": "-Os -DNDEBUG",
+    "CMAKE_CXX_FLAGS_RELEASE:STRING": "-O3 -DNDEBUG",
+    "CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING": "-O2 -g -DNDEBUG",
+    "CMAKE_CXX_FLAGS-ADVANCED:INTERNAL": "1",
+    "CMAKE_CXX_FLAGS_DEBUG-ADVANCED:INTERNAL": "1",
+    "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL": "1",
+    "CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL": "1",
+    "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL": "1"
+  }
+}

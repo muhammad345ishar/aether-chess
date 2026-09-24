@@ -1,0 +1,125 @@
+{
+  "limit": {
+    "movetime": 250
+  },
+  "hash_mb": 32,
+  "repeat": 1,
+  "engines": [
+    {
+      "name": "Aether",
+      "path": "build/aether",
+      "sha256": "3987e84429719a2e68e87ff5734197ddf0727d893f8c1a0f50c1069ae3d59a22"
+    },
+    {
+      "name": "Reference",
+      "path": "/usr/local/Cellar/stockfish/18/bin/stockfish",
+      "sha256": "6593b3e937ac9f19629ea3b71d2eae84ae76e0b0f89995214a40b6c52b419ec6"
+    }
+  ],
+  "results": [
+    {
+      "repeat": 1,
+      "position": "start",
+      "engine": "Aether",
+      "bestmove": "b1c3",
+      "wall_ms": 244.578,
+      "depth": 8,
+      "seldepth": 24,
+      "nodes": 189440,
+      "nps": 773224,
+      "time": 245,
+      "score": "cp 11"
+    },
+    {
+      "repeat": 1,
+      "position": "start",
+      "engine": "Reference",
+      "bestmove": "e2e4",
+      "wall_ms": 250.302,
+      "depth": 16,
+      "seldepth": 24,
+      "nodes": 95443,
+      "nps": 380250,
+      "time": 251,
+      "score": "cp 47"
+    },
+    {
+      "repeat": 1,
+      "position": "open game",
+      "engine": "Aether",
+      "bestmove": "c1g5",
+      "wall_ms": 245.954,
+      "depth": 7,
+      "seldepth": 21,
+      "nodes": 159744,
+      "nps": 652016,
+      "time": 245,
+      "score": "cp -6"
+    },
+    {
+      "repeat": 1,
+      "position": "open game",
+      "engine": "Reference",
+      "bestmove": "c1g5",
+      "wall_ms": 250.204,
+      "depth": 13,
+      "seldepth": 23,
+      "nodes": 93934,
+      "nps": 375736,
+      "time": 250,
+      "score": "cp 11"
+    },
+    {
+      "repeat": 1,
+      "position": "tactical",
+      "engine": "Aether",
+      "bestmove": "d5e6",
+      "wall_ms": 246.157,
+      "depth": 5,
+      "seldepth": 23,
+      "nodes": 125952,
+      "nps": 512000,
+      "time": 246,
+      "score": "cp 41"
+    },
+    {
+      "repeat": 1,
+      "position": "tactical",
+      "engine": "Reference",
+      "bestmove": "e2a6",
+      "wall_ms": 251.223,
+      "depth": 16,
+      "seldepth": 37,
+      "nodes": 94291,
+      "nps": 375661,
+      "time": 251,
+      "score": "cp -182"
+    },
+    {
+      "repeat": 1,
+      "position": "endgame",
+      "engine": "Aether",
+      "bestmove": "b4c4",
+      "wall_ms": 244.576,
+      "depth": 10,
+      "seldepth": 18,
+      "nodes": 332800,
+      "nps": 1358367,
+      "time": 245,
+      "score": "cp 22"
+    },
+    {
+      "repeat": 1,
+      "position": "endgame",
+      "engine": "Reference",
+      "bestmove": "b4f4",
+      "wall_ms": 250.543,
+      "depth": 12,
+      "seldepth": 32,
+      "nodes": 197183,
+      "nps": 788732,
+      "time": 250,
+      "score": "cp 26"
+    }
+  ]
+}

@@ -13,7 +13,7 @@ namespace aether {
 // Keep horizon and TT regressions precise without making search internals a
 // production API or changing access keywords with preprocessor macros.
 struct SearcherTestAccess {
-    static void reset(Searcher& searcher) {
+    static void reset(Searcher& searcher, const Position& root) {
         searcher.prepareSearch();
         searcher.aborted_ = false;
         searcher.nodes_ = 0;
@@ -21,20 +21,24 @@ struct SearcherTestAccess {
         searcher.hardLimitMs_ = 0;
         searcher.softLimitMs_ = 0;
         searcher.selDepth_ = 0;
+        searcher.rootGamePly_ = root.gamePly();
+        searcher.rootHistoryContext_ = root.repetitionContextBeforeCurrent();
         searcher.pvLength_.fill(0);
     }
 
-    static int quiescence(Searcher& searcher, Position& position, int alpha = -VALUE_INF, int beta = VALUE_INF, int ply = 0) {
-        reset(searcher);
+    static int quiescence(Searcher& searcher, Position& position, int alpha = -VALUE_INF, int beta = VALUE_INF,
+        int ply = 0, const Position* root = nullptr) {
+        reset(searcher, root ? *root : position);
         return searcher.quiescence(position, alpha, beta, ply);
     }
 
-    static int cachedSearch(Searcher& searcher, Position& position) {
-        reset(searcher);
+    static int cachedSearch(Searcher& searcher, Position& position, const Position* root = nullptr) {
+        reset(searcher, root ? *root : position);
         return searcher.negamax(position, 1, -VALUE_INF, VALUE_INF, 1, false);
     }
 
-    static void seedExact(Searcher& searcher, const Position& position, int score) {
+    static void seedExact(Searcher& searcher, const Position& position, int score, const Position* root = nullptr) {
+        reset(searcher, root ? *root : position);
         searcher.store(position, 5, score, Searcher::BOUND_EXACT, Move{}, 1);
     }
 
@@ -163,6 +167,73 @@ void transpositionContexts() {
     const Snapshot historyBefore(secondHistory);
     require(SearcherTestAccess::cachedSearch(contextual, secondHistory) != 12345, "TT ignored repetition-history context");
     historyBefore.check(secondHistory, "history-sensitive TT search");
+
+    // Even the identical history has different draw semantics when its current
+    // node becomes the next search root. Do not reuse a bound from the old path.
+    Position initial;
+    Searcher rerooted;
+    SearcherTestAccess::seedExact(rerooted, firstHistory, 12345, &initial);
+    require(SearcherTestAccess::cachedSearch(rerooted, firstHistory, &initial) == 12345,
+        "same search root/context did not reuse a bound");
+    require(SearcherTestAccess::cachedSearch(rerooted, firstHistory) != 12345,
+        "TT reused a bound after moving the root within identical history");
+
+    // These histories have identical board/clock/total multiset and roots at
+    // the same history index, but put different cycles before their roots.
+    Position kingFirst, queenFirst;
+    for (const char* move : {"g1f3", "g8f6", "f3g1", "f6g8"}) play(kingFirst, move);
+    for (const char* move : {"b1c3", "b8c6", "c3b1", "c6b8"}) play(queenFirst, move);
+    const Position kingRoot = kingFirst;
+    const Position queenRoot = queenFirst;
+    for (const char* move : {"b1c3", "b8c6", "c3b1", "c6b8", "b1a3"}) play(kingFirst, move);
+    for (const char* move : {"g1f3", "g8f6", "f3g1", "f6g8", "b1a3"}) play(queenFirst, move);
+    require(kingFirst.fen() == queenFirst.fen() && kingFirst.repetitionContext() == queenFirst.repetitionContext(),
+        "split-history TT fixture has different total context");
+    require(kingRoot.gamePly() == queenRoot.gamePly()
+        && kingRoot.repetitionContextBeforeCurrent() != queenRoot.repetitionContextBeforeCurrent(),
+        "split-history TT fixture has equivalent pre-root history");
+    Searcher split;
+    SearcherTestAccess::seedExact(split, kingFirst, 12345, &kingRoot);
+    require(SearcherTestAccess::cachedSearch(split, kingFirst, &kingRoot) == 12345,
+        "matching split-history context did not cut off");
+    require(SearcherTestAccess::cachedSearch(split, queenFirst, &queenRoot) != 12345,
+        "TT ignored how the root partitions an identical history multiset");
+}
+
+void searchRepetitions() {
+    Position position("rnb1kbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+    const Position cycleRoot = position;
+    for (const char* move : {"g1f3", "g8f6", "f3g1"}) play(position, move);
+    const Position historicalRoot = position;
+    const Snapshot before(position);
+    SearchLimits limits;
+    limits.depth = 4;
+    Searcher searcher;
+    const SearchReport losing = searcher.search(position, limits);
+    require(losing.score < -500 && legalBest(position, losing),
+        "second historical occurrence hid a missing queen as a draw");
+    validatePv(position, losing);
+    before.check(position, "historical second-occurrence search");
+
+    play(position, "f6g8");
+    require(position.isRepetition(1) && !position.isRepetition(), "second occurrence fixture");
+    require(SearcherTestAccess::quiescence(searcher, position, -VALUE_INF, VALUE_INF, 1, &historicalRoot) > 500,
+        "quiescence treated one pre-root occurrence as a draw");
+    require(SearcherTestAccess::cachedSearch(searcher, position, &historicalRoot) > 500,
+        "negamax treated one pre-root occurrence as a draw");
+    require(SearcherTestAccess::quiescence(searcher, position, -VALUE_INF, VALUE_INF, 4, &cycleRoot) == 0,
+        "quiescence missed a cycle back to the search root");
+    require(SearcherTestAccess::cachedSearch(searcher, position, &cycleRoot) == 0,
+        "negamax missed a cycle back to the search root");
+    const SearchReport winning = searcher.search(position, limits);
+    require(winning.score > 500, "second occurrence at the root was adjudicated a draw");
+
+    for (const char* move : {"g1f3", "g8f6", "f3g1"}) play(position, move);
+    const Snapshot thirdBefore(position);
+    const SearchReport claim = searcher.search(position, limits);
+    require(claim.score == 0 && claim.best.uci() == "f6g8",
+        "search failed to choose a move producing a genuine third occurrence");
+    thirdBefore.check(position, "third-occurrence search");
 }
 
 void horizonRegressions() {
@@ -181,9 +252,10 @@ void horizonRegressions() {
         "quiescence draw check hid mate");
 
     Position repetition("rnb1kbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+    const Position repetitionRoot = repetition;
     for (const char* move : {"g1f3", "g8f6", "f3g1", "f6g8"}) play(repetition, move);
     require(evaluate(repetition) > 500 && repetition.isRepetition(1), "horizon repetition fixture");
-    require(SearcherTestAccess::quiescence(searcher, repetition, -VALUE_INF, VALUE_INF, 1) == 0,
+    require(SearcherTestAccess::quiescence(searcher, repetition, -VALUE_INF, VALUE_INF, 4, &repetitionRoot) == 0,
         "quiescence missed path repetition");
 
     Position promotion("7k/P7/6K1/8/8/8/8/8 w - - 0 1");
@@ -268,6 +340,7 @@ void limitsAndReports() {
 int main() {
     mateAndDraws();
     transpositionContexts();
+    searchRepetitions();
     horizonRegressions();
     limitsAndReports();
     std::cout << "search regressions ok\n";

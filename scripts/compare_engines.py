@@ -12,6 +12,7 @@ from contextlib import ExitStack
 from pathlib import Path
 
 from uci_client import UciEngine
+from experiment_report import engine_metadata, output_path, record_failure, run_metadata, utc_now, write_report
 
 POSITIONS = [
     ("start", "startpos"),
@@ -54,35 +55,55 @@ def main() -> int:
     parser.add_argument("--repeat", type=int, default=1)
     parser.add_argument("--hash", type=int, default=32)
     parser.add_argument("--timeout", type=float, default=30.0)
-    parser.add_argument("--output", type=Path, help="write machine-readable results")
+    parser.add_argument("--output", type=Path, help="JSON path; default: a unique directory under results/")
     args = parser.parse_args()
     kind, value = ("depth", args.depth) if args.depth is not None else ("nodes", args.nodes) if args.nodes is not None else ("movetime", 500 if args.movetime is None else args.movetime)
     if value <= 0 or args.repeat <= 0 or not 1 <= args.hash <= 1024 or args.timeout <= 0:
         parser.error("limits, repeat and timeout must be positive; Hash must be 1..1024")
     paths = [args.aether.resolve(), args.reference.resolve()]
+    output = output_path(project, "comparison", args.output)
     report = {
+        **run_metadata(project),
         "limit": {kind: value}, "hash_mb": args.hash, "repeat": args.repeat,
-        "engines": [{"name": name, "path": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+        "engines": [{"name": name, **engine_metadata(path)}
                     for name, path in zip(("Aether", "Reference"), paths)],
+        "position_fixtures": {"positions": POSITIONS,
+                              "sha256": hashlib.sha256(json.dumps(POSITIONS, separators=(",", ":")).encode()).hexdigest()},
         "results": [],
     }
-    with ExitStack() as stack:
-        engines = [(name, stack.enter_context(UciEngine(path, args.timeout))) for name, path in zip(("Aether", "Reference"), paths)]
-        for _, engine in engines:
-            engine.send(f"setoption name Hash value {args.hash}")
-            engine.send("isready")
-            engine.read_until("readyok")
-        print(f"Search comparison: {kind} {value}, Hash {args.hash} MiB, {args.repeat} repetition(s)")
-        print(f"{'Position':<12} {'Engine':<10} {'Move':<7} {'Depth':>5} {'Nodes':>11} {'Wall ms':>10} {'Score':>10}", flush=True)
-        for repetition in range(args.repeat):
-            for label, position in POSITIONS:
-                for name, engine in engines[::1 if repetition % 2 == 0 else -1]:
-                    result = analyze(engine, position, f"{kind} {value}")
-                    report["results"].append({"repeat": repetition + 1, "position": label, "engine": name, **result})
-                    print(f"{label:<12} {name:<10} {result['bestmove']:<7} {result['depth']:>5} {result['nodes']:>11} {result['wall_ms']:>10.2f} {result['score']:>10}", flush=True)
-    if args.output:
-        args.output.parent.mkdir(parents=True, exist_ok=True)
-        args.output.write_text(json.dumps(report, indent=2) + "\n")
+    write_report(output, report)
+    print(f"Report: {output}", flush=True)
+    stage, context = "startup", {}
+    try:
+        with ExitStack() as stack:
+            engines = []
+            for name, path in zip(("Aether", "Reference"), paths):
+                stage, context = "startup", {"engine": name, "path": str(path)}
+                engines.append((name, stack.enter_context(UciEngine(path, args.timeout))))
+            for name, engine in engines:
+                stage, context = "configuration", {"engine": name}
+                engine.send(f"setoption name Hash value {args.hash}")
+                engine.send("isready")
+                engine.read_until("readyok")
+            print(f"Search comparison: {kind} {value}, Hash {args.hash} MiB, {args.repeat} repetition(s)")
+            print(f"{'Position':<12} {'Engine':<10} {'Move':<7} {'Depth':>5} {'Nodes':>11} {'Wall ms':>10} {'Score':>10}", flush=True)
+            for repetition in range(args.repeat):
+                for label, position in POSITIONS:
+                    for name, engine in engines[::1 if repetition % 2 == 0 else -1]:
+                        stage, context = "search", {"engine": name, "position": label,
+                                                    "position_command": position, "repeat": repetition + 1}
+                        result = analyze(engine, position, f"{kind} {value}")
+                        report["results"].append({"repeat": repetition + 1, "position": label, "engine": name, **result})
+                        write_report(output, report)
+                        print(f"{label:<12} {name:<10} {result['bestmove']:<7} {result['depth']:>5} {result['nodes']:>11} {result['wall_ms']:>10.2f} {result['score']:>10}", flush=True)
+            stage, context = "shutdown", {}
+    except (Exception, KeyboardInterrupt) as exc:
+        record_failure(report, stage, exc, **context)
+        write_report(output, report)
+        print(f"{stage} failed: {exc}; partial report saved to {output}", flush=True)
+        return 1
+    report.update(status="completed", finished_at=utc_now())
+    write_report(output, report)
     return 0
 
 
