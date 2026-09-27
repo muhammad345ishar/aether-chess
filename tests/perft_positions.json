@@ -3,7 +3,7 @@
   {"name":"Kiwipete castling and pins","category":"castling","fen":"r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1","legal":["e1g1","e1c1"]},
   {"name":"all castling rights with open rook files","category":"castling","fen":"r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1","legal":["e1g1","e1c1","a1a8","h1h8"]},
   {"name":"castling through bishop attack is forbidden","category":"castling","fen":"4k3/8/8/8/2b5/8/8/R3K2R w KQ - 0 1","legal":["e1c1"],"illegal":["e1g1"]},
-  {"name":"castling out of rook check is forbidden","category":"castling","fen":"k3r3/8/8/8/8/8/8/R3K2R w KQ - 0 1","illegal":["e1g1","e1c1"]},
+  {"name":"castling out of rook check is forbidden","category":"castling","fen":"2k1r3/8/8/8/8/8/8/R3K2R w KQ - 0 1","illegal":["e1g1","e1c1"]},
   {"name":"legal en passant","category":"en-passant","fen":"8/8/8/Pp6/8/8/8/K6k w - b6 0 1","legal":["a5b6"]},
   {"name":"en passant exposes horizontal rook check","category":"en-passant","fen":"8/8/8/r4pPK/8/8/8/4k3 w - f6 0 1","illegal":["g5f6"]},
   {"name":"en passant pawn pinned on king file","category":"en-passant","fen":"k3r3/8/8/3pP3/8/8/8/4K3 w - d6 0 1","illegal":["e5d6"]},
