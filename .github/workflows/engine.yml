@@ -14,11 +14,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - run: python -m pip install -r scripts/requirements.txt
+      - run: python tests/validate_fixtures.py
       - run: cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo -DAETHER_SANITIZERS=${{ matrix.sanitizers }}
       - run: cmake --build build --parallel 2
       - run: mkdir -p results/ci
       - run: ctest --test-dir build --output-on-failure --output-log "${{ github.workspace }}/results/ci/ctest.log"
-      - run: python -m pip install -r scripts/requirements.txt
       - run: python tests/tooling_regressions.py
       - run: python tests/differential_perft.py build/aether --output results/ci/differential-perft.json
       - run: python scripts/run_suite.py --engine build/aether --nodes 50000 --output results/ci/tactical-suite.json
