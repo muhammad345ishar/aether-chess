@@ -3,6 +3,8 @@ __pycache__/
 *.pyc
 .DS_Store
 .venv/
+# lichess-bot bridge: cloned repo, venv, engine copy, and token-bearing config
+lichess/lichess-bot/
 baselines/*/aether
 baselines/*/aether.exe
 baselines/*/source.tar.gz

@@ -81,3 +81,16 @@ Match JSON records executable hashes, limits, seed, timing, game results, pair-l
 Adjudication checks mate/stalemate first, then current fifty-move/threefold draws. It does not assume that a player will choose a future drawing move instead of a winning move. Games reaching --max-plies are recorded explicitly as capped draws. Confidence intervals resample entire opening pairs; they are omitted for insufficient, degenerate, or incomplete samples.
 
 Small smoke matches provide development evidence, not a reliable Elo rating. Increase the opening set, game count, and time control before making strength claims. NNUE, tablebases, automated tuning, and multiple search threads remain future work.
+
+## Play on Lichess
+
+Aether can play on Lichess as a bot through the official [lichess-bot](https://github.com/lichess-bot-devs/lichess-bot) bridge, which connects the Lichess Bot API to Aether over UCI. The lichess/ folder contains setup and run scripts; see [lichess/README.md](lichess/README.md) for the full guide.
+
+~~~sh
+cd lichess
+./setup.sh lip_yourTokenHere   # clones lichess-bot, creates a venv, writes config.yml for Aether
+./run.sh -u                    # first run only: upgrade the account to BOT (irreversible)
+./run.sh                       # start the bot
+~~~
+
+The bot account must be a brand-new Lichess account with no games played, and its token needs the bot:play scope. The generated configuration allows only standard chess, disables pondering, and sets Hash to 256 MB. The lichess-bot checkout, its virtualenv, and the token-bearing config.yml are git-ignored; never commit the token.
